@@ -16,10 +16,6 @@
     imageName = "pi4.img";
   };
 
-  # Keep this to make sure wifi works
-  hardware.enableRedistributableFirmware = lib.mkForce false;
-  hardware.firmware = [ pkgs.raspberrypiWirelessFirmware ];
-
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
     loader = {
