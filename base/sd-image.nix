@@ -1,11 +1,7 @@
 # This module extends the official sd-image.nix with the following:
 # - ability to add options to the config.txt firmware
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+# Initially defined there: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/sd-card/sd-image-aarch64.nix
+{ config, lib, pkgs, ...}: {
   options.sdImage = with lib; {
     extraFirmwareConfig = mkOption {
       type = types.attrs;
