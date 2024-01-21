@@ -1,6 +1,4 @@
-
-## Ref
-## sudo nixos-rebuild test -I nixos-config=./configuration.nix
+# Makefile to build generic pi4.img file
 
 .PHONY: update
 update:
