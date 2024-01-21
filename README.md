@@ -9,4 +9,4 @@ The goals are:
 + produce any sdcard image that would be dedicated to a give purpose
 + help with deploy remotely (via deploy-rs maybe)
 
-
+Thanks for the inspiration coming from <https://github.com/rjpcasalino/pie>
