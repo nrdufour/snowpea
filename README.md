@@ -11,8 +11,8 @@ The goals are:
 
 ## Usage
 
-+ `base`: common settings for all images
-+ `generic`: actual flake to build the image for raspberry 4 type. See `Makefile` in it.
++ `images`: contains flakes to build sd card images
++ `nixos`: contains modules used by those flakes
 
 ## TODO
 
