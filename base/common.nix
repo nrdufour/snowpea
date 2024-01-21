@@ -3,7 +3,6 @@
   nix.settings.trusted-users = [ "@wheel" ];
   system.stateVersion = "23.11";
 
-  # TODO: need to really understand if it's useful or not
   zramSwap = {
     enable = true;
     algorithm = "zstd";
