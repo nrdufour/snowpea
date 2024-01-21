@@ -5,7 +5,7 @@ Managing raspberry pi (3 & 4) via nixos flakes.
 
 The goals are:
 
-+ produce a generic sdcard image to be able to properly boot
++ produce a generic sdcard image to be able to properly boot (done)
 + produce any sdcard image that would be dedicated to a give purpose
 + help with deploy remotely (via deploy-rs maybe)
 
