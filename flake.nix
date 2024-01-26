@@ -23,6 +23,7 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           ./nixos/base
+          ./nixos/users
           ({ sdImage.imageName = "genpi4.img"; })
         ];
       };
@@ -33,8 +34,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ./nixos/base
-          ./nixos/apps/gitea.nix
+          ./nixos/hosts/eagle
           ({ sdImage.imageName = "eagle.img"; })
         ];
       };
