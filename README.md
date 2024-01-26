@@ -7,17 +7,7 @@ The goals are:
 
 + produce a generic sdcard image to be able to properly boot (done)
 + produce any sdcard image that would be dedicated to a give purpose
-+ help with deploy remotely (via deploy-rs maybe)
++ help with deploy remotely (via remote nixos-rebuild)
 
-## Usage
-
-+ `images`: contains flakes to build sd card images
-+ `nixos`: contains modules used by those flakes
-
-## TODO
-
-+ `apps`: a directory to store appliances
-+ `opi5+`: maybe adding support for Orange Pi 5+
-
-Thanks for the inspiration coming from <https://github.com/rjpcasalino/pie>
+Thanks for the general inspiration coming from <https://github.com/rjpcasalino/pie>, and <https://github.com/bjw-s/nix-config> for the remote-rebuild.sh script.
 
