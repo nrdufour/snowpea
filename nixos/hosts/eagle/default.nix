@@ -2,9 +2,9 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../base
-    ../../users
-    ../../apps/gitea.nix
+    ../../personalities/base
+    ../../personalities/users
+    ../../personalities/apps/gitea.nix
   ];
 
   networking.firewall = {

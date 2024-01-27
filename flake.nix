@@ -22,8 +22,8 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ./nixos/base
-          ./nixos/users
+          ./nixos/personalities/base
+          ./nixos/personalities/users
           ({ sdImage.imageName = "genpi4.img"; })
         ];
       };
