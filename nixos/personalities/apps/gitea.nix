@@ -6,8 +6,9 @@
 
     settings = {
       server = {
-        DOMAIN = "git.home";
-        PROTOCOL = "http"; # http for now ...
+        DOMAIN = "git2.home";
+        PROTOCOL = "http";
+        ROOT_URL = "https://git2.home/";
       };
     };
 
@@ -24,12 +25,18 @@
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
-    #recommendedTlsSettings = true;
+    recommendedTlsSettings = true;
     
-    virtualHosts."git.home" = {
-      #enableACME = true;
-      #forceSSL = true;
+    virtualHosts."git2.home" = {
+      enableACME = true;
+      forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000/";
     };
   };
+
+	security.acme = {
+		certs."git2.home" = {
+			# email = "nrdufour@gmail.com";
+		};
+	};
 }
