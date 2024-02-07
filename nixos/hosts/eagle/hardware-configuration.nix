@@ -23,11 +23,6 @@
       fsType = "vfat";
     };
 
-  fileSystems."/srv/storage" =
-    { device = "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0323222060006409-0:0";
-      fsType = "ext4";
-    };
-
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
