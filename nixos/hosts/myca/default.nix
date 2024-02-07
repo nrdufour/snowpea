@@ -3,15 +3,20 @@
     ./hardware-configuration.nix
 
     ../../personalities/base
-    ../../personalities/privateca
     ../../personalities/users
+    ../../personalities/apps/step-ca.nix
   ];
 
-  networking.hostName = "eagle";
+  networking.hostName = "myca";
 
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 443 ];
   };
+
+  # For the yubikey
+  environment.systemPackages = with pkgs; [
+    yubikey-manager
+  ];
 
 }
