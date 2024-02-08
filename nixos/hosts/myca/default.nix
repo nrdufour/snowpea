@@ -23,4 +23,5 @@
   # Disable bluetooth
   hardware.bluetooth.enable = false;
   hardware.bluetooth.powerOnBoot = false;
+  boot.blacklistedKernelModules = [ "bluetooth" ];
 }
