@@ -21,6 +21,6 @@
   services.pcscd.enable = true;
 
   # Disable bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.enable = false;
+  hardware.bluetooth.powerOnBoot = false;
 }
