@@ -20,4 +20,7 @@
   ];
   services.pcscd.enable = true;
 
+  # Disable bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 }
