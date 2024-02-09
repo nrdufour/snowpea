@@ -35,8 +35,13 @@
   };
 
 	security.acme = {
+    acceptTerms = true;
+    defaults = {
+      webroot = "/var/lib/acme/acme-challenge";
+      server = "https://myca.home.arpa/acme/acme/directory";
+    };
 		certs."git2.home" = {
-			# email = "nrdufour@gmail.com";
+			email = "nrdufour@gmail.com";
 		};
 	};
 }

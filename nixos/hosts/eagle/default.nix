@@ -5,6 +5,7 @@
     ../../personalities/base
     ../../personalities/privateca
     ../../personalities/users
+    ../../personalities/apps/gitea.nix
   ];
 
   networking.hostName = "eagle";
