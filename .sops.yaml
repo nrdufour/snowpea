@@ -1,0 +1,18 @@
+---
+keys:
+  - &admin-ndufour-2022 age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
+  - &admin-ndufour-2023 age1n535rsu7hlyjg0p46y6du9nl0j7ldsfcmy9x9a24kxs6tuh8dgks2engp2
+  - &server-myca age103g0yhsjagztj3h2xaxdzk3cprt50uekz583mznnrevs3v84zp0spzwkw7
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin-ndufour-2022
+        - *admin-ndufour-2023
+  - path_regex: secrets/myca/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin-ndufour-2022
+        - *admin-ndufour-2023
+        - *server-myca
