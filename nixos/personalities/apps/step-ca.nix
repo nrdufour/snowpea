@@ -1,13 +1,17 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
 
   environment.systemPackages = with pkgs; [
     step-ca
 		step-cli
   ];
 
+  sops.secrets.stepca_intermediate_password = {
+    sopsFile = ../../../secrets/mysecrets/secrets.sops.yaml;
+  };
+
 	services.step-ca = {
 		enable = true;
-		intermediatePasswordFile = "/srv/storage/apps/step-ca/smallstep-password";
+		intermediatePasswordFile = config.sops.secrets.stepca_intermediate_password.path;
 		address = "0.0.0.0";
 		port = 8443;
 		openFirewall = true;
