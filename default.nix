@@ -4,5 +4,6 @@
     nativeBuildInputs = with pkgs.buildPackages; [
       rpi-imager
       openssl
+      pwgen
     ];
 }
