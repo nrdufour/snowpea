@@ -9,7 +9,7 @@
 		enable = true;
 		intermediatePasswordFile = "/srv/storage/apps/step-ca/smallstep-password";
 		address = "0.0.0.0";
-		port = 443;
+		port = 8443;
 		openFirewall = true;
 	};
 
@@ -24,8 +24,8 @@
 			"insecureAddress": "",
 			"dnsNames": [
 				"localhost",
-				"myca.home.arpa",
-				"myca.internal"
+				"mysecrets.home.arpa",
+				"mysecrets.internal"
 			],
 			"logger": {
 				"format": "text"

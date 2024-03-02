@@ -40,14 +40,14 @@
         ];
       };
 
-      nixosConfigurations.myca = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.mysecrets = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ./nixos/hosts/myca
-          ({ sdImage.imageName = "myca.img"; })
+          ./nixos/hosts/mysecrets
+          ({ sdImage.imageName = "mysecrets.img"; })
           sops-nix.nixosModules.sops
         ];
       };

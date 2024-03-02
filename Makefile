@@ -17,6 +17,6 @@ build_genpi4:
 build_eagle:
 	nix build -L .#nixosConfigurations.eagle.config.system.build.sdImage
 
-.PHONY: build_myca
-build_myca:
-	nix build -L .#nixosConfigurations.myca.config.system.build.sdImage
+.PHONY: build_mysecrets
+build_mysecrets:
+	nix build -L .#nixosConfigurations.mysecrets.config.system.build.sdImage

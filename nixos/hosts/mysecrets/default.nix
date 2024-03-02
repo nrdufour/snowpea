@@ -7,7 +7,7 @@
     ../../personalities/apps/step-ca.nix
   ];
 
-  networking.hostName = "myca";
+  networking.hostName = "mysecrets";
 
   networking.firewall = {
     enable = true;
