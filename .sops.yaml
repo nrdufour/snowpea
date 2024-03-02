@@ -5,14 +5,15 @@ keys:
   - &server-mysecrets age103g0yhsjagztj3h2xaxdzk3cprt50uekz583mznnrevs3v84zp0spzwkw7
 
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
-    key_groups:
-      - age:
-        - *admin-ndufour-2022
-        - *admin-ndufour-2023
   - path_regex: secrets/mysecrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
         - *admin-ndufour-2022
         - *admin-ndufour-2023
         - *server-mysecrets
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin-ndufour-2022
+        - *admin-ndufour-2023
+
