@@ -4,7 +4,7 @@
 
     ../../personalities/base
     ../../personalities/users
-    ../../personalities/apps/step-ca.nix
+    ./step-ca
   ];
 
   networking.hostName = "mysecrets";
@@ -14,14 +14,10 @@
     allowedTCPPorts = [ 80 443 ];
   };
 
-  # For the yubikey
-  environment.systemPackages = with pkgs; [
-    yubikey-manager
-  ];
-  services.pcscd.enable = true;
-
   # Disable bluetooth
   hardware.bluetooth.enable = false;
   hardware.bluetooth.powerOnBoot = false;
   boot.blacklistedKernelModules = [ "bluetooth" ];
+
+  sops.defaultSopsFile = ../../../secrets/mysecrets/secrets.sops.yaml;
 }

@@ -23,7 +23,7 @@
       fsType = "vfat";
     };
 
-  fileSystems."/srv/storage" =
+  fileSystems."/srv" =
     { device = "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0323222060006409-0:0";
       fsType = "ext4";
     };
