@@ -147,7 +147,7 @@ in
           Environment = "HOME=${cfg.userDir}";
           WorkingDirectory = ""; # override upstream
           ReadWriteDirectories = ""; # override upstream
-          ReadWritePaths = "${cfg.userDir}/db";
+          ReadWritePaths = "${cfg.userDir}";
 
           # LocalCredential handles file permission problems arising from the use of DynamicUser.
           LoadCredential = "intermediate_password:${cfg.intermediatePasswordFile}";

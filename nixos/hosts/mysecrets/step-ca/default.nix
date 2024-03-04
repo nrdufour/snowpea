@@ -52,7 +52,7 @@
       },
       "db": {
         "type": "badgerv2",
-        "dataSource": "${config.services.step-ca.userDir}/db",
+        "dataSource": "${config.services.step-ca.userDir}",
         "badgerFileLoadingMode": ""
       },
       "authority": {
