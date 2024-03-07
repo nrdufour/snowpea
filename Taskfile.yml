@@ -1,0 +1,13 @@
+# https://taskfile.dev
+
+version: '3'
+
+includes:
+  nix: .taskfiles/nix/Taskfile.yaml
+  sops: .taskfiles/sops/Taskfile.yaml
+
+tasks:
+
+  default:
+    silent: true
+    cmd: task -l

@@ -1,0 +1,41 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+# vars:
+
+tasks:
+  update:
+    desc: Update the inputs in the flake.lock file
+    cmds:
+      - nix flake update
+
+  check:
+    desc: Check the flake is ok
+    cmds:
+      - nix flake check
+
+  build-sd:
+    desc: Build the SD card image for a host
+    summary: |
+      Args:
+        host: machine hostname to rebuild (required)
+    cmds:
+      - nix build -L .#nixosConfigurations.{{.host}}.config.system.build.sdImage
+    requires:
+      vars: ["host"]
+
+  list-hosts:
+    desc: List the NixOS hosts in the flake
+    cmds:
+      - nix flake show --json 2>/dev/null|jq -r '.nixosConfigurations | keys.[]'
+
+  deploy:
+    desc: Deploy the configuration of a given host
+    summary: |
+      Args:
+        host: machine hostname to deploy (required)
+    cmds:
+      - ./remote-rebuild.sh {{.host}} ndufour {{.host}}
+    requires:
+      vars: ["host"]

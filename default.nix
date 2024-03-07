@@ -5,5 +5,7 @@
       rpi-imager
       openssl
       pwgen
+      go-task
+      jq
     ];
 }
