@@ -4,6 +4,7 @@
 
     ../../personalities/base
     ../../personalities/users
+    ../../personalities/privateca
     ./step-ca
   ];
 
