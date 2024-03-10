@@ -5,7 +5,9 @@
     ../../personalities/base
     ../../personalities/users
     ../../personalities/privateca
+
     ./step-ca
+    ./vaultwarden.nix
   ];
 
   networking.hostName = "mysecrets";
