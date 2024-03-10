@@ -2,7 +2,7 @@
   services.gitea = {
     enable = true;
     appName = "The Garden";
-    stateDir = "/srv/storage/apps/gitea";
+    stateDir = "/srv/gitea";
 
     settings = {
       server = {
