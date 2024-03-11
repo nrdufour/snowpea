@@ -5,6 +5,7 @@ version: '3'
 includes:
   nix: .taskfiles/nix/Taskfile.yaml
   sops: .taskfiles/sops/Taskfile.yaml
+  sd: .taskfiles/sd/Taskfile.yaml
 
 tasks:
 

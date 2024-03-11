@@ -1,0 +1,27 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+# vars:
+
+tasks:
+  build:
+    desc: Build the SD card image for a host
+    summary: |
+      Args:
+        host: machine hostname to build (required)
+    cmds:
+      - nix build -L .#nixosConfigurations.{{.host}}.config.system.build.sdImage
+    requires:
+      vars: ["host"]
+
+  flash:
+    desc: Flash the SD card image (with rpi-imager)
+    summary: |
+      Args:
+        host: machine hostname to flash (required)
+    cmds:
+      - task: :sd:build
+      - nix-shell -p rpi-imager --run "rpi-imager ./result/sd-image/sd_card.img"
+    requires:
+      vars: ["host"]

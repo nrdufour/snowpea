@@ -25,7 +25,6 @@
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           ./nixos/personalities/base
           ./nixos/personalities/users
-          ({ sdImage.imageName = "genpi4.img"; })
         ];
       };
 
@@ -36,7 +35,6 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           ./nixos/hosts/eagle
-          ({ sdImage.imageName = "eagle.img"; })
         ];
       };
 
@@ -47,7 +45,6 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           ./nixos/hosts/mysecrets
-          ({ sdImage.imageName = "mysecrets.img"; })
           sops-nix.nixosModules.sops
         ];
       };

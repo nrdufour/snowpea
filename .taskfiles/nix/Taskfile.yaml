@@ -15,16 +15,6 @@ tasks:
     cmds:
       - nix flake check
 
-  build-sd:
-    desc: Build the SD card image for a host
-    summary: |
-      Args:
-        host: machine hostname to rebuild (required)
-    cmds:
-      - nix build -L .#nixosConfigurations.{{.host}}.config.system.build.sdImage
-    requires:
-      vars: ["host"]
-
   list-hosts:
     desc: List the NixOS hosts in the flake
     cmds:
