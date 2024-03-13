@@ -6,9 +6,9 @@
 
     settings = {
       server = {
-        DOMAIN = "git2.home";
+        DOMAIN = "git.internal";
         PROTOCOL = "http";
-        ROOT_URL = "https://git2.home/";
+        ROOT_URL = "https://git.internal/";
       };
     };
 
@@ -27,7 +27,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     
-    virtualHosts."git2.home" = {
+    virtualHosts."git.internal" = {
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000/";
@@ -40,7 +40,7 @@
       webroot = "/var/lib/acme/acme-challenge";
       server = "https://mysecrets.internal:8443/acme/acme/directory";
     };
-		certs."git2.home" = {
+		certs."git.internal" = {
 			email = "nrdufour@gmail.com";
 		};
 	};
