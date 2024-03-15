@@ -7,6 +7,7 @@
     ../../personalities/users
     
     ./gitea.nix
+    ./gitea-runner.nix
   ];
 
   networking.hostName = "eagle";
@@ -16,4 +17,5 @@
     allowedTCPPorts = [ 80 443 ];
   };
 
+  sops.defaultSopsFile = ../../../secrets/eagle/secrets.sops.yaml;
 }

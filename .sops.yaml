@@ -3,8 +3,15 @@ keys:
   - &admin-ndufour-2022 age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
   - &admin-ndufour-2023 age1n535rsu7hlyjg0p46y6du9nl0j7ldsfcmy9x9a24kxs6tuh8dgks2engp2
   - &server-mysecrets age16vvprtmz9h7qj9s3wj947s4te7lkhrdft79rl3zjdyfpc7whvvqq2cnhxl
+  - &server-eagle age16kl8ql2sf3xf24tu0ewut2nh687jwqx5ee8h5d9d9689gqxj7p7qkfq8ag
 
 creation_rules:
+  - path_regex: secrets/eagle/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin-ndufour-2022
+        - *admin-ndufour-2023
+        - *server-eagle
   - path_regex: secrets/mysecrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:

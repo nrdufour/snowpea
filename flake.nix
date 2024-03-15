@@ -35,6 +35,7 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
           ./nixos/hosts/eagle
+          sops-nix.nixosModules.sops
         ];
       };
 
