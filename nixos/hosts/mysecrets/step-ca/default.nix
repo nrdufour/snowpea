@@ -62,7 +62,12 @@
             "name": "acme",
             "type": "ACME"
           }
-        ]
+        ],
+        "claims": {
+          "minTLSCertDuration": "24h",
+          "maxTLSCertDuration": "168h",
+          "defaultTLSCertDuration": "168h"
+        }
       },
       "tls": {
         "cipherSuites": [
