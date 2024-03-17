@@ -18,6 +18,8 @@
           cache = {
             enabled = true;
           };
+          # Both the container and host workdir parent has to be fully specified
+          # to avoid some issues with relative path in typescript module resolution.
           container = {
             workdir_parent = "${gitea-runner-directory}/workspace";
           };
@@ -26,6 +28,9 @@
           };
           runner = {
             envs = {
+              # This is needed because the user 'gitea-runner' is dynamic
+              # and therefore has no home directory.
+              # Without HOME, docker will try to create /.docker directory instead.
               HOME = "${gitea-runner-directory}/eagle";
             };
           };
