@@ -24,6 +24,11 @@
           host = {
             workdir_parent = "${gitea-runner-directory}/action-cache-dir";
           };
+          runner = {
+            envs = {
+              HOME = "${gitea-runner-directory}/eagle";
+            };
+          };
         };
         enable = true;
         name = "eagle";

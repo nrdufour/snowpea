@@ -31,6 +31,10 @@
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000/";
+      # to avoid error on file size
+      extraConfig = ''
+      client_max_body_size 2g;
+      '';
     };
   };
 
