@@ -4,6 +4,9 @@
     gitea_runner_token = {};
   };
 
+  # For the runner
+  virtualisation.docker.enable = true;
+
   #
   # Ref: https://github.com/colonelpanic8/dotfiles/blob/03346eeaeb68633a50d6687659cbcdf46d243d36/nixos/gitea-runner.nix#L20
   # 
@@ -28,6 +31,7 @@
         tokenFile = config.sops.secrets.gitea_runner_token.path;
         labels = [
           "native:host"
+          "debian:docker://node:21-bookworm"
         ];
         hostPackages = with pkgs; [
           bash
@@ -40,6 +44,7 @@
           gnused
           nodejs
           wget
+          docker
         ];
       };
     };
