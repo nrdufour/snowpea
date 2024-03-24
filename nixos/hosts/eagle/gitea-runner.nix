@@ -7,6 +7,13 @@
   # For the runner
   virtualisation.docker.enable = true;
 
+  environment.etc."buildkit/buildkitd.toml".text = ''
+  [registry."git.internal"]
+    http = true
+    insecure = true
+    ca=["/etc/ssl/certs/ca-certificates.crt"]
+  '';
+
   #
   # Ref: https://github.com/colonelpanic8/dotfiles/blob/03346eeaeb68633a50d6687659cbcdf46d243d36/nixos/gitea-runner.nix#L20
   # 
