@@ -2,7 +2,8 @@
 
   config = {
     services.k3s.enable = true;
-    environment.systemPackages = [ pkgs.k3s ];
+    services.k3s.package = pkgs.unstable.k3s_1_28;
+    environment.systemPackages = [ pkgs.unstable.k3s_1_28 ];
 
     # For NFS
     boot.supportedFilesystems = [ "nfs" ];
