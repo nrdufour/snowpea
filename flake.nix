@@ -49,5 +49,18 @@
           sops-nix.nixosModules.sops
         ];
       };
+
+      # Experimental, just for one node for now
+      nixosConfigurations.raccoon05 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          # Overlays-module makes "pkgs.unstable" available in configuration.nix
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          ({ ... }: { networking.hostName = "raccoon05"; })
+          ./nixos/hosts/k3s-worker
+          sops-nix.nixosModules.sops
+        ];
+      };
     };
 }
