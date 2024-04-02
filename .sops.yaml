@@ -5,6 +5,7 @@ keys:
   - &server-mysecrets age14hltxzv2tpzutpcjr7lreet5rzcufgcx0rd3syz48v9gdkpaa45s4cfktj
   - &server-eagle age16kl8ql2sf3xf24tu0ewut2nh687jwqx5ee8h5d9d9689gqxj7p7qkfq8ag
   - &server-raccoon05 age1ewqzghlw2fhhjk5ek5j2grxnnyzxc2p5tczcg6ttxzgcvvxcp53qrm9hrp
+  - &server-sparrow01 age1f4yjes58zf77r2lwrnf4ckl7gnmcftv6m2nwa3x7c04pp7e28djqg5sqlm
 
 creation_rules:
   - path_regex: secrets/eagle/[^/]+\.(yaml|json|env|ini)$
@@ -25,6 +26,7 @@ creation_rules:
         - *admin-ndufour-2022
         - *admin-ndufour-2023
         - *server-raccoon05
+        - *server-sparrow01
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
