@@ -50,9 +50,39 @@
         ];
       };
 
-      # Experimental, just for one node for now
+      ### CLUSTER k3s
 
       ## Cluster Raccoon worker nodes : raspberry pi 4
+
+      nixosConfigurations.raccoon03 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          # Overlays-module makes "pkgs.unstable" available in configuration.nix
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          ({ ... }: { networking.hostName = "raccoon03"; })
+          ./nixos/hosts/k3s-rasp4-worker
+          sops-nix.nixosModules.sops
+        ];
+      };
+
+      nixosConfigurations.raccoon04 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          # Overlays-module makes "pkgs.unstable" available in configuration.nix
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+          ({ ... }: {
+            networking.hostName = "raccoon04";
+            services.k3s.extraFlags = toString [
+              "--node-label svccontroller.k3s.cattle.io/enablelb=true"
+              "--node-label svccontroller.k3s.cattle.io/lbpool=internal"
+            ];
+          })
+          ./nixos/hosts/k3s-rasp4-worker
+          sops-nix.nixosModules.sops
+        ];
+      };
 
       nixosConfigurations.raccoon05 = nixpkgs.lib.nixosSystem {
         inherit system;
