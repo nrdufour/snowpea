@@ -4,6 +4,8 @@ keys:
   - &admin-ndufour-2023 age1n535rsu7hlyjg0p46y6du9nl0j7ldsfcmy9x9a24kxs6tuh8dgks2engp2
   - &server-mysecrets age14hltxzv2tpzutpcjr7lreet5rzcufgcx0rd3syz48v9gdkpaa45s4cfktj
   - &server-eagle age16kl8ql2sf3xf24tu0ewut2nh687jwqx5ee8h5d9d9689gqxj7p7qkfq8ag
+  - &server-raccoon01 age1ux9fsl55rpqq2rcgwdtndtet6ukgplryuu7tps63exwf2d89333sc04ex0
+  - &server-raccoon02 age18adj6q0rfpcmledgyjuwyfmjrdzrgjzvsnh5n77mht4pc7zwqplsydhjl5
   - &server-raccoon03 age1a4wtpfdgy8qm6dn5yzgr2lnntmw22v2mc067vk2u5zdv9s26rdaq5s7qv2
   - &server-raccoon04 age1xnyrzdsetaswr40qpjaq0qc97nwscz6xfjjl0v6j7kvvrntcngfq6y6tzv
   - &server-raccoon05 age1ewqzghlw2fhhjk5ek5j2grxnnyzxc2p5tczcg6ttxzgcvvxcp53qrm9hrp
@@ -32,6 +34,8 @@ creation_rules:
       - age:
         - *admin-ndufour-2022
         - *admin-ndufour-2023
+        - *server-raccoon01
+        - *server-raccoon02
         - *server-raccoon03
         - *server-raccoon04
         - *server-raccoon05
