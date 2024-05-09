@@ -5,6 +5,7 @@
     ../../personalities/base
     ../../personalities/users
     ../../personalities/privateca
+    ../../personalities/node-exporter
 
     ./step-ca
     ./vaultwarden.nix

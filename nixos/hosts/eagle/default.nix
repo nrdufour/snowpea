@@ -5,6 +5,7 @@
     ../../personalities/base
     ../../personalities/privateca
     ../../personalities/users
+    ../../personalities/node-exporter
     
     ./gitea.nix
     ./gitea-runner.nix
