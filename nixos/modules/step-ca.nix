@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.services.step-ca;
-  settingsFormat = (pkgs.formats.json { });
+  settingsFormat = pkgs.formats.json { };
 in
 {
   meta.maintainers = with lib.maintainers; [ mohe2015 ];

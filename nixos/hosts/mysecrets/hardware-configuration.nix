@@ -8,25 +8,29 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usb_storage" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd.availableKernelModules = [ "xhci_pci" "usb_storage" ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ ];
+    extraModulePackages = [ ];
+  };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXOS_SD";
-      fsType = "ext4";
-    };
+  fileSystems = {
+    "/" =
+      { device = "/dev/disk/by-label/NIXOS_SD";
+        fsType = "ext4";
+      };
 
-  fileSystems."/boot/firmware" =
-    { device = "/dev/disk/by-label/FIRMWARE";
-      fsType = "vfat";
-    };
+    "/boot/firmware" =
+      { device = "/dev/disk/by-label/FIRMWARE";
+        fsType = "vfat";
+      };
 
-  fileSystems."/srv" =
-    { device = "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0323222060006409-0:0";
-      fsType = "ext4";
-    };
+    "/srv" =
+      { device = "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0323222060006409-0:0";
+        fsType = "ext4";
+      };
+  };
 
   swapDevices = [ ];
 

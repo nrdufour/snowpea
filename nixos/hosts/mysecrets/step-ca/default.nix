@@ -19,14 +19,16 @@
     stepca_yubikey_pin = {};
   };
 
-  environment.etc."smallstep/root_ca.crt" = {
-    text = lib.readFile ./resources/root_ca.crt;
-    user = "step-ca";
-  };
+  environment.etc = {
+    "smallstep/root_ca.crt" = {
+      text = lib.readFile ./resources/root_ca.crt;
+      user = "step-ca";
+    };
 
-  environment.etc."smallstep/intermediate_ca.crt" = {
-    text = lib.readFile ./resources/intermediate_ca.crt;
-    user = "step-ca";
+    "smallstep/intermediate_ca.crt" = {
+      text = lib.readFile ./resources/intermediate_ca.crt;
+      user = "step-ca";
+    };
   };
 
 	sops.templates."smallstep-config.json" = {

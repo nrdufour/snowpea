@@ -60,7 +60,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "raccoon01"; })
+          (_: { networking.hostName = "raccoon01"; })
           ./nixos/hosts/k3s-rasp4-controller
           sops-nix.nixosModules.sops
         ];
@@ -72,7 +72,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "raccoon02"; })
+          (_: { networking.hostName = "raccoon02"; })
           ./nixos/hosts/k3s-rasp4-controller
           sops-nix.nixosModules.sops
         ];
@@ -86,7 +86,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "raccoon03"; })
+          (_: { networking.hostName = "raccoon03"; })
           ./nixos/hosts/k3s-rasp4-worker
           sops-nix.nixosModules.sops
         ];
@@ -98,7 +98,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: {
+          (_: {
             networking.hostName = "raccoon04";
             services.k3s.extraFlags = toString [
               "--node-label svccontroller.k3s.cattle.io/enablelb=true"
@@ -116,7 +116,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "raccoon05"; })
+          (_: { networking.hostName = "raccoon05"; })
           ./nixos/hosts/k3s-rasp4-worker
           sops-nix.nixosModules.sops
         ];
@@ -130,7 +130,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: {
+          (_: {
             networking.hostName = "sparrow01";
             # For RTL-SDR
             boot.kernelParams = [ "modprobe.blacklist=dvb_usb_rtl28xxu" ];
@@ -146,7 +146,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "sparrow02"; })
+          (_: { networking.hostName = "sparrow02"; })
           ./nixos/hosts/k3s-rasp3-worker
           sops-nix.nixosModules.sops
         ];
@@ -158,7 +158,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "sparrow03"; })
+          (_: { networking.hostName = "sparrow03"; })
           ./nixos/hosts/k3s-rasp3-worker
           sops-nix.nixosModules.sops
         ];
@@ -170,7 +170,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "sparrow04"; })
+          (_: { networking.hostName = "sparrow04"; })
           ./nixos/hosts/k3s-rasp3-worker
           sops-nix.nixosModules.sops
         ];
@@ -182,7 +182,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: {
+          (_: {
             networking.hostName = "sparrow05";
             services.k3s.extraFlags = toString [
               "--node-label svccontroller.k3s.cattle.io/enablelb=true"
@@ -200,7 +200,7 @@
           # Overlays-module makes "pkgs.unstable" available in configuration.nix
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          ({ ... }: { networking.hostName = "sparrow06"; })
+          (_: { networking.hostName = "sparrow06"; })
           ./nixos/hosts/k3s-rasp3-worker
           sops-nix.nixosModules.sops
         ];
