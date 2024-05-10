@@ -4,5 +4,7 @@
     nativeBuildInputs = with pkgs.buildPackages; [
       go-task
       jq
+      statix
+      nixpkgs-fmt
     ];
 }
