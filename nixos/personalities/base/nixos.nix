@@ -16,6 +16,11 @@
             # Fallback quickly if substituters are not available.
             connect-timeout = 5;
 
+            # Avoid copying unnecessary stuff over SSH
+            builders-use-substitutes = true;
+
+            trusted-users = [ "root" "@wheel" ];
+
             experimental-features = [ "nix-command" "flakes" ];
         };
         gc = {
