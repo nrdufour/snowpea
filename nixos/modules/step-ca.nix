@@ -41,7 +41,7 @@ in
       };
       settings = lib.mkOption {
         type = with lib.types; attrsOf anything;
-        default = {};
+        default = { };
         description = lib.mdDoc ''
           Settings that go into {file}`ca.json`. See
           [the step-ca manual](https://smallstep.com/docs/step-ca/configuration)
@@ -103,8 +103,9 @@ in
     let
       configFile =
         if cfg.settingsFile != ""
-          then cfg.settingsFile
-          else settingsFormat.generate "ca.json" (cfg.settings // {
+        then cfg.settingsFile
+        else
+          settingsFormat.generate "ca.json" (cfg.settings // {
             address = cfg.address + ":" + toString cfg.port;
           });
     in
@@ -172,7 +173,7 @@ in
         isSystemUser = true;
       };
 
-      users.groups.step-ca = {};
+      users.groups.step-ca = { };
 
       networking.firewall = lib.mkIf cfg.openFirewall {
         allowedTCPPorts = [ cfg.port ];

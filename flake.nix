@@ -9,14 +9,15 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix }@inputs:
     let
-    system = "aarch64-linux";
-    overlay-unstable = final: prev: {
-      unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
+      system = "aarch64-linux";
+      overlay-unstable = final: prev: {
+        unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
       };
-    };
-    in {
+    in
+    {
       nixosConfigurations = {
         genpi4 = nixpkgs.lib.nixosSystem {
           inherit system;

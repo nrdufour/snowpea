@@ -2,7 +2,7 @@
 
   config = {
     # Token
-    sops.secrets.k3s-server-token = {};
+    sops.secrets.k3s-server-token = { };
 
     services.k3s = {
       enable = true;

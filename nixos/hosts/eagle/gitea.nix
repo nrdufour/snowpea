@@ -26,26 +26,26 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    
+
     virtualHosts."git.internal" = {
       enableACME = true;
       forceSSL = true;
       locations."/".proxyPass = "http://localhost:3000/";
       # to avoid error on file size
       extraConfig = ''
-      client_max_body_size 2g;
+        client_max_body_size 2g;
       '';
     };
   };
 
-	security.acme = {
+  security.acme = {
     acceptTerms = true;
     defaults = {
       webroot = "/var/lib/acme/acme-challenge";
       server = "https://mysecrets.internal:8443/acme/acme/directory";
     };
-		certs."git.internal" = {
-			email = "nrdufour@gmail.com";
-		};
-	};
+    certs."git.internal" = {
+      email = "nrdufour@gmail.com";
+    };
+  };
 }

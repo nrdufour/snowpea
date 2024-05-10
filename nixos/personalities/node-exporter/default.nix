@@ -1,5 +1,5 @@
 let exporterPort = 9002;
-in 
+in
 {
   services.prometheus = {
     exporters = {

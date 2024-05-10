@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot = {
@@ -17,17 +18,20 @@
 
   fileSystems = {
     "/" =
-      { device = "/dev/disk/by-label/NIXOS_SD";
+      {
+        device = "/dev/disk/by-label/NIXOS_SD";
         fsType = "ext4";
       };
 
     "/boot/firmware" =
-      { device = "/dev/disk/by-label/FIRMWARE";
+      {
+        device = "/dev/disk/by-label/FIRMWARE";
         fsType = "vfat";
       };
 
     "/var/lib/rancher" =
-      { device = "/dev/sda";
+      {
+        device = "/dev/sda";
         fsType = "ext4";
       };
   };

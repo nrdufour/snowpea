@@ -1,17 +1,17 @@
 { config, pkgs, ... }:
 {
   sops.secrets = {
-    gitea_runner_token = {};
+    gitea_runner_token = { };
   };
 
   # For the runner
   virtualisation.docker.enable = true;
 
   environment.etc."buildkit/buildkitd.toml".text = ''
-  [registry."git.internal"]
-    http = true
-    insecure = true
-    ca=["/etc/ssl/certs/ca-certificates.crt"]
+    [registry."git.internal"]
+      http = true
+      insecure = true
+      ca=["/etc/ssl/certs/ca-certificates.crt"]
   '';
 
   #
