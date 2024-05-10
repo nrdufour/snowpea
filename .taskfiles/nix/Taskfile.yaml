@@ -32,10 +32,6 @@ tasks:
 
   deploy-all:
     desc: Deploy flake to all nodes
-    # silent: true
-    requires:
-      vars:
-        - host
     cmds:
       - echo "This will deploy the local flake to all whitelisted hosts."
       - task: .prompt_to_continue
