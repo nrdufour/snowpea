@@ -37,6 +37,7 @@
       #!/usr/bin/env bash
 
       cd /srv/gitea/dump
+      find . -type f -ctime +30 -exec rm {} \;
       /run/current-system/sw/bin/rclone --config ${config.sops.templates."rclone.conf".path} sync . minio:gitea-dump-backup -v
     '';
     serviceConfig = {
