@@ -1,4 +1,4 @@
-{
+{ pkgs, config, ...}: {
   environment.systemPackages = with pkgs; [
     rclone
   ];
@@ -8,7 +8,7 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       # starts one hour after the dump
-      OnCalendar=05:31
+      OnCalendar = "05:31";
       Unit = "gitea-dump-backup.service";
     };
   };
@@ -28,7 +28,8 @@
       secret_access_key = ${config.sops.placeholder.gitea_dump_bucket_secret_access_key}
       endpoint = https://s3.home
       region = main
-    ''
+    '';
+  };
 
   # Below script will use rclone to save the gitea dump files into minio
   systemd.services."gitea-dump-backup" = {
