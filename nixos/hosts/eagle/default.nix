@@ -9,6 +9,7 @@
 
     ./gitea.nix
     ./gitea-runner.nix
+    ./gitea-rclone.nix
   ];
 
   networking.hostName = "eagle";
