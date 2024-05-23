@@ -37,7 +37,7 @@
       #!/usr/bin/env bash
 
       cd /srv/gitea/dump
-      rclone --config ${config.sops.templates."rclone.conf".path} sync . minio:gitea-dump-backup -v
+      /run/current-system/sw/bin/rclone --config ${config.sops.templates."rclone.conf".path} sync . minio:gitea-dump-backup -v
     '';
     serviceConfig = {
       Type = "oneshot";
