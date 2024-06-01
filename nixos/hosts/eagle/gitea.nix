@@ -12,12 +12,12 @@
       };
     };
 
-    package = pkgs.unstable.gitea;
+    package = pkgs.gitea;
     dump.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
-    unstable.gitea
+    gitea
   ];
 
   services.nginx = {

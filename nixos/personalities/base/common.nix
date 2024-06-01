@@ -1,7 +1,7 @@
 { lib, pkgs, ... }: {
   nixpkgs.hostPlatform = "aarch64-linux";
   nix.settings.trusted-users = [ "@wheel" ];
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 
   zramSwap = {
     enable = true;
