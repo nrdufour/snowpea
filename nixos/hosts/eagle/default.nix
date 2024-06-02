@@ -1,16 +1,29 @@
 { pkgs, ... }: {
   imports = [
-    ./hardware-configuration.nix
-
-    ../../personalities/base
-    ../../personalities/privateca
-    ../../personalities/users
-    ../../personalities/node-exporter
-
     ./gitea.nix
     ./gitea-runner.nix
     ./gitea-rclone.nix
   ];
+
+  fileSystems = {
+    "/" =
+      {
+        device = "/dev/disk/by-label/NIXOS_SD";
+        fsType = "ext4";
+      };
+
+    "/boot/firmware" =
+      {
+        device = "/dev/disk/by-label/FIRMWARE";
+        fsType = "vfat";
+      };
+
+    "/srv" =
+      {
+        device = "/dev/disk/by-label/EAGLE_ST";
+        fsType = "ext4";
+      };
+  };
 
   networking.hostName = "eagle";
 
