@@ -12,10 +12,6 @@ with lib;
     mySystem.services.monitoring.enable = true;
     # Check if a reboot is necessary
     mySystem.services.rebootRequiredCheck.enable = true;
-
-    # No point putting docs
-    documentation.enable = false;
-    documentation.man.enable = false;
   };
 
 }
