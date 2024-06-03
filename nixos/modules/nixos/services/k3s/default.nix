@@ -35,9 +35,14 @@ in
         "agent"
       ];
     };
+
+    isClusterInit = mkOption {
+      description = "true if this is the first controller";
+      default = false;
+      type = types.bool;
+    };
   };
 
-  ## COMMONS
   config = mkIf cfg.enable {
     # Token
     sops.secrets.k3s-server-token = { };
@@ -48,6 +53,7 @@ in
       tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
       serverAddr = defaultServerAddr;
       inherit (cfg) role;
+      clusterInit = isClusterInit;
       extraFlags = (if cfg.role == "agent"
         then ""
         else toString [
