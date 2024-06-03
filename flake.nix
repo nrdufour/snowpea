@@ -26,9 +26,12 @@
     #   url = "github:nix-community/nix-vscode-extensions";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    # nixos-rk3588 for Orange Pi 5 + machines
+    nixos-rk3588.url = "github:ryan4yin/nixos-rk3588";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, nixos-rk3588, ... }@inputs:
     let
       inherit (self) outputs;
     in
@@ -296,6 +299,33 @@
           #     sops-nix.nixosModules.sops
           #   ];
           # };
+
+          opi03 = let 
+            inherit (nixos-rk3588.inputs) nixpkgs;
+            aarch64System = "aarch64-linux";
+            pkgsNative = import nixpkgs {system = aarch64System;};
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = { inherit self inputs nixpkgs; };
+            specialArgs.rk3588 = {
+              inherit nixpkgs;
+              pkgsKernel = pkgsNative;
+            };
+            modules = let nixpkgs = rk3588-nixpkgs; in [
+              sops-nix.nixosModules.sops
+              ./nixos/profiles/global.nix # all machines get a global profile
+              ./nixos/modules/nixos # all machines get nixos modules
+              ./nixos/hosts/opi03   # load this host's config folder for machine-specific config
+              ./nixos/profiles/role-server.nix
+              ./nixos/profiles/role-k3s-worker.nix
+
+              nixos-rk3588.nixosModules.orangepi5plus.core
+              nixos-rk3588.nixosModules.orangepi5plus.sd-image
+            ];
+          };
+
+          ###
       };
 
     };
