@@ -53,7 +53,7 @@ in
       tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
       serverAddr = defaultServerAddr;
       inherit (cfg) role;
-      clusterInit = isClusterInit;
+      clusterInit = cfg.isClusterInit;
       extraFlags = (if cfg.role == "agent"
         then ""
         else toString [
