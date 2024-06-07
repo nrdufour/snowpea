@@ -298,5 +298,15 @@
           # };
       };
 
+      # Convenience output that aggregates the outputs for home, nixos.
+      # Also used in ci to build targets generally.
+      top =
+        let
+          nixtop = nixpkgs.lib.genAttrs
+            (builtins.attrNames inputs.self.nixosConfigurations)
+            (attr: inputs.self.nixosConfigurations.${attr}.config.system.build.toplevel);
+        in
+        nixtop;
+
     };
 }
