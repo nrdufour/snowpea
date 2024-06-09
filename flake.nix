@@ -124,6 +124,20 @@
 
           ### CLUSTER k3s
 
+          opi03 = mkNixosConfig {
+            hostname = "opi03";
+            system = "aarch64-linux";
+            hardwareModules = [
+              "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+              ./nixos/profiles/hw-opi5plus.nix
+            ];
+            profileModules = [
+              # Overlays-module makes "pkgs.unstable" available in configuration.nix
+              # ./nixos/profiles/role-server.nix
+              # ./nixos/profiles/role-k3s-controller.nix
+            ];
+          };
+
           ## Cluster Raccoon controller nodes : raspberry pi 4
 
           raccoon00 = mkNixosConfig {

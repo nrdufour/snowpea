@@ -3,17 +3,14 @@
 # =========================================================================
 {
   pkgs,
-  rk3588,
   ...
-}: let
-  pkgsKernel = rk3588.pkgsKernel;
-in {
+}: {
   imports = [
     ./base.nix
   ];
 
   boot = {
-    kernelPackages = pkgsKernel.linuxPackagesFor (pkgsKernel.callPackage ../../pkgs/rk35xx-kernel/vendor.nix {});
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ../../../pkgs/rk35xx-kernel/vendor.nix {});
 
     # kernelParams copy from Armbian's /boot/armbianEnv.txt & /boot/boot.cmd
     kernelParams = [
@@ -44,7 +41,7 @@ in {
     };
 
     firmware = [
-      (pkgs.callPackage ../../pkgs/orangepi-firmware {})
+      (pkgs.callPackage ../../../pkgs/orangepi-firmware {})
     ];
   };
 }

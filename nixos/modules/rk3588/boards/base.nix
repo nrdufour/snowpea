@@ -14,7 +14,7 @@
     firmwarePackage = lib.mkOption {
       type = lib.types.package;
       description = "Firmware package for Mali-G610 GPU";
-      default = (pkgs.callPackage ../../pkgs/mali-firmware {});
+      default = pkgs.callPackage ../../../pkgs/mali-firmware {};
     };
   };
 
