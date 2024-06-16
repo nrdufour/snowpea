@@ -9,6 +9,6 @@ with lib;
     # '';
 
     # Do not change unless you know what you are doing
-    stateVersion = "24.05";
+    stateVersion = "23.11";
   };
 }
