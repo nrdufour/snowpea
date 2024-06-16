@@ -49,7 +49,7 @@ in
 
     services.k3s = {
       enable = true;
-      package = pkgs.k3s_1_28;
+      package = pkgs.unstable.k3s_1_28;
       tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
       serverAddr = defaultServerAddr;
       inherit (cfg) role;
@@ -79,7 +79,7 @@ in
           "--disable-cloud-controller"
         ]) + cfg.additionalFlags;
     };
-    environment.systemPackages = [ pkgs.k3s_1_28 ];
+    environment.systemPackages = [ pkgs.unstable.k3s_1_28 ];
 
     # For NFS
     boot.supportedFilesystems = [ "nfs" ];

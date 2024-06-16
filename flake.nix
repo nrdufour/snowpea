@@ -307,12 +307,24 @@
           in
           nixpkgs.lib.nixosSystem {
             system = "aarch64-linux";
-            specialArgs = { inherit self inputs nixpkgs; };
+            specialArgs = {
+              inherit self inputs nixpkgs;
+            };
             specialArgs.rk3588 = {
               inherit nixpkgs;
               pkgsKernel = pkgsNative;
             };
             modules = let nixpkgs = rk3588-nixpkgs; in [
+              {
+                nixpkgs.overlays = [
+                  (final: prev: {
+                    unstable = import nixpkgs-unstable {
+                      system = "aarch64-linux";
+                      config.allowUnfree = true;
+                    };
+                  })
+                ];
+              }
               sops-nix.nixosModules.sops
               ./nixos/profiles/global.nix # all machines get a global profile
               ./nixos/modules/nixos # all machines get nixos modules
