@@ -3,7 +3,7 @@ with lib;
 let
   cfg = config.mySystem.services.k3s;
   defaultServerAddr = "https://main-cp.internal:6443";
-  k3sPackage = pkgs.unstable.k3s_1_28;
+  k3sPackage = pkgs.unstable.k3s_1_29;
 in
 {
   options.mySystem.services.k3s = {
