@@ -3,6 +3,7 @@ with lib;
 let
   cfg = config.mySystem.services.k3s;
   defaultServerAddr = "https://main-cp.internal:6443";
+  k3sPackage = pkgs.unstable.k3s_1_28;
 in
 {
   options.mySystem.services.k3s = {
@@ -49,7 +50,7 @@ in
 
     services.k3s = {
       enable = true;
-      package = pkgs.unstable.k3s_1_28;
+      package = k3sPackage;
       tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
       serverAddr = defaultServerAddr;
       inherit (cfg) role;
@@ -80,7 +81,7 @@ in
         ]) + cfg.additionalFlags;
     };
     environment.systemPackages = [
-      pkgs.unstable.k3s_1_28
+      k3sPackage
 
       # For NFS
       pkgs.nfs-utils
