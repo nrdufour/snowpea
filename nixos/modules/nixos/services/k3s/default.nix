@@ -79,7 +79,12 @@ in
           "--disable-cloud-controller"
         ]) + cfg.additionalFlags;
     };
-    environment.systemPackages = [ pkgs.unstable.k3s_1_28 ];
+    environment.systemPackages = [
+      pkgs.unstable.k3s_1_28
+
+      # For NFS
+      pkgs.nfs-utils
+    ];
 
     # For NFS
     boot.supportedFilesystems = [ "nfs" ];
