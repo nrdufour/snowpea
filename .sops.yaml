@@ -17,6 +17,7 @@ keys:
   - &server-sparrow05 age1guve3l9udv5rzkm3u5sqte53d74fxuufzr8mhd8p0l5jt58vdpasafnsh0
   - &server-sparrow06 age1fl9qu4zlz3ndm2sqfwr44xdxv7zghtzjyytmx22srlsjsqkwz4xqa8xgj4
   - &server-opi01 age10zgavqrdukj6k6zkzmwg4klg95ll99ktmqzwyz24cn95grcqjerqcsff8w
+  - &server-opi02 age1nhfx8uyrfdq99c7avexfd64qsdmlkgedlckg28zpk4wz944cuvlsg03407
   - &server-opi03 age15sz68u0tw4f7nnwuk4jz3lm230esqfktae000t62s8fwjqvl2ukslyw8g0
 
 creation_rules:
@@ -50,6 +51,7 @@ creation_rules:
         - *server-sparrow05
         - *server-sparrow06
         - *server-opi01
+        - *server-opi02
         - *server-opi03
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
