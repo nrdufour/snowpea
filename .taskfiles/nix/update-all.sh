@@ -3,10 +3,10 @@
 set -e
 
 hosts=($(echo $(nix eval .#nixosConfigurations --apply 'pkgs: builtins.concatStringsSep " " (builtins.attrNames pkgs)') | xargs))
-## Skipping opi03 because it has to be build on the host
+## Skipping opi01|2|3 because it has to be build on the host
 ## TODO: need to add options for that
 skip=(
-    "genpi4" "opi03"
+    "genpi4" "opi01" "opi02" "opi03"
 )
 
 reboot=0
