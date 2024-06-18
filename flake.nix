@@ -331,6 +331,7 @@
               ./nixos/hosts/opi01   # load this host's config folder for machine-specific config
               ./nixos/profiles/role-server.nix
               ./nixos/profiles/role-k3s-worker.nix
+              ./nixos/profiles/hw-orangepi5plus.nix
 
               nixos-rk3588.nixosModules.orangepi5plus.core
               nixos-rk3588.nixosModules.orangepi5plus.sd-image
@@ -368,6 +369,7 @@
               ./nixos/hosts/opi02   # load this host's config folder for machine-specific config
               ./nixos/profiles/role-server.nix
               ./nixos/profiles/role-k3s-worker.nix
+              ./nixos/profiles/hw-orangepi5plus.nix
 
               nixos-rk3588.nixosModules.orangepi5plus.core
               nixos-rk3588.nixosModules.orangepi5plus.sd-image
@@ -405,6 +407,7 @@
               ./nixos/hosts/opi03   # load this host's config folder for machine-specific config
               ./nixos/profiles/role-server.nix
               ./nixos/profiles/role-k3s-worker.nix
+              ./nixos/profiles/hw-orangepi5plus.nix
 
               nixos-rk3588.nixosModules.orangepi5plus.core
               nixos-rk3588.nixosModules.orangepi5plus.sd-image
