@@ -16,7 +16,17 @@ in
       exporters = {
         node = {
           enable = true;
-          enabledCollectors = [ "systemd" ];
+          enabledCollectors = [
+            "diskstats"
+            "filesystem"
+            "loadavg"
+            "meminfo"
+            "netdev"
+            "stat"
+            "time"
+            "uname"
+            "systemd"
+          ];
           port = exporterPort;
         };
       };
