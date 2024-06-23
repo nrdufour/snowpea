@@ -1,7 +1,4 @@
 { pkgs, ... }: {
-  # imports = [
-  # ];
-
   fileSystems = {
     "/" =
       {
@@ -18,12 +15,11 @@
 
   networking.hostName = "possum";
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 80 443 ];
+  mySystem = {
+    system.zfs.enable = true;
+    services.nfs.enable = true;
+    services.minio.enable = true;
   };
 
   sops.defaultSopsFile = ../../../secrets/possum/secrets.sops.yaml;
-
-  services.nfs.server.enable = true;
 }
