@@ -12,14 +12,26 @@ in
 {
   options.mySystem.services.minio = {
       enable = mkEnableOption "minio";
+      package = lib.mkPackageOption pkgs "minio" { };
+      dataDir = lib.mkOption {
+        type = lib.types.str;
+        default = "/var/lib/minio/data";
+      };
+      rootCredentialsFile = lib.mkOption {
+        type = lib.types.nullOr lib.types.path;
+        default = null;
+      };
+      minioConsoleURL = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = null;
+      };
+      minioS3URL  = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = null;
+      };
   };
 
   config = mkIf cfg.enable {
-
-    ## Secrets
-    sops.secrets.minio_root_creds = {
-      restartUnits = [ "minio.service" ];
-    };
 
     ## service
 
@@ -28,30 +40,34 @@ in
       listenAddress = "0.0.0.0:${builtins.toString s3port}";
       consoleAddress = "0.0.0.0:${builtins.toString port}";
       region = "us-east-1";
-      rootCredentialsFile = "${config.sops.secrets."${category}/${app}/env".path}";
-      dataDir = [ "${config.mySystem.nasFolder}/minio" ]; #TBD
-      configDir = "/var/lib/${app}"; #TBD
+      inherit (cfg) package;
+      dataDir = [
+        cfg.dataDir
+      ];
+      inherit (cfg) rootCredentialsFile;
     };
 
     systemd.services.minio = {
       environment = {
-        MINIO_SERVER_URL = "https://s3.${config.mySystem.internalDomain}";
-        MINIO_BROWSER_REDIRECT_URL = "https://minio.${config.mySystem.internalDomain}";
+        MINIO_SERVER_URL = "https://${cfg.minioS3URL}";
+        MINIO_BROWSER_REDIRECT_URL = "https://${cfg.minioConsoleURL}";
       };
     };
 
     ### Ingress
-    services.nginx.virtualHosts."minio.${config.mySystem.internalDomain}" = {
-      forceSSL = true;
-      locations."^~ /" = {
-        proxyPass = "http://127.0.0.1:${builtins.toString port}";
-        proxyWebsockets = true;
+    services.nginx.virtualHosts = {
+      "${cfg.minioConsoleURL}" = {
+        forceSSL = true;
+        locations."^~ /" = {
+          proxyPass = "http://127.0.0.1:${builtins.toString port}";
+          proxyWebsockets = true;
+        };
       };
-    };
-    services.nginx.virtualHosts."s3.${config.mySystem.internalDomain}" = {
-      forceSSL = true;
-      locations."^~ /" = {
-        proxyPass = "http://127.0.0.1:${builtins.toString s3port}";
+      "${cfg.minioS3URL}" = {
+        forceSSL = true;
+        locations."^~ /" = {
+          proxyPass = "http://127.0.0.1:${builtins.toString s3port}";
+        };
       };
     };
 
