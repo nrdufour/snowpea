@@ -62,6 +62,8 @@
           nodejs
           wget
           docker
+          gnutar
+          gzip
         ];
       };
     };
