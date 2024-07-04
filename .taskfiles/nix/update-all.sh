@@ -6,7 +6,7 @@ hosts=($(echo $(nix eval .#nixosConfigurations --apply 'pkgs: builtins.concatStr
 ## Skipping opi01|2|3 because it has to be build on the host
 ## TODO: need to add options for that
 skip=(
-    "genpi4" "opi01" "opi02" "opi03"
+    "genpi4" "opi01" "opi02" "opi03" "mysecrets"
 )
 
 reboot=0
