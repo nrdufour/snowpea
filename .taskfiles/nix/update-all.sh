@@ -3,10 +3,11 @@
 set -e
 
 hosts=($(echo $(nix eval .#nixosConfigurations --apply 'pkgs: builtins.concatStringsSep " " (builtins.attrNames pkgs)') | xargs))
-## Skipping opi01|2|3 because it has to be build on the host
-## TODO: need to add options for that
+
+## Skipping some hosts
+# genpi4 is a generic image, not a host
 skip=(
-    "genpi4" "opi01" "opi02" "opi03" "mysecrets"
+    "genpi4"
 )
 
 reboot=0
@@ -27,10 +28,10 @@ for host in "${hosts[@]}"; do
     fqdn="$host.internal"
     if [ $reboot -eq 0 ]; then
         echo "--- Deploying to $fqdn"
-        nixos-rebuild switch -j auto --use-remote-sudo --target-host $fqdn --flake ".#$host"
+        nixos-rebuild switch -j auto --use-remote-sudo --build-host $fqdn --target-host $fqdn --flake ".#$host"
     else
         echo "--- Deploying to $fqdn with reboot"
-        nixos-rebuild boot -j auto --use-remote-sudo --target-host $fqdn --flake ".#$host"
+        nixos-rebuild boot -j auto --use-remote-sudo --build-host $fqdn --target-host $fqdn --flake ".#$host"
         ssh $fqdn 'sudo reboot'
     fi
     echo
