@@ -35,7 +35,7 @@ with lib;
     services.sshd.enable = true;
 
     # NTP time sync
-    services.timesyncd.enable = true;
+    services.timesyncd.enable = lib.mkDefault true;
 
     security.sudo = {
       enable = true;
