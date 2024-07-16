@@ -6,8 +6,9 @@ hosts=($(echo $(nix eval .#nixosConfigurations --apply 'pkgs: builtins.concatStr
 
 ## Skipping some hosts
 # genpi4 is a generic image, not a host
+# possum isn't ready
 skip=(
-    "genpi4"
+    "genpi4" "possum"
 )
 
 reboot=0
