@@ -20,7 +20,8 @@ with lib;
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
 
-  console.enable = false;
+  # No point keeping this for now...
+  # console.enable = false;
 
   # Disable bluetooth
   hardware.bluetooth.enable = false;
