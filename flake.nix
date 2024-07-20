@@ -313,117 +313,42 @@
           #   ];
           # };
 
-          opi01 = let 
-            inherit (nixos-rk3588.inputs) nixpkgs;
-            aarch64System = "aarch64-linux";
-            pkgsNative = import nixpkgs {system = aarch64System;};
-          in
-          nixpkgs.lib.nixosSystem {
+          opi01 = mkNixosConfig {
+            hostname = "opi01";
             system = "aarch64-linux";
-            specialArgs = {
-              inherit self inputs nixpkgs;
-            };
-            specialArgs.rk3588 = {
-              inherit nixpkgs;
-              pkgsKernel = pkgsNative;
-            };
-            modules = let nixpkgs = rk3588-nixpkgs; in [
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    unstable = import nixpkgs-unstable {
-                      system = "aarch64-linux";
-                      config.allowUnfree = true;
-                    };
-                  })
-                ];
-              }
-              sops-nix.nixosModules.sops
-              ./nixos/profiles/global.nix # all machines get a global profile
-              ./nixos/modules/nixos # all machines get nixos modules
-              ./nixos/hosts/opi01   # load this host's config folder for machine-specific config
+            hardwareModules = [
+              ./nixos/profiles/hw-orangepi5plus.nix
+            ];
+            profileModules = [
+              # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
               ./nixos/profiles/role-k3s-worker.nix
-              ./nixos/profiles/hw-orangepi5plus.nix
-
-              nixos-rk3588.nixosModules.orangepi5plus.core
-              nixos-rk3588.nixosModules.orangepi5plus.sd-image
             ];
           };
 
-          opi02 = let 
-            inherit (nixos-rk3588.inputs) nixpkgs;
-            aarch64System = "aarch64-linux";
-            pkgsNative = import nixpkgs {system = aarch64System;};
-          in
-          nixpkgs.lib.nixosSystem {
+          opi02 = mkNixosConfig {
+            hostname = "opi02";
             system = "aarch64-linux";
-            specialArgs = {
-              inherit self inputs nixpkgs;
-            };
-            specialArgs.rk3588 = {
-              inherit nixpkgs;
-              pkgsKernel = pkgsNative;
-            };
-            modules = let nixpkgs = rk3588-nixpkgs; in [
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    unstable = import nixpkgs-unstable {
-                      system = "aarch64-linux";
-                      config.allowUnfree = true;
-                    };
-                  })
-                ];
-              }
-              sops-nix.nixosModules.sops
-              ./nixos/profiles/global.nix # all machines get a global profile
-              ./nixos/modules/nixos # all machines get nixos modules
-              ./nixos/hosts/opi02   # load this host's config folder for machine-specific config
+            hardwareModules = [
+              ./nixos/profiles/hw-orangepi5plus.nix
+            ];
+            profileModules = [
+              # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
               ./nixos/profiles/role-k3s-worker.nix
-              ./nixos/profiles/hw-orangepi5plus.nix
-
-              nixos-rk3588.nixosModules.orangepi5plus.core
-              nixos-rk3588.nixosModules.orangepi5plus.sd-image
             ];
           };
 
-          opi03 = let 
-            inherit (nixos-rk3588.inputs) nixpkgs;
-            aarch64System = "aarch64-linux";
-            pkgsNative = import nixpkgs {system = aarch64System;};
-          in
-          nixpkgs.lib.nixosSystem {
+          opi03 = mkNixosConfig {
+            hostname = "opi03";
             system = "aarch64-linux";
-            specialArgs = {
-              inherit self inputs nixpkgs;
-            };
-            specialArgs.rk3588 = {
-              inherit nixpkgs;
-              pkgsKernel = pkgsNative;
-            };
-            modules = let nixpkgs = rk3588-nixpkgs; in [
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    unstable = import nixpkgs-unstable {
-                      system = "aarch64-linux";
-                      config.allowUnfree = true;
-                    };
-                  })
-                ];
-              }
-              sops-nix.nixosModules.sops
-              ./nixos/profiles/global.nix # all machines get a global profile
-              ./nixos/modules/nixos # all machines get nixos modules
-              ./nixos/hosts/opi03   # load this host's config folder for machine-specific config
+            hardwareModules = [
+              ./nixos/profiles/hw-orangepi5plus.nix
+            ];
+            profileModules = [
+              # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
               ./nixos/profiles/role-k3s-worker.nix
-              ./nixos/profiles/hw-orangepi5plus.nix
-
-              nixos-rk3588.nixosModules.orangepi5plus.core
-              nixos-rk3588.nixosModules.orangepi5plus.sd-image
             ];
           };
 
