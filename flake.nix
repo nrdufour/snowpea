@@ -28,10 +28,10 @@
     # };
 
     # nixos-rk3588 for Orange Pi 5 + machines
-    nixos-rk3588.url = "github:ryan4yin/nixos-rk3588";
+    # nixos-rk3588.url = "github:ryan4yin/nixos-rk3588";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, nixos-rk3588, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, ... }@inputs:
     let
       inherit (self) outputs;
     in
