@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./local-pg.nix
     ./gitea.nix
     ./gitea-runner.nix
     ./gitea-rclone.nix
