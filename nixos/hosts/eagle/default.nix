@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports = [
-    ./gitea
+    # ./gitea
     ./forgejo
   ];
 
