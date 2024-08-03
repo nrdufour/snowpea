@@ -1,5 +1,6 @@
 {
   imports = [
     ./privateca
+    ./acme.nix
   ];
 }
