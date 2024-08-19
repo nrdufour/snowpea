@@ -4,6 +4,8 @@
     ./forgejo
   ];
 
+  boot.zfs.extraPools = [ "tank" ];
+
   fileSystems = {
     "/" =
       {
@@ -17,11 +19,23 @@
         fsType = "vfat";
       };
 
-    "/srv" =
-      {
-        device = "/dev/disk/by-label/EAGLE_ST";
-        fsType = "ext4";
-      };
+    # "/srv/forgejo" =
+    #   {
+    #     device = "tank/forgejo";
+    #     fsType = "zfs";
+    #   };
+
+    # "/srv/postgresql" =
+    #   {
+    #     device = "tank/postgresql";
+    #     fsType = "zfs";
+    #   };
+
+    # "/var/lib/gitea-runner" =
+    #   {
+    #     device = "tank/gitea-runner";
+    #     fsType = "zfs";
+    #   };
   };
 
   networking = {
