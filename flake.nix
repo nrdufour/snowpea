@@ -353,6 +353,19 @@
           };
 
           ###
+
+          beacon = mkNixosConfig {
+            hostname = "beacon";
+            system = "x86_64-linux";
+            hardwareModules = [
+              ./nixos/profiles/hw-acer-minipc.nix
+            ];
+            profileModules = [
+              # Overlays-module makes "pkgs.unstable" available in configuration.nix
+              ./nixos/profiles/role-server.nix
+            ];
+          };
+
       };
 
       # Convenience output that aggregates the outputs for home, nixos.
