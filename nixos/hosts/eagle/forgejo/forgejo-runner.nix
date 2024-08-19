@@ -23,7 +23,8 @@
     package = pkgs.forgejo-actions-runner;
 
     instances = {
-      default = let forgejo-runner-directory = "/var/lib/gitea-runner"; in {
+
+      first = let gitea-runner-directory = "/var/lib/gitea-runner/first"; in {
         settings = {
           cache = {
             enabled = true;
@@ -31,27 +32,27 @@
           # Both the container and host workdir parent has to be fully specified
           # to avoid some issues with relative path in typescript module resolution.
           container = {
-            workdir_parent = "${forgejo-runner-directory}/workspace";
+            workdir_parent = "${gitea-runner-directory}/workspace";
           };
           host = {
-            workdir_parent = "${forgejo-runner-directory}/action-cache-dir";
+            workdir_parent = "${gitea-runner-directory}/action-cache-dir";
           };
           runner = {
             envs = {
               # This is needed because the user 'forgejo-runner' is dynamic
               # and therefore has no home directory.
               # Without HOME, docker will try to create /.docker directory instead.
-              HOME = "${forgejo-runner-directory}/eagle";
+              HOME = "${gitea-runner-directory}/home";
             };
           };
         };
         enable = true;
-        name = "default";
+        name = "first";
         url = "https://forge.internal/";
         tokenFile = config.sops.secrets.forgejo_runner_token.path;
         labels = [
           "native:host"
-          "debian:docker://node:21-bookworm"
+          "docker:docker://node:22-bookworm"
         ];
         hostPackages = with pkgs; [
           bash
@@ -69,6 +70,54 @@
           gzip
         ];
       };
+
+      second = let gitea-runner-directory = "/var/lib/gitea-runner/second"; in {
+        settings = {
+          cache = {
+            enabled = true;
+          };
+          # Both the container and host workdir parent has to be fully specified
+          # to avoid some issues with relative path in typescript module resolution.
+          container = {
+            workdir_parent = "${gitea-runner-directory}/workspace";
+          };
+          host = {
+            workdir_parent = "${gitea-runner-directory}/action-cache-dir";
+          };
+          runner = {
+            envs = {
+              # This is needed because the user 'forgejo-runner' is dynamic
+              # and therefore has no home directory.
+              # Without HOME, docker will try to create /.docker directory instead.
+              HOME = "${gitea-runner-directory}/home";
+            };
+          };
+        };
+        enable = true;
+        name = "second";
+        url = "https://forge.internal/";
+        tokenFile = config.sops.secrets.forgejo_runner_token.path;
+        labels = [
+          "native:host"
+          "docker:docker://node:22-bookworm"
+        ];
+        hostPackages = with pkgs; [
+          bash
+          coreutils
+          curl
+          gawk
+          git-lfs
+          nixFlakes
+          gitFull
+          gnused
+          nodejs
+          wget
+          docker
+          gnutar
+          gzip
+        ];
+      };
+
     };
   };
 }
