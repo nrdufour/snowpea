@@ -24,11 +24,15 @@
       };
   };
 
-  networking.hostName = "eagle";
+  networking = {
+    hostName = "eagle";
+    # Setting the hostid for zfs
+    hostId = "8425e349";
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 443 ];
+    };
   };
 
   sops.defaultSopsFile = ../../../secrets/eagle/secrets.sops.yaml;
