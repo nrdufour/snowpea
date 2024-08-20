@@ -4,6 +4,8 @@
     ./forgejo
   ];
 
+  # Note: this *MUST* be set, otherwise nothing will be
+  # present at boot and you end up in emergency mode ...
   boot.zfs.extraPools = [ "tank" ];
 
   fileSystems = {
@@ -19,23 +21,6 @@
         fsType = "vfat";
       };
 
-    # "/srv/forgejo" =
-    #   {
-    #     device = "tank/forgejo";
-    #     fsType = "zfs";
-    #   };
-
-    # "/srv/postgresql" =
-    #   {
-    #     device = "tank/postgresql";
-    #     fsType = "zfs";
-    #   };
-
-    # "/var/lib/gitea-runner" =
-    #   {
-    #     device = "tank/gitea-runner";
-    #     fsType = "zfs";
-    #   };
   };
 
   networking = {
