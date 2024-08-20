@@ -29,10 +29,10 @@ for host in "${hosts[@]}"; do
     fqdn="$host.internal"
     if [ $reboot -eq 0 ]; then
         echo "--- Deploying to $fqdn"
-        nixos-rebuild switch -j auto --use-remote-sudo --build-host $fqdn --target-host $fqdn --flake ".#$host"
+        nixos-rebuild switch -j auto --use-remote-sudo --build-host $fqdn --target-host $fqdn --flake ".#$host" --fast
     else
         echo "--- Deploying to $fqdn with reboot"
-        nixos-rebuild boot -j auto --use-remote-sudo --build-host $fqdn --target-host $fqdn --flake ".#$host"
+        nixos-rebuild boot -j auto --use-remote-sudo --build-host $fqdn --target-host $fqdn --flake ".#$host" --fast
         ssh $fqdn 'sudo reboot'
     fi
     echo
