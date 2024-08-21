@@ -23,8 +23,6 @@ jobs:
           - system: eagle
             os: native
     runs-on: ${{ matrix.os }}
-    env:
-      PATH: ${{ format('{0}:{1}', '/run/current-system/sw/bin', env.PATH) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
