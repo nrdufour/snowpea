@@ -27,7 +27,7 @@ jobs:
       PATH: ${{ format('{0}:{1}', '/run/current-system/sw/bin', env.PATH) }}
     steps:
       - name: Checkout repository
-        uses: https://github.com/actions/checkout@v4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
