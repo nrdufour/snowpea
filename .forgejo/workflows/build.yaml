@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "Build"
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths:
+      - ".forgejo/workflows/build.yaml"
+      - "flake.lock"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nix-build:
+    if: github.event.pull_request.draft == false
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - system: eagle
+            os: native
+    runs-on: ${{ matrix.os }}
+    env:
+      PATH: ${{ format('{0}:{1}', '/run/current-system/sw/bin', env.PATH) }}
+    steps:
+      - name: Checkout repository
+        uses: https://github.com/actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Garbage collect build dependencies
+        run: nix-collect-garbage
+
+      - name: Build new ${{ matrix.system }} system
+        shell: bash
+        run: |
+          nix build ".#top.${{ matrix.system }}" --profile ./profile --fallback -v \
+            > >(tee stdout.log) 2> >(tee /tmp/nix-build-err.log >&2)
