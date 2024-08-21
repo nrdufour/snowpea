@@ -23,8 +23,8 @@ jobs:
           - system: eagle
             os: native
     runs-on: ${{ matrix.os }}
-    # env:
-    #   PATH: ${{ format('{0}:{1}', '/run/current-system/sw/bin', env.PATH) }}
+    env:
+      PATH: ${{ format('{0}:{1}', '/run/current-system/sw/bin', env.PATH) }}
     steps:
       - name: Checkout repository
         uses: https://github.com/actions/checkout@v4
@@ -77,7 +77,7 @@ jobs:
 
             <summary> Version changes </summary> <br>
             <pre> ${{ steps.diff.outputs.diff }} </pre>
-            
+
   nix-build-success:
     if: ${{ always() }}
     needs:
