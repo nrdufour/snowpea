@@ -22,6 +22,12 @@ jobs:
         include:
           - system: eagle
             os: native
+          - system: mysecrets
+            os: native
+          - system: raccoon00
+            os: native
+          - system: raccoon05
+            os: native
     runs-on: ${{ matrix.os }}
     env:
       PATH: ${{ format('{0}:{1}', '/run/current-system/sw/bin', env.PATH) }}
