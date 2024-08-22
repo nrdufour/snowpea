@@ -43,7 +43,7 @@ jobs:
       - name: Build previous ${{ matrix.system }} system
         shell: bash
         run: |
-          nix build git+https://forgejo.internal/nemo/snowpea#top.${{ matrix.system }} \
+          nix build git+https://forge.internal/nemo/snowpea#top.${{ matrix.system }} \
             -v --log-format raw --profile ./profile
       - name: Build new ${{ matrix.system }} system
         shell: bash

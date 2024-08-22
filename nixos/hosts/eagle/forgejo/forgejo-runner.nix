@@ -4,6 +4,18 @@
     forgejo_runner_token = { };
   };
 
+  environment.systemPackages = with pkgs; [
+    cachix
+    lazydocker
+    lazygit
+    git
+    nodejs_20 # required by actions such as checkout
+    openssl
+  ];
+
+  # For cachix
+  nix.settings.trusted-users = [ "root" "gitea-runner" ];
+
   # For the runner
   virtualisation.docker.enable = true;
 
