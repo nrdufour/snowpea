@@ -83,7 +83,7 @@ jobs:
     needs:
       - nix-build
     name: Nix Build Successful
-    runs-on: docker
+    runs-on: native
     steps:
       - if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
         name: Check matrix status
