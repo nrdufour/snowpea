@@ -1,14 +1,11 @@
-#!/usr/bin/env nix-shell
-#! nix-shell -i bash --pure
-#! nix-shell -p bash git openssh nixos-rebuild
-# shellcheck shell=bash
+#!/usr/bin/env bash
 
 FLAKE=${1}
 USER=${2}
 TARGET=${3}
 
-NIX_SSHOPTS="-A" \
 nixos-rebuild switch \
+  -v \
   --flake ".#${FLAKE}" \
   --fast \
   --use-remote-sudo \
