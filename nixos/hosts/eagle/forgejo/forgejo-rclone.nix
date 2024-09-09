@@ -26,7 +26,7 @@
       provider = Minio
       access_key_id = ${config.sops.placeholder.forgejo_dump_bucket_access_key_id}
       secret_access_key = ${config.sops.placeholder.forgejo_dump_bucket_secret_access_key}
-      endpoint = https://s3.home
+      endpoint = https://s3.internal
       region = main
     '';
   };
