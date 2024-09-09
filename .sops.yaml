@@ -19,6 +19,7 @@ keys:
   - &server-opi01 age10zgavqrdukj6k6zkzmwg4klg95ll99ktmqzwyz24cn95grcqjerqcsff8w
   - &server-opi02 age1nhfx8uyrfdq99c7avexfd64qsdmlkgedlckg28zpk4wz944cuvlsg03407
   - &server-opi03 age15sz68u0tw4f7nnwuk4jz3lm230esqfktae000t62s8fwjqvl2ukslyw8g0
+  - &server-possum age1z5se5pwlkle36c2kyklj6ujv49vd4rqvv6drg88rluf6c5dwa9rqgggnnf
 
 creation_rules:
   - path_regex: secrets/eagle/[^/]+\.(yaml|json|env|ini)$
@@ -58,6 +59,7 @@ creation_rules:
       - age:
         - *admin-ndufour-2022
         - *admin-ndufour-2023
+        - *server-possum
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:

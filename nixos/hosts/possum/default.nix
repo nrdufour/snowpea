@@ -21,7 +21,24 @@
       };
   };
 
-  networking.hostName = "possum";
+  networking = {
+    hostName = "possum";
+    # Setting the hostid for zfs
+    hostId = "05176a3c";
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 443 ];
+    };
+  };
+
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+  };
 
   mySystem = {
     system.zfs = {
@@ -34,7 +51,7 @@
     services.minio = {
       enable = true;
       package = pkgs.unstable.minio;
-      dataDir = "/tank/Apps/minio";
+      dataDir = "/tank/Minio";
       rootCredentialsFile = config.sops.secrets."storage/minio/root-credentials".path;
       minioConsoleURL = "minio.internal";
       minioS3URL = "s3.internal";

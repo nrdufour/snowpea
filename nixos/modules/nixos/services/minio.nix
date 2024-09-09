@@ -58,6 +58,10 @@ in
     services.nginx.virtualHosts = {
       "${cfg.minioConsoleURL}" = {
         forceSSL = true;
+        enableACME = true;
+        extraConfig = ''
+          client_max_body_size 2g;
+        '';
         locations."^~ /" = {
           proxyPass = "http://127.0.0.1:${builtins.toString port}";
           proxyWebsockets = true;
@@ -65,10 +69,19 @@ in
       };
       "${cfg.minioS3URL}" = {
         forceSSL = true;
+        enableACME = true;
+        extraConfig = ''
+          client_max_body_size 2g;
+        '';
         locations."^~ /" = {
           proxyPass = "http://127.0.0.1:${builtins.toString s3port}";
         };
       };
+    };
+
+    security.acme.certs = {
+      "minio.internal" = {};
+      "s3.internal" = {};
     };
 
     ### firewall config
