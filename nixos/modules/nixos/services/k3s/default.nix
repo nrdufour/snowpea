@@ -89,11 +89,19 @@ in
 
       # For NFS
       pkgs.nfs-utils
+      # For open-iscsi
+      pkgs.openiscsi
     ];
 
     # For NFS
     boot.supportedFilesystems = [ "nfs" ];
     services.rpcbind.enable = true;
+
+    # For open-iscsi
+    services.openiscsi = {
+      enable = true;
+      name = "iqn.2005-10.nixos:${config.networking.hostName}";
+    };
   };
 
 }
