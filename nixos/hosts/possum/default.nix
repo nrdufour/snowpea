@@ -64,6 +64,10 @@
           path = "/tank/Books";
           "read only" = "no";
         };
+        Media = {
+          path = "/tank/Media";
+          "read only" = "no";
+        };
       };
     };
   };
