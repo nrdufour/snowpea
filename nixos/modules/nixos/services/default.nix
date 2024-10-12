@@ -5,5 +5,6 @@
     ./k3s
     ./nfs.nix
     ./minio.nix
+    ./samba.nix
   ];
 }

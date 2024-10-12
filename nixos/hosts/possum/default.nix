@@ -56,6 +56,16 @@
       minioConsoleURL = "minio.internal";
       minioS3URL = "s3.internal";
     };
+
+    services.samba = {
+      enable = true;
+      shares = {
+        Books = {
+          path = "/tank/NFS/books";
+          "read only" = "no";
+        };
+      };
+    };
   };
 
 }
