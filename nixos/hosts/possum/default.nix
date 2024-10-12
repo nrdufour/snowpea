@@ -61,7 +61,7 @@
       enable = true;
       shares = {
         Books = {
-          path = "/tank/NFS/books";
+          path = "/tank/books";
           "read only" = "no";
         };
       };
