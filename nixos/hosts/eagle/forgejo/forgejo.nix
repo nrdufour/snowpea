@@ -32,6 +32,10 @@ in
     dump = {
       enable = true;
     };
+
+    # Switching from lts to current
+    # Default is: pkgs.forgejo-lts
+    package = pkgs.forgejo;
     
     database = {
       type = "postgres";
