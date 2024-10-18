@@ -33,9 +33,7 @@ in
       enable = true;
     };
 
-    # Switching from lts to current
-    # Default is: pkgs.forgejo-lts
-    package = pkgs.forgejo;
+    package = pkgs.unstable.forgejo;
     
     database = {
       type = "postgres";
