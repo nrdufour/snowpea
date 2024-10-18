@@ -79,5 +79,9 @@ in
   # };
 
   security.acme.certs."forge.internal" = {};
+
+  environment.systemPackages = with pkgs; [
+    forgejo
+  ];
   
 }
