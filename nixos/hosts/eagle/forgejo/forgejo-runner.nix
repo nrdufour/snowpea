@@ -45,6 +45,10 @@
           # to avoid some issues with relative path in typescript module resolution.
           container = {
             workdir_parent = "${gitea-runner-directory}/workspace";
+
+            ## Allow some path to be mounted
+            ## See https://gitea.com/gitea/act_runner/src/branch/main/internal/pkg/config/config.example.yaml#L87
+            valid_volumes = ["/etc/ssl/certs/*"];
           };
           host = {
             workdir_parent = "${gitea-runner-directory}/action-cache-dir";
@@ -92,6 +96,10 @@
           # to avoid some issues with relative path in typescript module resolution.
           container = {
             workdir_parent = "${gitea-runner-directory}/workspace";
+            
+            ## Allow some path to be mounted
+            ## See https://gitea.com/gitea/act_runner/src/branch/main/internal/pkg/config/config.example.yaml#L87
+            valid_volumes = ["/etc/ssl/certs/*"];
           };
           host = {
             workdir_parent = "${gitea-runner-directory}/action-cache-dir";
