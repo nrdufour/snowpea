@@ -59,6 +59,9 @@
               # and therefore has no home directory.
               # Without HOME, docker will try to create /.docker directory instead.
               HOME = "${gitea-runner-directory}/home";
+
+              # Trying to set the timezone properly
+              TZ = "America/New_York";
             };
           };
         };
@@ -110,6 +113,9 @@
               # and therefore has no home directory.
               # Without HOME, docker will try to create /.docker directory instead.
               HOME = "${gitea-runner-directory}/home";
+              
+              # Trying to set the timezone properly
+              TZ = "America/New_York";
             };
           };
         };
