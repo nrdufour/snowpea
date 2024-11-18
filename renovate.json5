@@ -4,7 +4,6 @@
   "extends": [
     "config:recommended",
     "docker:enableMajor",
-    ":automergeBranch",
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":semanticCommits",
@@ -42,17 +41,10 @@
 
   packageRules: [
     {
-      matchUpdateTypes: [
-        'minor',
-        'patch',
-      ],
-      matchCurrentVersion: '!/^0/',
-      automerge: true,
-    },
-    {
       "description": "Update renovate only daily",
       "extends": ["schedule:daily"],
-      "matchDepNames": ["ghcr.io/renovatebot/renovate"]
+      "matchDepNames": ["ghcr.io/renovatebot/renovate"],
+      automerge: true,
     },
   ],
 }
