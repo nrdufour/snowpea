@@ -15,9 +15,9 @@ Those are aranged in a kubernetes cluster, plus a few of them used to provide ou
 ## Goals
 
 + be able to produce sdcard images for raspberry based machines [done]
-+ be able to produce sdcard images for orange pi 5 plus [in progress]
-+ master all machines in that flake [in progress]
-+ have fun and learn more Nix/NixOS [in progress]
++ be able to produce sdcard images for orange pi 5 plus [done]
++ master all machines in that flake [done]
++ have fun and learn more Nix/NixOS [in progress -- will never end :-)]
 
 ## Thanks
 
