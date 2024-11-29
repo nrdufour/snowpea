@@ -79,7 +79,7 @@
           curl
           gawk
           git-lfs
-          nixFlakes
+          nixVersions.stable
           gitFull
           gnused
           nodejs
@@ -133,7 +133,7 @@
           curl
           gawk
           git-lfs
-          nixFlakes
+          nixVersions.stable
           gitFull
           gnused
           nodejs
