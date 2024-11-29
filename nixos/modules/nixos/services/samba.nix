@@ -20,24 +20,31 @@ in
     users.groups.samba-users = {};
 
     services.samba = {
-      inherit (cfg) shares;
-
       enable = true;
       package = pkgs.samba;
       openFirewall = true;
 
-      extraConfig = ''
-        min protocol = SMB2
-        workgroup = WORKGROUP
+      settings = {
+        global = {
+          "invalid users" = [
+            "root"
+          ];
+          "passwd program" = "/run/wrappers/bin/passwd %u";
+          security = "user";
 
-        browseable = yes
-        guest ok = no
-        guest account = nobody
-        map to guest = bad user
-        inherit acls = yes
-        map acl inherit = yes
-        valid users = @samba-users
-      '';
+          ## previous extraConfig comes here
+          "min protocol" = "SMB2";
+          workgroup = "WORKGROUP";
+
+          browseable = "yes"; 
+          "guest ok" = "no";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+          "inherit acls" = "yes";
+          "map acl inherits" = "yes";
+          "valid users" = "@samba-users";
+        };
+      } // cfg.shares;
     };
   };
 }
