@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-FLAKE=${1}
-USER=${2}
-TARGET=${3}
+HOST=$1
+USER=ndufour
 
 nixos-rebuild switch \
   -v \
-  --flake ".#${FLAKE}" \
+  --flake ".#${HOST}" \
   --fast \
   --use-remote-sudo \
-  --build-host "${USER}"@"${TARGET}" \
-  --target-host "${USER}"@"${TARGET}"
+  --build-host "${USER}"@"${HOST}.internal" \
+  --target-host "${USER}"@"${HOST}.internal"
