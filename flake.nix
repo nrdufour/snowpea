@@ -230,21 +230,19 @@
 
           ## Cluster Sparrow worker nodes : raspberry pi 3
 
-          # sparrow01 = nixpkgs.lib.nixosSystem {
-          #   inherit system;
-          #   modules = [
-          #     # Overlays-module makes "pkgs.unstable" available in configuration.nix
-          #     ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-          #     "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
-          #     (_: {
-          #       networking.hostName = "sparrow01";
-          #       # For RTL-SDR
-          #       boot.kernelParams = [ "modprobe.blacklist=dvb_usb_rtl28xxu" ];
-          #     })
-          #     ./nixos/hosts/k3s-rasp3-worker
-          #     sops-nix.nixosModules.sops
-          #   ];
-          # };
+          sparrow01 = mkNixosConfig {
+            hostname = "sparrow01";
+            system = "aarch64-linux";
+            hardwareModules = [
+              "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+              ./nixos/profiles/hw-rpi3.nix
+            ];
+            profileModules = [
+              # Overlays-module makes "pkgs.unstable" available in configuration.nix
+              ./nixos/profiles/role-server.nix
+              ./nixos/profiles/role-k3s-worker.nix
+            ];
+          };
 
           # sparrow02 = nixpkgs.lib.nixosSystem {
           #   inherit system;
