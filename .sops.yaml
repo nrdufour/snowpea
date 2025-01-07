@@ -10,7 +10,7 @@ keys:
   - &server-raccoon03 age1a4wtpfdgy8qm6dn5yzgr2lnntmw22v2mc067vk2u5zdv9s26rdaq5s7qv2
   - &server-raccoon04 age1xnyrzdsetaswr40qpjaq0qc97nwscz6xfjjl0v6j7kvvrntcngfq6y6tzv
   - &server-raccoon05 age1ewqzghlw2fhhjk5ek5j2grxnnyzxc2p5tczcg6ttxzgcvvxcp53qrm9hrp
-  - &server-sparrow01 age1f4yjes58zf77r2lwrnf4ckl7gnmcftv6m2nwa3x7c04pp7e28djqg5sqlm
+  - &server-sparrow01 age146nj6qplcm2e72v5sm0mf0wfxm77xdagaj54v2245nehuxgspgtq5e0cwa
   - &server-sparrow02 age1q4eyu6q327yxxk5dkdqp3gvfec8ve0f4jnq9ugkky2qjqe22ud7s0fetr7
   - &server-sparrow03 age1h9kdsj49cnh2whfk66pjjjrh07nrpwddcv0zjt2kr527phaxvs7qvg85ka
   - &server-sparrow04 age1zwfpwda843rg86d848h6rypmrmjur9gcs4u5awzu57cvpslzqpzq95fa2r
