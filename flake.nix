@@ -228,7 +228,7 @@
             ];
           };
 
-          ## Cluster Sparrow worker nodes : raspberry pi 3
+          ## Sparrow nodes : raspberry pi 3 -- not in cluster
 
           sparrow01 = mkNixosConfig {
             hostname = "sparrow01";
@@ -240,7 +240,6 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-worker.nix
             ];
           };
 
