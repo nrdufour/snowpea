@@ -121,6 +121,15 @@ in
     firmware = [
       (pkgs.callPackage ../pkgs/orangepi-firmware {})
     ];
+
+    graphics.enable = true;
+    # graphics.package =
+    #   (pkgs.mesa.override {
+    #     galliumDrivers = ["panfrost"];
+    #     vulkanDrivers = ["swrast"];
+    #   }).drivers;
+
+    enableRedistributableFirmware = lib.mkForce true;
   };
 
   # The orange pis use an SSD
