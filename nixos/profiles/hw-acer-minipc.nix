@@ -11,6 +11,9 @@
     initrd.kernelModules = [ ];
     kernelModules = [ ];
     extraModulePackages = [ ];
+
+    # Switching to 6.12 as well
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
