@@ -9,6 +9,9 @@ with lib;
     kernelModules = [ ];
     extraModulePackages = [ ];
 
+    # Switching to 6.12 for raspberry pi 4 (6.13 is broken on zfs)
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
+
     loader = {
       # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
       grub.enable = false;
