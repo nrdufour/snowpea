@@ -27,7 +27,8 @@ in
       "btrfs"
     ];
 
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ../pkgs/kernel/vendor.nix {});
+    # Setting the kernel at 6.13 which is supposed to cover rockchip support
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
 
     # kernelParams copy from Armbian's /boot/armbianEnv.txt & /boot/boot.cmd
     kernelParams = [
