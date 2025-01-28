@@ -119,18 +119,12 @@ in
       ];
     };
 
+    graphics.enable = true;
+    enableRedistributableFirmware = lib.mkForce true;
     firmware = [
       (pkgs.callPackage ../pkgs/orangepi-firmware {})
+      (pkgs.callPackage ../pkgs/mali-firmware {})
     ];
-
-    graphics.enable = true;
-    # graphics.package =
-    #   (pkgs.mesa.override {
-    #     galliumDrivers = ["panfrost"];
-    #     vulkanDrivers = ["swrast"];
-    #   }).drivers;
-
-    enableRedistributableFirmware = lib.mkForce true;
   };
 
   # The orange pis use an SSD
