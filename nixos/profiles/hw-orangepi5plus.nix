@@ -127,6 +127,13 @@ in
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    # setting up opencl with the loader
+    ocl-icd
+    # dump some info about opencl
+    clinfo
+  ];
+
   # The orange pis use an SSD
   services.fstrim.enable = true;
 }
