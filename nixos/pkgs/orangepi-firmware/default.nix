@@ -10,7 +10,7 @@
         repo = "firmware";
         # latest as of 2025/01/28 - version committed on 2024/10/09
         rev = "75ea6fc5f3c454861b39b33823cb6876f3eca598";
-        hash = "";
+        hash = "sha256-X+n0voO3HRtPPAQsajGPIN9LOfDKBxF+8l9wFwGAFSQ=";
     };
 
     installPhase = ''
