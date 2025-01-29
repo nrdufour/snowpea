@@ -119,7 +119,10 @@ in
       ];
     };
 
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+      extraPackages = [ pkgs.mesa.opencl ];
+    };
     enableRedistributableFirmware = lib.mkForce true;
     firmware = [
       (pkgs.callPackage ../pkgs/orangepi-firmware {})
