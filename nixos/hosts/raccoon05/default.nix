@@ -22,4 +22,9 @@
       };
   };
 
+  mySystem.services.k3s.additionalFlags = toString [
+    "--node-label svccontroller.k3s.cattle.io/enablelb=true"
+    "--node-label svccontroller.k3s.cattle.io/lbpool=internal"
+  ];
+
 }
