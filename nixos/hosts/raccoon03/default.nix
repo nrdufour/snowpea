@@ -17,7 +17,7 @@
 
     "/var/lib/rancher" =
       {
-        device = "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0362022060009149-0:0";
+        device = "/dev/disk/by-label/STORAGE";
         fsType = "ext4";
       };
   };
