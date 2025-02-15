@@ -13,6 +13,16 @@ in
     "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
   ];
 
+  # Used to access video devices for jellyfin
+  services.udev.extraRules = ''
+    KERNEL=="mpp_service", MODE="0660", GROUP="video"
+    KERNEL=="rga", MODE="0660", GROUP="video"
+    KERNEL=="system", MODE="0666", GROUP="video"
+    KERNEL=="system-dma32", MODE="0666", GROUP="video"
+    KERNEL=="system-uncached", MODE="0666", GROUP="video"
+    KERNEL=="system-uncached-dma32", MODE="0666", GROUP="video" RUN+="${pkgs.coreutils-full}/bin/chmod a+rw /dev/dma_heap"
+  '';
+
   boot = {
     loader = {
       grub.enable = lib.mkForce false;
@@ -27,8 +37,11 @@ in
       "btrfs"
     ];
 
-    # Setting the kernel at 6.13 which is supposed to cover rockchip support
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
+    ## Setting the kernel at 6.13 which is supposed to cover rockchip support
+    ## kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
+
+    # Switching back to 6.1.75 for now to have mali drivers present
+    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ../pkgs/kernel/vendor.nix {});
 
     # kernelParams copy from Armbian's /boot/armbianEnv.txt & /boot/boot.cmd
     kernelParams = [
