@@ -18,9 +18,7 @@
   };
 
   sops.secrets = {
-    vaultwarden_db_password = {
-      owner = "vaultwarden";
-    };
+    vaultwarden_db_password = {};
   };
 
   sops.templates."init_script.sql" = {
