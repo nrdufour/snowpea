@@ -82,8 +82,25 @@ in
           # Others
           "--etcd-expose-metrics"
           "--disable-cloud-controller"
+          # Embedded Registry Mirror
+          ## See https://docs.k3s.io/installation/registry-mirror for details
+          ## New feature since January 2024
+          "--embedded-registry"
         ]) + cfg.additionalFlags;
     };
+
+    environment.etc = {
+      # Embedded Registry Mirror
+      ## See https://docs.k3s.io/installation/registry-mirror for details
+      "rancher/k3s/registries.yaml" = {
+        text = ''
+          mirrors:
+            docker.io:
+            registry.k8s.io:
+        '';
+      };
+    };
+
     environment.systemPackages = [
       k3sPackage
 
