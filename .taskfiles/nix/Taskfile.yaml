@@ -2,7 +2,9 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: "3"
 
-# vars:
+vars:
+  NIX_HOSTS:
+    sh: nix flake show --json 2>/dev/null|jq -r '.nixosConfigurations | keys.[]'
 
 tasks:
   update:
@@ -17,8 +19,9 @@ tasks:
 
   list-hosts:
     desc: List the NixOS hosts in the flake
+    silent: true
     cmds:
-      - nix flake show --json 2>/dev/null|jq -r '.nixosConfigurations | keys.[]'
+      - echo '{{.NIX_HOSTS}}'
 
   deploy:
     desc: Deploy the configuration of a given host
@@ -26,7 +29,7 @@ tasks:
       Args:
         host: machine hostname to deploy (required)
     cmds:
-      - ./remote-rebuild.sh {{.host}} ndufour {{.host}}
+      - nixos-rebuild switch -j auto --use-remote-sudo --build-host {{.host}}.internal --target-host {{.host}}.internal --flake ".#{{.host}}" --fast
     requires:
       vars: ["host"]
 
@@ -35,7 +38,8 @@ tasks:
     cmds:
       - echo "This will deploy the local flake to all whitelisted hosts."
       - task: .prompt_to_continue
-      - .taskfiles/nix/update-all.sh
+      - for: { var: NIX_HOSTS, as: HOST }
+        cmd: nixos-rebuild switch -j auto --use-remote-sudo --build-host {{.HOST}}.internal --target-host {{.HOST}}.internal --flake ".#{{.HOST}}" --fast
     preconditions:
     - sh: which nix
       msg: "nix not found"
