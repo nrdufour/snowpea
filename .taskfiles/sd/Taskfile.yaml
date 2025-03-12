@@ -22,6 +22,6 @@ tasks:
         host: machine hostname to flash (required)
     cmds:
       - task: :sd:build
-      - nix-shell -p rpi-imager --run "rpi-imager ./result/sd-image/sd_card.img"
+      - nix-shell -p rpi-imager --run "QT_QPA_PLATFORM=wayland rpi-imager ./result/sd-image/{{.host}}.img.zst"
     requires:
       vars: ["host"]
