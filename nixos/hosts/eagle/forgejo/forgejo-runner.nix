@@ -17,7 +17,12 @@
   nix.settings.trusted-users = [ "root" "gitea-runner" ];
 
   # For the runner
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    autoPrune = {
+      enable = true;
+    };
+  };
 
   environment.etc."buildkit/buildkitd.toml".text = ''
     [registry."forge.internal"]
