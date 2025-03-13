@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+    ./hw-sdcard.nix
   ];
 
   # Used to access video devices for jellyfin

@@ -1,7 +1,19 @@
-{ config, lib, pkgs, imports, boot, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  imports,
+  boot,
+  nixpkgs,
+  ...
+}:
 
 with lib;
 {
+  imports = [
+    ./hw-sdcard.nix
+  ];
+
   boot = {
 
     initrd.availableKernelModules = [ "xhci_pci" "usb_storage" ];
