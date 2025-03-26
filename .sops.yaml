@@ -7,9 +7,9 @@ keys:
   - &server-raccoon00 age1lpvr9au8fhrwhjyhfjcnhk2qq3tnple2rsc4yu7a7zl7nmz3tswqu8suaf
   - &server-raccoon01 age1w3h0pnv5fc7mwt3s0zcjj2nv9lgksptjewd6rm6dxupz6y4rraksc5w5ef
   - &server-raccoon02 age17tvysh6j960q87wwfwcjfnsj44kjpg8rpa7v8kjkly7ypfxnxefqd3p339
-  - &server-raccoon03 age1apnq4swqnu0cstfqym4wdx8rv5seqrkpankls7e9fsqup5pf63yqhvgwm4
-  - &server-raccoon04 age1xnyrzdsetaswr40qpjaq0qc97nwscz6xfjjl0v6j7kvvrntcngfq6y6tzv
-  - &server-raccoon05 age1ewqzghlw2fhhjk5ek5j2grxnnyzxc2p5tczcg6ttxzgcvvxcp53qrm9hrp
+  - &server-raccoon03 age1q0uy2kn5ny8tpxqlfexmf9mqjdlmsyguzdqrrkzhugl9p9vvveksdlwa72
+  - &server-raccoon04 age1rdm9hcseejyjnkmd0n6crf8779yhtt2c0jd8fds6346u2n5g2s6sxkv6pt
+  - &server-raccoon05 age1rqpd3prnw2lz9knh5mpwgzwdpj8a0yn5gc4ee7ef2g5x42sj7pqqys49yl
   - &server-sparrow01 age146nj6qplcm2e72v5sm0mf0wfxm77xdagaj54v2245nehuxgspgtq5e0cwa
   - &server-sparrow02 age1q4eyu6q327yxxk5dkdqp3gvfec8ve0f4jnq9ugkky2qjqe22ud7s0fetr7
   - &server-sparrow03 age1h9kdsj49cnh2whfk66pjjjrh07nrpwddcv0zjt2kr527phaxvs7qvg85ka
