@@ -4,9 +4,9 @@ keys:
   - &admin-ndufour-2023 age1n535rsu7hlyjg0p46y6du9nl0j7ldsfcmy9x9a24kxs6tuh8dgks2engp2
   - &server-mysecrets age14hltxzv2tpzutpcjr7lreet5rzcufgcx0rd3syz48v9gdkpaa45s4cfktj
   - &server-eagle age1qzg88e0eytyyuanj4l20pk0hp5068k5umnqkpd9rzdgfntf2uczqxyxhn9
-  - &server-raccoon00 age1z49hgymr0ncyf43erzyx33r0k6tl4mrrct2vgqfm5nzplgdtpvlss90yde
-  - &server-raccoon01 age1ux9fsl55rpqq2rcgwdtndtet6ukgplryuu7tps63exwf2d89333sc04ex0
-  - &server-raccoon02 age18adj6q0rfpcmledgyjuwyfmjrdzrgjzvsnh5n77mht4pc7zwqplsydhjl5
+  - &server-raccoon00 age1lpvr9au8fhrwhjyhfjcnhk2qq3tnple2rsc4yu7a7zl7nmz3tswqu8suaf
+  - &server-raccoon01 age1w3h0pnv5fc7mwt3s0zcjj2nv9lgksptjewd6rm6dxupz6y4rraksc5w5ef
+  - &server-raccoon02 age17tvysh6j960q87wwfwcjfnsj44kjpg8rpa7v8kjkly7ypfxnxefqd3p339
   - &server-raccoon03 age1apnq4swqnu0cstfqym4wdx8rv5seqrkpankls7e9fsqup5pf63yqhvgwm4
   - &server-raccoon04 age1xnyrzdsetaswr40qpjaq0qc97nwscz6xfjjl0v6j7kvvrntcngfq6y6tzv
   - &server-raccoon05 age1ewqzghlw2fhhjk5ek5j2grxnnyzxc2p5tczcg6ttxzgcvvxcp53qrm9hrp
