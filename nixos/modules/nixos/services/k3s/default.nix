@@ -119,6 +119,31 @@ in
       enable = true;
       name = "iqn.2005-10.nixos:${config.networking.hostName}";
     };
+
+    # Adding a service to prune the images used by containerd
+    systemd.services.ctr-prune = {
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+      };
+      path = [ k3sPackage ];
+      script = ''
+        echo '--- Current images:'
+        k3s crictl img
+        echo '---'
+        echo 'Starting to prune'
+        k3s crictl rmi --prune
+        echo 'Done pruning'
+      '';
+    };
+    systemd.timers.ctr-prune = {
+      wantedBy = [ "timers.target" ];
+      partOf = [ "ctr-prune.service" ];
+      timerConfig = {
+        OnCalendar = "daily";
+        Unit = "ctr-prune.service";
+      };
+    };
   };
 
 }
