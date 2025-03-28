@@ -152,7 +152,7 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-controller.nix
+              ./nixos/profiles/role-k3s-worker.nix
             ];
           };
 
@@ -166,7 +166,7 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-controller.nix
+              ./nixos/profiles/role-k3s-worker.nix
             ];
           };
 
@@ -180,7 +180,7 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-controller.nix
+              ./nixos/profiles/role-k3s-worker.nix
             ];
           };
 
@@ -319,7 +319,7 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-worker.nix
+              ./nixos/profiles/role-k3s-controller.nix
             ];
           };
 
@@ -332,7 +332,7 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-worker.nix
+              ./nixos/profiles/role-k3s-controller.nix
             ];
           };
 
@@ -345,7 +345,7 @@
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
               ./nixos/profiles/role-server.nix
-              ./nixos/profiles/role-k3s-worker.nix
+              ./nixos/profiles/role-k3s-controller.nix
             ];
           };
 

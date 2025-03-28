@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.mySystem.services.k3s;
-  defaultServerAddr = "https://main-cp.internal:6443";
+  defaultServerAddr = "https://opi01.internal:6443";
   ## Kubernetes versions in stable:
   ## k3s: 1.30
   ## k3s_1_29: 1.29
@@ -56,7 +56,7 @@ in
       enable = true;
       package = k3sPackage;
       tokenFile = lib.mkDefault config.sops.secrets.k3s-server-token.path;
-      serverAddr = defaultServerAddr;
+      serverAddr = (if cfg.isClusterInit then "" else defaultServerAddr);
       inherit (cfg) role;
       clusterInit = cfg.isClusterInit;
       extraFlags = (if cfg.role == "agent"
@@ -70,6 +70,9 @@ in
           # virtual IP and its name
           "--tls-san main-cp.internal"
           "--tls-san 192.168.20.250"
+          "--tls-san opi01.internal"
+          "--tls-san opi02.internal"
+          "--tls-san opi03.internal"
           # Components extra args
           "--kube-apiserver-arg default-not-ready-toleration-seconds=20"
           "--kube-apiserver-arg default-unreachable-toleration-seconds=20"
