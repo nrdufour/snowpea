@@ -6,7 +6,12 @@
 
   # Note: this *MUST* be set, otherwise nothing will be
   # present at boot and you end up in emergency mode ...
-  boot.zfs.extraPools = [ "tank" ];
+  mySystem = {
+    system.zfs = {
+      enable = true;
+      mountPoolsAtBoot = [ "tank" ];
+    };
+  };
 
   fileSystems = {
     "/" =
