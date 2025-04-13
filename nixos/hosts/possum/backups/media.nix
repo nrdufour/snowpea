@@ -9,6 +9,7 @@
     media-backups = {
       paths = [
         "/tank/Media/Courses"
+        "/tank/Media/Documentaries"
       ];
       
       initialize = true;
