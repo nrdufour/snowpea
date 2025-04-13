@@ -5,6 +5,6 @@
 }: {
   imports = [
     ./books.nix
-    # ./media.nix
+    ./media.nix
   ];
 }
