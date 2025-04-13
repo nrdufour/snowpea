@@ -6,7 +6,7 @@
 
   services.restic.backups = {
 
-    books-backups = {
+    media-backups = {
       paths = [
         "/tank/Media"
       ];
