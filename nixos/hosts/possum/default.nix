@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./secrets.nix
+    ./backups
   ];
 
   fileSystems = {
