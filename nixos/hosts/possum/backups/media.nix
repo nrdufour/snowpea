@@ -13,6 +13,9 @@
         "/tank/Media/Music"
         "/tank/Media/Music Videos"
         "/tank/Media/Music-to-sort"
+        "/tank/Media/Pictures"
+        "/tank/Media/Youtube"
+        "/tank/Media/Shows"
       ];
       
       initialize = true;
