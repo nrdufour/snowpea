@@ -10,6 +10,9 @@
       paths = [
         "/tank/Media/Courses"
         "/tank/Media/Documentaries"
+        "/tank/Media/Music"
+        "/tank/Media/Music Videos"
+        "/tank/Media/Music-to-sort"
       ];
       
       initialize = true;
