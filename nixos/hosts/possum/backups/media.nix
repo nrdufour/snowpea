@@ -16,6 +16,7 @@
         "/tank/Media/Pictures"
         "/tank/Media/Youtube"
         "/tank/Media/Shows"
+        "/tank/Media/Movies-to-sort"
       ];
       
       initialize = true;
