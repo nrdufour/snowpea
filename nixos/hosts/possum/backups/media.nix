@@ -24,6 +24,10 @@
       passwordFile    = config.sops.secrets."backups/common-restic/password".path;
       environmentFile = config.sops.secrets."backups/common-restic/env".path;
 
+      # extraOptions = [
+      #   "s3.connections=20"
+      # ];
+
       timerConfig = {
         OnCalendar = "*-*-* 2:00:00";
         Persistent = true;
