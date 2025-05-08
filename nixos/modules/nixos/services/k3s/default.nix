@@ -85,7 +85,6 @@ in
           # Others
           "--etcd-expose-metrics"
           "--disable-cloud-controller"
-          "--write-kubeconfig-mode '0644'"
           # Embedded Registry Mirror
           ## See https://docs.k3s.io/installation/registry-mirror for details
           ## New feature since January 2024
