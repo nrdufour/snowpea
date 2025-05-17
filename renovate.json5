@@ -1,49 +1,52 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": [
-    "config:recommended",
-    "docker:enableMajor",
-    ":disableRateLimiting",
-    ":dependencyDashboard",
-    ":semanticCommits",
-    ":skipStatusChecks",
-    ":timezone(America/New_York)"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'docker:enableMajor',
+    ':disableRateLimiting',
+    ':dependencyDashboard',
+    ':semanticCommits',
+    ':skipStatusChecks',
+    ':timezone(America/New_York)',
   ],
-
-  "nix": {
-    "enabled": true
+  nix: {
+    enabled: true,
   },
-  
-  "ignorePaths": ["**/*.sops.*", "**/.archive/**", "**/resources/**"],
-
-  "lockFileMaintenance": {
-    "enabled": true,
-    "extends": [
-      "schedule:daily"
-    ]
+  ignorePaths: [
+    '**/*.sops.*',
+    '**/.archive/**',
+    '**/resources/**',
+  ],
+  lockFileMaintenance: {
+    enabled: true,
+    extends: [
+      'schedule:daily',
+    ],
   },
-
-  "customManagers": [
+  customManagers: [
     {
-      "customType": "regex",
-      "description": "Process various dependencies in nix files",
-      "fileMatch": ["\\.nix$"],
-      "matchStrings": [
-        // Newline
-        "(?m:^[ \\t]*?# ?renovate: depName=(?<depName>\\S+)( datasource=(?<datasource>\\S+))?( versioning=(?<versioning>\\S+))?( extractVersion=(?<extractVersion>\\S+))?\\n[ \\t ]*?\\S+ = \"?(?<currentValue>[^\" ]+?)\";?$)"
+      customType: 'regex',
+      description: 'Process various dependencies in nix files',
+      managerFilePatterns: [
+        '/\\.nix$/',
       ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^(?<version>.*)${{/if}}"
-    }
+      matchStrings: [
+        '(?m:^[ \\t]*?# ?renovate: depName=(?<depName>\\S+)( datasource=(?<datasource>\\S+))?( versioning=(?<versioning>\\S+))?( extractVersion=(?<extractVersion>\\S+))?\\n[ \\t ]*?\\S+ = "?(?<currentValue>[^" ]+?)";?$)',
+      ],
+      datasourceTemplate: '{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}',
+      versioningTemplate: '{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}',
+      extractVersionTemplate: '{{#if extractVersion}}{{{extractVersion}}}{{else}}^(?<version>.*)${{/if}}',
+    },
   ],
-
   packageRules: [
     {
-      "description": "Update renovate only daily",
-      "extends": ["schedule:daily"],
-      "matchDepNames": ["ghcr.io/renovatebot/renovate"],
+      description: 'Update renovate only daily',
+      extends: [
+        'schedule:daily',
+      ],
+      matchDepNames: [
+        'ghcr.io/renovatebot/renovate',
+      ],
       automerge: true,
     },
   ],
