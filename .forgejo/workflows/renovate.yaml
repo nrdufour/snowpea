@@ -16,7 +16,7 @@ jobs:
     name: Renovate
     runs-on: docker
     container:
-      image: ghcr.io/renovatebot/renovate:40.26.0@sha256:8466e0e8e350dd838a2d808b5c9eac6733d4fef8a2f5631c94f681da7ae91796
+      image: ghcr.io/renovatebot/renovate:40.26.3@sha256:ada23d2817f8467c010148a686b4d29edac9d76e928f990701027cb70c2ae935
       volumes:
         - /etc/ssl/certs/ca-bundle.crt:/etc/ssl/certs/ca-bundle.crt
     steps:
