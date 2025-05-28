@@ -82,8 +82,13 @@
     package = pkgs.garage_1_1_0;
     
     settings = {
-      data_dir     = /tank/Garage/data;
-      metadata_dir = /tank/Garage/metadata;
+      data_dir = [
+        {
+          capacity = "2T";
+          path = "/tank/Garage/data";
+        }
+      ];
+      metadata_dir = "/tank/Garage/metadata";
     };
   };
 
