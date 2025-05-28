@@ -73,4 +73,14 @@
     };
   };
 
+  # Add garage to migrate from minio
+  services.garage = {
+    enable = true;
+    
+    settings = {
+      data_dir     = /tank/Garage/data;
+      metadata_dir = /tank/Garage/metadata;
+    };
+  };
+
 }
