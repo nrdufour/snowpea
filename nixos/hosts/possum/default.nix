@@ -6,6 +6,7 @@
   imports = [
     ./secrets.nix
     ./backups
+    ./garage
   ];
 
   fileSystems = {
@@ -70,25 +71,6 @@
           "read only" = "no";
         };
       };
-    };
-  };
-
-  # Add garage to migrate from minio
-  services.garage = {
-    enable = true;
-
-    ## Package has to be explicitly setup
-    # garage 1.1.0 (25.05)
-    package = pkgs.garage_1_1_0;
-    
-    settings = {
-      data_dir = [
-        {
-          capacity = "2T";
-          path = "/tank/Garage/data";
-        }
-      ];
-      metadata_dir = "/tank/Garage/metadata";
     };
   };
 
