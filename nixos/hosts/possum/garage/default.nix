@@ -70,4 +70,38 @@
       # metrics_token = "changeme"
     '';
   };
+
+  # Exposing Garage for s3 and web
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
+    virtualHosts."s3.garage.internal" = {
+      forceSSL = true;
+      enableACME = true;
+      extraConfig = ''
+        client_max_body_size 10g;
+      '';
+      locations."/".proxyPass = "http://localhost:3900";
+    };
+    virtualHosts."*.s3.garage.internal" = {
+      forceSSL = true;
+      enableACME = true;
+      extraConfig = ''
+        client_max_body_size 10g;
+      '';
+      locations."/".proxyPass = "http://localhost:3900";
+    };
+    virtualHosts."*.web.garage.internal" = {
+      forceSSL = true;
+      enableACME = true;
+      extraConfig = ''
+        client_max_body_size 2g;
+      '';
+      locations."/".proxyPass = "http://localhost:3902";
+    };
+  };
 }
