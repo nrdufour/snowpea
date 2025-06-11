@@ -72,6 +72,22 @@
   };
 
   # Exposing Garage for s3 and web
+
+  security.acme.certs = {
+    "s3.garage.internal" = {
+      domain = "s3.garage.internal";
+      # extraDomainNames = [
+      #   "foobar.s3.garage.internal"
+      #   "*.s3.garage.internal"
+      # ];
+    };
+    # "web.garage.internal" = {
+
+    # };
+  };
+
+  users.users.nginx.extraGroups = [ "acme" ];
+
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
@@ -80,28 +96,23 @@
     recommendedTlsSettings = true;
 
     virtualHosts."s3.garage.internal" = {
+      serverName = "s3.garage.internal";
+      useACMEHost = "s3.garage.internal";
       forceSSL = true;
-      enableACME = true;
+      # enableACME = true;
       extraConfig = ''
         client_max_body_size 10g;
       '';
       locations."/".proxyPass = "http://localhost:3900";
     };
-    virtualHosts."*.s3.garage.internal" = {
-      forceSSL = true;
-      enableACME = true;
-      extraConfig = ''
-        client_max_body_size 10g;
-      '';
-      locations."/".proxyPass = "http://localhost:3900";
-    };
-    virtualHosts."*.web.garage.internal" = {
-      forceSSL = true;
-      enableACME = true;
-      extraConfig = ''
-        client_max_body_size 2g;
-      '';
-      locations."/".proxyPass = "http://localhost:3902";
-    };
+    # virtualHosts."web.garage.internal" = {
+    #   serverName = "web.garage.internal";
+    #   forceSSL = true;
+    #   enableACME = true;
+    #   extraConfig = ''
+    #     client_max_body_size 2g;
+    #   '';
+    #   locations."/".proxyPass = "http://localhost:3902";
+    # };
   };
 }
