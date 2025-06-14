@@ -30,7 +30,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [ 80 443 53 ];
+    allowedUDPPorts = [ 53 ];
   };
 
   sops.defaultSopsFile = ../../../secrets/mysecrets/secrets.sops.yaml;
