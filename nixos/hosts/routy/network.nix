@@ -2,20 +2,24 @@
 
   networking = {
     hostName = "routy";
-    useDHCP = false;
+    domain   = "internal";
+    useDHCP  = false;
+
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
   };
+
+  services.resolved.enable = false;
 
   systemd.network = {
     enable = true;
-    wait-online = {
-      anyInterface = false;
-      ignoredInterfaces = [
-        "wan0"
-        "lan0"
-        "lab0"
-        "lab1"
-      ];
-    };
+
+    # Avoid blocking, even though we don't have NetworkManager enabled
+    # in the same time
+    wait-online.enable = false;
+
     links = {
       # rename all interface names to be easier to identify
       "10-wan0" = {
