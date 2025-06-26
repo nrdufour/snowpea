@@ -38,7 +38,7 @@
 
       zone = [
         {
-          domain = "test.internal";
+          domain = "internal";
         }
         # {
         #   domain = "s3.garage.internal";
