@@ -8,9 +8,16 @@
   services.knot = {
     enable = true;
 
-    # keyFiles = [
-    #   "/var/lib/knot/update.key"
-    # ];
+    ## TSIG keys to use
+    ## Use "keymgr -t key-name hmac-sha256 > key-name.key"
+    ## which would create the following content:
+    ## key:
+    ##   - id: key-name
+    ##     algorithm: hmac-sha256
+    ##     secret: <ACTUAL SECRET HERE>
+    keyFiles = [
+      "/var/lib/knot/update.key"
+    ];
 
     settings = {
       server = {
@@ -24,17 +31,17 @@
           storage = "/var/lib/knot";
           file = "%s.zone";
           semantic-checks = "on";
+          acl = "update_acl";
         }
       ];
 
-      # acl = [
-      #   {
-      #     id = "update_acl";
-      #     address = "192.168.0.0/16";
-      #     action = ["query" "update" "notify" "transfer"];
-      #     key = "update";
-      #   }
-      # ];
+      acl = [
+        {
+          id = "update_acl";
+          action = ["query" "update" "notify" "transfer"];
+          key = "update";
+        }
+      ];
 
       zone = [
         {
