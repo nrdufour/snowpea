@@ -375,6 +375,7 @@
             hardwareModules = [
             ];
             profileModules = [
+              ./nixos/profiles/role-server.nix
             ];
           };
 
