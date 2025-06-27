@@ -20,6 +20,7 @@ keys:
   - &server-opi02 age1nhfx8uyrfdq99c7avexfd64qsdmlkgedlckg28zpk4wz944cuvlsg03407
   - &server-opi03 age15sz68u0tw4f7nnwuk4jz3lm230esqfktae000t62s8fwjqvl2ukslyw8g0
   - &server-possum age1z5se5pwlkle36c2kyklj6ujv49vd4rqvv6drg88rluf6c5dwa9rqgggnnf
+  - &server-routy age1k9lzhm2k7damqf9ev3lun6naysj08u3vnewnw06yeaq8g7vlw3zsh6vlcw
 
 creation_rules:
   - path_regex: secrets/common-remote-restic/[^/]+\.(yaml|json|env|ini)$
@@ -67,6 +68,12 @@ creation_rules:
         - *admin-ndufour-2022
         - *admin-ndufour-2023
         - *server-possum
+  - path_regex: secrets/routy/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin-ndufour-2022
+        - *admin-ndufour-2023
+        - *server-routy
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
