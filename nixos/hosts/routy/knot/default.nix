@@ -1,9 +1,22 @@
 {
+  config,
   pkgs,
   ...
 }: {
   # imports = [
   # ];
+
+  sops.templates."knot_update_tsig_key" = {
+    mode = "0440";
+    owner = "knot";
+    group = "knot";
+    content = ''
+      key:
+        - id: update
+          algorithm: hmac-sha256
+          secret: ${config.sops.placeholder.knot_update_tsig_key}
+    '';
+  };
 
   services.knot = {
     enable = true;
@@ -16,7 +29,7 @@
     ##     algorithm: hmac-sha256
     ##     secret: <ACTUAL SECRET HERE>
     keyFiles = [
-      "/var/lib/knot/update.key"
+      config.sops.templates."knot_update_tsig_key".path
     ];
 
     settings = {
