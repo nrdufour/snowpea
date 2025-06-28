@@ -34,6 +34,19 @@
       # Quad 9
       "9.9.9.9"
     ];
+
+    nat = {
+      enable = true;
+      internalInterfaces = [
+        "lan0"
+        "lab0"
+        "lan1"
+        "lan0.20"
+        "lan0.50"
+        "lan0.100"
+      ];
+      externalInterface = "wan0";
+    };
   };
 
   services.resolved.enable = false;
