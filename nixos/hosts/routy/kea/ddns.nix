@@ -20,7 +20,7 @@ in
       ddns-update-on-renew = true; # always update when a lease is renewed, in case I lost the DNS server database
       ddns-override-client-update = true; # always generate ddns update request ignoring the client's wishes not to
       ddns-override-no-update = true; # same as above but for different client's wishes
-      ddns-qualifying-suffix = "home.arpa";
+      ddns-qualifying-suffix = "internal";
     };
     dhcp-ddns = {
       enable = true;
@@ -58,7 +58,7 @@ in
               #   dns-servers = dnsServer;
               # }
               {
-                name = "10.in-addr.arpa";
+                name = "10.in-addr.arpa.";
                 key-name = "kea";
                 dns-servers = dnsServer;
               }
