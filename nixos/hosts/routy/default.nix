@@ -7,7 +7,10 @@
       ./secrets.nix
       ./kea
       ./knot
+      # ./bind
     ];
+
+  networking.domain = "internal";
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

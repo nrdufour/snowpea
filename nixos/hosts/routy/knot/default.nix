@@ -14,7 +14,7 @@
       key:
         - id: update
           algorithm: hmac-sha256
-          secret: ${config.sops.placeholder.knot_update_tsig_key}
+          secret: ${config.sops.placeholder.update_tsig_key}
     '';
   };
 

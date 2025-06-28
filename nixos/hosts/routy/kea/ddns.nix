@@ -8,7 +8,6 @@ in
     users.${keaddnsUser} = {
       isSystemUser = true;
       group = keaddnsUser;
-      extraGroups = [ "knot" ];
     };
     groups.${keaddnsUser} = { };
   };
@@ -36,16 +35,16 @@ in
         {
           tsig-keys = [
             {
-              name = "kea";
-              algorithm = "hmac-sha512";
-              secret-file = "${config.sops.secrets."knot_update_tsig_key".path}";
+              name = "update";
+              algorithm = "hmac-sha256";
+              secret-file = "${config.sops.secrets."update_tsig_key".path}";
             }
           ];
           forward-ddns = {
             ddns-domains = [
               {
                 name = "internal.";
-                key-name = "kea";
+                key-name = "update";
                 dns-servers = dnsServer;
               }
             ];
@@ -59,7 +58,7 @@ in
               # }
               {
                 name = "10.in-addr.arpa.";
-                key-name = "kea";
+                key-name = "update";
                 dns-servers = dnsServer;
               }
             ];
