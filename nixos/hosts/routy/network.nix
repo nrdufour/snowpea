@@ -125,9 +125,9 @@
           RequiredForOnline = "no";
         };
         vlan = [
-          "lan0.20" # HOME
-          "lan0.50" # GUEST
-          "lan0.100" # GUEST
+          "lan0.20"  # HOME
+          "lan0.50"  # GUEST
+          "lan0.100" # IOT
         ];
       };
 
