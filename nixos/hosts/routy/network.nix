@@ -23,9 +23,16 @@
     useDHCP  = false;
 
     nameservers = [
+      # Local DNS server
       "10.0.0.1"
-      "1.1.1.1"
-      "8.8.8.8"
+
+      # dns4.eu
+      # See https://www.joindns4.eu/for-public#resolver-options
+      "86.54.11.1"
+      "86.54.11.201"
+
+      # Quad 9
+      "9.9.9.9"
     ];
   };
 
