@@ -61,6 +61,12 @@
           domain = "internal";
         }
         # {
+        #   domain = "168.192.in-addr.arpa";
+        # }
+        {
+          domain = "10.in-addr.arpa";
+        }
+        # {
         #   domain = "s3.garage.internal";
         #   acl = "update_acl";
         # }
