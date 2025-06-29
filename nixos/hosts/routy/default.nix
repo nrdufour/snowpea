@@ -8,6 +8,7 @@
       ./kea
       ./knot
       # ./bind
+      ./firewall.nix
     ];
 
   networking.domain = "internal";
