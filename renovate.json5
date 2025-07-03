@@ -10,7 +10,7 @@
     ':timezone(America/New_York)',
   ],
   nix: {
-    enabled: true,
+    enabled: false,
   },
   ignorePaths: [
     '**/*.sops.*',
