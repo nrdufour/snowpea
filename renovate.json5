@@ -18,7 +18,7 @@
     '**/resources/**',
   ],
   lockFileMaintenance: {
-    enabled: true,
+    enabled: false,
     extends: [
       'schedule:daily',
     ],
