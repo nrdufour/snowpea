@@ -63,9 +63,25 @@
       zone = [
         {
           domain = "internal";
+
+          ## With the following content in the file /var/lib/knot/internal.zone
+          # internal.           	300	SOA	ns0.internal. nemo.ptinem.casa. 2025061403 14400 3600 1209600 3600
+          # internal.           	300	A	10.0.0.1
+          # internal.           	300	NS	ns0.internal.
+          # internal.           	300	NS	ns1.internal.
+          # internal.           	300	NS	ns2.internal.
+          # ns0.internal.       	300	A	10.0.0.53
+          # ns1.internal.       	300	A	10.1.0.53
+          # ns2.internal.       	300	A	10.2.0.53
         }
         {
           domain = "10.in-addr.arpa";
+
+          ## With the following content in the file /var/lib/knot/10.in-addr.arpa.zone
+          # 10.in-addr.arpa.    	300	SOA	ns0.internal. nemo.ptinem.casa. 2025061307 14400 3600 1209600 3600
+          # 10.in-addr.arpa.    	300	NS	ns0.internal.
+          # 10.in-addr.arpa.    	300	NS	ns1.internal.
+          # 10.in-addr.arpa.    	300	NS	ns2.internal.
         }
       ];
 
