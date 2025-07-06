@@ -21,19 +21,23 @@
     hostName = "routy";
     domain   = "internal";
     useDHCP  = false;
+    search   = [ "internal" ];
 
-    nameservers = [
-      # Local DNS server
-      "10.0.0.1"
 
-      # dns4.eu
-      # See https://www.joindns4.eu/for-public#resolver-options
-      "86.54.11.1"
-      "86.54.11.201"
+    ## Commenting out this section as the resolving is done
+    ## via bind internals.
+    # nameservers = [
+    #   # Local DNS server
+    #   "10.0.0.1"
 
-      # Quad 9
-      "9.9.9.9"
-    ];
+    #   # dns4.eu
+    #   # See https://www.joindns4.eu/for-public#resolver-options
+    #   "86.54.11.1"
+    #   "86.54.11.201"
+
+    #   # Quad 9
+    #   "9.9.9.9"
+    # ];
 
     nat = {
       enable = true;

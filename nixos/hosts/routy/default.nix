@@ -6,8 +6,8 @@
       ./network.nix
       ./secrets.nix
       ./kea
-      ./knot
-      # ./bind
+      # ./knot
+      ./bind
       ./firewall.nix
     ];
 
