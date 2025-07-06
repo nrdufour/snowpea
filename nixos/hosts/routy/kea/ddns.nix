@@ -27,7 +27,7 @@ in
         let
           dnsServer = [
             {
-              ip-address = "10.0.0.1";
+              ip-address = "10.0.0.53";
               port = 53;
             }
           ];
@@ -51,11 +51,6 @@ in
           };
           reverse-ddns = {
             ddns-domains = [
-              # {
-              #   name = "168.192.in-addr.arpa.";
-              #   key-name = "kea";
-              #   dns-servers = dnsServer;
-              # }
               {
                 name = "10.in-addr.arpa.";
                 key-name = "update";

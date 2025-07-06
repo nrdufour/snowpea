@@ -68,7 +68,7 @@ in
             option-data = [
               {
                 name = "routers";
-                data = "10.0.0.1";
+                data = "10.1.0.1";
               }
             ] ++ commonDhcpOptions;
             reservations = [
@@ -190,7 +190,7 @@ in
             option-data = [
               {
                 name = "routers";
-                data = "10.0.0.1";
+                data = "10.0.20.1";
               }
             ] ++ commonDhcpOptions;
             reservations = [

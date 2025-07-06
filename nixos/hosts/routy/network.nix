@@ -123,7 +123,10 @@
 
       "30-lan0" = {
         matchConfig.Name = "lan0";
-        address = [ "10.0.0.1/24" ];
+        address = [
+          "10.0.0.1/24"
+          "10.0.0.53/24"
+        ];
         linkConfig = {
           ActivationPolicy = "always-up";
           RequiredForOnline = "no";
@@ -137,7 +140,10 @@
 
       "30-lab0" = {
         matchConfig.Name = "lab0";
-        address = [ "10.1.0.1/24" ];
+        address = [
+          "10.1.0.1/24"
+          "10.1.0.53/24"
+        ];
         linkConfig = {
           ActivationPolicy = "always-up";
           RequiredForOnline = "no";
@@ -146,7 +152,10 @@
 
       "30-lab1" = {
         matchConfig.Name = "lab1";
-        address = [ "10.2.0.1/24" ];
+        address = [
+          "10.2.0.1/24"
+          "10.2.0.53/24"
+        ];
         linkConfig = {
           ActivationPolicy = "always-up";
           RequiredForOnline = "no";
