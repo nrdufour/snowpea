@@ -68,8 +68,6 @@ in
           "--disable=traefik"
           "--disable=metrics-server"
           # virtual IP and its name
-          "--tls-san main-cp.internal"
-          "--tls-san 192.168.20.250"
           "--tls-san opi01.internal"
           "--tls-san opi02.internal"
           "--tls-san opi03.internal"
