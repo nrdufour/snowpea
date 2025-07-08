@@ -56,6 +56,38 @@ in
               #   data = "10.5.0.10";
               # }
             ] ++ commonDhcpOptions;
+            reservations = [
+              {
+                hostname = "tv01";
+                ip-address = "10.0.0.10";
+                hw-address = "54:3a:d6:46:26:04";
+              }
+              {
+                hostname = "printer";
+                ip-address = "10.0.0.20";
+                hw-address = "2c:6f:c9:0d:d1:7d";
+              }
+              {
+                # In the basement
+                hostname = "eap01";
+                ip-address = "10.0.0.201";
+                hw-address = "40:ed:00:70:12:d2";
+              }
+              {
+                # 2nd floor
+                hostname = "eap02";
+                ip-address = "10.0.0.202";
+                hw-address = "50:91:e3:68:08:c4";
+              }
+              {
+                hostname = "nemo-cell";
+                hw-address = "00:d2:79:b1:02:98";
+              }
+              {
+                hostname = "mac-work";
+                hw-address = "ae:6c:be:5a:c7:4f";
+              }
+            ];
           }
           // leaseOption
         )
@@ -176,33 +208,6 @@ in
                 hostname = "mysecrets";
                 ip-address = "10.1.0.99";
                 hw-address = "d8:3a:dd:17:1e:1b";
-              }
-            ];
-          }
-          // leaseOption
-        )
-        (
-          {
-            id = 3;
-            interface = "lan0.20";
-            subnet = "10.0.20.1/24";
-            pools = [ { pool = "10.0.20.100 - 10.0.20.200"; } ];
-            option-data = [
-              {
-                name = "routers";
-                data = "10.0.20.1";
-              }
-            ] ++ commonDhcpOptions;
-            reservations = [
-              {
-                hostname = "tv01";
-                ip-address = "10.0.20.10";
-                hw-address = "54:3a:d6:46:26:04";
-              }
-              {
-                hostname = "printer";
-                ip-address = "10.0.20.20";
-                hw-address = "2c:6f:c9:0d:d1:7d";
               }
             ];
           }

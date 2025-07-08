@@ -83,33 +83,33 @@
       };
     };
 
-    netdevs = {
-      # VLANs
-      "20-lan0.20" = {
-        netdevConfig = {
-          Name = "lan0.20";
-          Description = "HOME";
-          Kind = "vlan";
-        };
-        vlanConfig.Id = 20;
-      };
-      "20-lan0.50" = {
-        netdevConfig = {
-          Name = "lan0.50";
-          Description = "GUEST";
-          Kind = "vlan";
-        };
-        vlanConfig.Id = 50;
-      };
-      "20-lan0.100" = {
-        netdevConfig = {
-          Name = "lan0.100";
-          Description = "IOT";
-          Kind = "vlan";
-        };
-        vlanConfig.Id = 100;
-      };
-    };
+    # netdevs = {
+    #   # VLANs
+    #   "20-lan0.20" = {
+    #     netdevConfig = {
+    #       Name = "lan0.20";
+    #       Description = "HOME";
+    #       Kind = "vlan";
+    #     };
+    #     vlanConfig.Id = 20;
+    #   };
+    #   "20-lan0.50" = {
+    #     netdevConfig = {
+    #       Name = "lan0.50";
+    #       Description = "GUEST";
+    #       Kind = "vlan";
+    #     };
+    #     vlanConfig.Id = 50;
+    #   };
+    #   "20-lan0.100" = {
+    #     netdevConfig = {
+    #       Name = "lan0.100";
+    #       Description = "IOT";
+    #       Kind = "vlan";
+    #     };
+    #     vlanConfig.Id = 100;
+    #   };
+    # };
 
     networks = {
       "30-wan0" = {
@@ -131,11 +131,11 @@
           ActivationPolicy = "always-up";
           RequiredForOnline = "no";
         };
-        vlan = [
-          "lan0.20"  # HOME
-          "lan0.50"  # GUEST
-          "lan0.100" # IOT
-        ];
+        # vlan = [
+        #   "lan0.20"  # HOME
+        #   "lan0.50"  # GUEST
+        #   "lan0.100" # IOT
+        # ];
       };
 
       "30-lab0" = {
@@ -162,35 +162,35 @@
         };
       };
 
-      # HOME VLAN
-      "30-lan0.20" = {
-        matchConfig.Name = "lan0.20";
-        address = [ "10.0.20.1/24" ];
-        linkConfig = {
-          ActivationPolicy = "always-up";
-          RequiredForOnline = "no";
-        };
-      };
+      # # HOME VLAN
+      # "30-lan0.20" = {
+      #   matchConfig.Name = "lan0.20";
+      #   address = [ "10.0.20.1/24" ];
+      #   linkConfig = {
+      #     ActivationPolicy = "always-up";
+      #     RequiredForOnline = "no";
+      #   };
+      # };
 
-      # GUEST VLAN
-      "30-lan0.50" = {
-        matchConfig.Name = "lan0.50";
-        address = [ "10.0.50.1/24" ];
-        linkConfig = {
-          ActivationPolicy = "always-up";
-          RequiredForOnline = "no";
-        };
-      };
+      # # GUEST VLAN
+      # "30-lan0.50" = {
+      #   matchConfig.Name = "lan0.50";
+      #   address = [ "10.0.50.1/24" ];
+      #   linkConfig = {
+      #     ActivationPolicy = "always-up";
+      #     RequiredForOnline = "no";
+      #   };
+      # };
 
-      # IOT VLAN
-      "30-lan0.100" = {
-        matchConfig.Name = "lan0.100";
-        address = [ "10.0.100.1/24" ];
-        linkConfig = {
-          ActivationPolicy = "always-up";
-          RequiredForOnline = "no";
-        };
-      };
+      # # IOT VLAN
+      # "30-lan0.100" = {
+      #   matchConfig.Name = "lan0.100";
+      #   address = [ "10.0.100.1/24" ];
+      #   linkConfig = {
+      #     ActivationPolicy = "always-up";
+      #     RequiredForOnline = "no";
+      #   };
+      # };
     };
   };
 
