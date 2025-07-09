@@ -69,10 +69,15 @@
                 ./nixos/hosts/${hostname}   # load this host's config folder for machine-specific config
               ]
             , profileModules ? [ ]
+            , stateVersion ? "23.11" # first system on nixos was on 23.11
             }:
             nixpkgs.lib.nixosSystem {
               inherit system lib;
-              modules = baseModules ++ hardwareModules ++ profileModules;
+              modules = 
+                baseModules 
+                ++ hardwareModules 
+                ++ profileModules
+                ++ [(_: { system.stateVersion = stateVersion; })];
               specialArgs = { inherit self inputs nixpkgs; };
               # Add our overlays
 
@@ -359,6 +364,17 @@
             ];
             profileModules = [
               # Overlays-module makes "pkgs.unstable" available in configuration.nix
+              ./nixos/profiles/role-server.nix
+            ];
+          };
+
+          routy = mkNixosConfig {
+            hostname = "routy";
+            system = "x86_64-linux";
+            stateVersion = "25.05"; # yep, new guy
+            hardwareModules = [
+            ];
+            profileModules = [
               ./nixos/profiles/role-server.nix
             ];
           };

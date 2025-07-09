@@ -8,7 +8,7 @@ with lib;
 
   config = {
 
-    # Enable monitoring for remote scraiping
+    # Enable monitoring for remote scraping
     mySystem.services.monitoring.enable = true;
     # Check if a reboot is necessary
     mySystem.services.rebootRequiredCheck.enable = true;
