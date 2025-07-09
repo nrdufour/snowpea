@@ -18,7 +18,17 @@
       "storage_garage_rpc_key" = {};
       "storage_garage_admin_token" = {};
       "storage_garage_metric_token" = {};
+      "update_tsig_key" = {};
     };
+  };
+
+  sops.templates."acme.env" = {
+    content = ''
+      RFC2136_TSIG_KEY=update
+      RFC2136_TSIG_ALGORITHM=hmac-sha256.
+      RFC2136_TSIG_SECRET="${config.sops.placeholder.update_tsig_key}"
+      RFC2136_NAMESERVER=ns0.internal
+    '';
   };
 
   sops.templates."garage.env" = {
@@ -76,14 +86,16 @@
   security.acme.certs = {
     "s3.garage.internal" = {
       domain = "s3.garage.internal";
-      # extraDomainNames = [
-      #   "foobar.s3.garage.internal"
-      #   "*.s3.garage.internal"
-      # ];
+      extraDomainNames = [
+        # "foobar.s3.garage.internal"
+        "*.s3.garage.internal"
+      ];
+      environmentFile = config.sops.templates."acme.env".path;
+      dnsProvider = "rfc2136";
+      # webroot has to be null if you use dnsProvider
+      webroot = null;
     };
-    # "web.garage.internal" = {
-
-    # };
+    "web.garage.internal" = { };
   };
 
   users.users.nginx.extraGroups = [ "acme" ];
@@ -105,14 +117,24 @@
       '';
       locations."/".proxyPass = "http://localhost:3900";
     };
-    # virtualHosts."web.garage.internal" = {
-    #   serverName = "web.garage.internal";
-    #   forceSSL = true;
-    #   enableACME = true;
-    #   extraConfig = ''
-    #     client_max_body_size 2g;
-    #   '';
-    #   locations."/".proxyPass = "http://localhost:3902";
-    # };
+    virtualHosts."*.s3.garage.internal" = {
+      serverName = "~^(.*)\.s3\.garage\.internal$";
+      useACMEHost = "s3.garage.internal";
+      forceSSL = true;
+      # enableACME = true;
+      extraConfig = ''
+        client_max_body_size 10g;
+      '';
+      locations."/".proxyPass = "http://localhost:3900";
+    };
+    virtualHosts."web.garage.internal" = {
+      serverName = "web.garage.internal";
+      forceSSL = true;
+      enableACME = true;
+      extraConfig = ''
+        client_max_body_size 2g;
+      '';
+      locations."/".proxyPass = "http://localhost:3902";
+    };
   };
 }
