@@ -1,0 +1,17 @@
+
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/Books
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/Media
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/NFS/calibre-books
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/NFS/calibre-config
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0,rw=10.0.0.0/8' tank/NFS/esphome
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=472,anongid=472,rw=10.0.0.0/8'  tank/NFS/grafana
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0,rw=10.0.0.0/8' tank/NFS/ha
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/NFS/influxdb
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/NFS/influxdb2
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0,rw=10.0.0.0/8' tank/NFS/kanboard
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/NFS/komga/config
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000,rw=10.0.0.0/8' tank/NFS/komga/data
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0,rw=10.0.0.0/8' tank/NFS/marmitton
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=1883,anongid=1883,rw=10.0.0.0/8' tank/NFS/mqtt
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=100,anongid=101,rw=10.0.0.0/8' tank/NFS/znc
+zfs set sharenfs='all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0,rw=10.0.0.0/8' tank/NFS/zwave
