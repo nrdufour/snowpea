@@ -20,6 +20,13 @@
     #     device = "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0362022060009147-0:0";
     #     fsType = "ext4";
     #   };
+
+    system.autoUpgrade = {
+      enable = true;
+      allowReboot = false;
+      dates = "03:00";
+      flake = "git+https://forge.internal/nemo/snowpea.git";
+    };
   };
   
 }
