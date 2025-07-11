@@ -35,4 +35,11 @@
     enable = true;
     allowedTCPPorts = [ 22 80 443 ];
   };
+
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    dates = "03:00";
+    flake = "git+https://forge.internal/nemo/snowpea.git";
+  };
 }

@@ -36,4 +36,11 @@
     "usbcore.quirks=174c:2362:u"
   ];
 
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = false;
+    dates = "03:00";
+    flake = "git+https://forge.internal/nemo/snowpea.git";
+  };
+
 }
