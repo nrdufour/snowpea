@@ -19,7 +19,7 @@ jobs:
 
       - run: nix flake update
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: Bump flake.lock
           branch: main
