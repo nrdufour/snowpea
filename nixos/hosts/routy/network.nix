@@ -13,6 +13,10 @@
         # "net.ipv6.conf.all.use_tempaddr" = 0;
         # "net.ipv6.conf.wan.accept_ra" = 2;
         # "net.ipv6.conf.wan.autoconf" = 1;
+
+        # use TCP BBR has significantly increased throughput and reduced latency for connections
+        "net.core.default_qdisc" = "fq";
+        "net.ipv4.tcp_congestion_control" = "bbr";
       };
     };
   };
