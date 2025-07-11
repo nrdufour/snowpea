@@ -156,32 +156,32 @@ in
               }
               {
                 hostname = "raccoon00";
-                ip-address = "10.1.0.50";
+                ip-address = "10.1.0.30";
                 hw-address = "dc:a6:32:f9:0a:7a";
               }
               {
                 hostname = "raccoon01";
-                ip-address = "10.1.0.51";
+                ip-address = "10.1.0.31";
                 hw-address = "dc:a6:32:f9:0b:0d";
               }
               {
                 hostname = "raccoon02";
-                ip-address = "10.1.0.52";
+                ip-address = "10.1.0.32";
                 hw-address = "dc:a6:32:f8:f3:21";
               }
               {
                 hostname = "raccoon03";
-                ip-address = "10.1.0.53";
+                ip-address = "10.1.0.33";
                 hw-address = "dc:a6:32:f9:1f:fc";
               }
               {
                 hostname = "raccoon04";
-                ip-address = "10.1.0.54";
+                ip-address = "10.1.0.34";
                 hw-address = "dc:a6:32:f9:20:9e";
               }
               {
                 hostname = "raccoon05";
-                ip-address = "10.1.0.55";
+                ip-address = "10.1.0.35";
                 hw-address = "dc:a6:32:f9:20:b2";
               }
               {
