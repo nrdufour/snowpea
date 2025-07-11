@@ -45,8 +45,8 @@
     enable = true;
 
     ## Package has to be explicitly setup
-    # garage 1.1.0 (25.05)
-    package = pkgs.garage_1_1_0;
+    # garage 1.2.0 (25.05)
+    package = pkgs.garage_1_2_0;
 
     environmentFile = config.sops.templates."garage.env".path;
     
