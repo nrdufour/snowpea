@@ -2,7 +2,8 @@ name: Bump flake.lock
 
 on:
   schedule:
-    - cron: "0 6 * * *"
+    # Starting at midnight (4am UTC)
+    - cron: "0 4 * * *"
 
   workflow_dispatch:
 
