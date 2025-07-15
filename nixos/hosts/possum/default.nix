@@ -7,6 +7,7 @@
     ./secrets.nix
     ./backups
     ./garage
+    ./services
   ];
 
   fileSystems = {
@@ -30,7 +31,7 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 3900 3902 ];
+      allowedTCPPorts = [ 80 443 3900 3902 3903 ];
     };
   };
 
