@@ -53,7 +53,7 @@
     settings = builtins.fromTOML ''
       metadata_dir = "/tank/Garage/metadata"
       data_dir = "/tank/Garage/data"
-      db_engine = "sqlite"
+      db_engine = "lmdb"
 
       replication_factor = 1
 
