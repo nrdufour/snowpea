@@ -75,6 +75,10 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+      rclone
+  ];
+
   system.autoUpgrade = {
     enable = true;
     allowReboot = false;
