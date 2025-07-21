@@ -3,7 +3,7 @@
   imports = [
     ./step-ca
     ./vaultwarden
-    ./knot-dns
+    # ./knot-dns
   ];
 
   fileSystems = {
