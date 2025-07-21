@@ -4,10 +4,15 @@
   ...
 }:
 {
+  sops.secrets = {
+    vaultwarden_admin_token = {};
+  };
+
   sops.templates."vaultwarden.env" = {
     # owner = "vaultwarden";
     content = ''
       DATABASE_URL="postgresql://vaultwarden:${config.sops.placeholder.vaultwarden_db_password}@localhost:5432/vaultwarden"
+      ADMIN_TOKEN="${config.sops.placeholder.vaultwarden_admin_token}"
     '';
   };
 
