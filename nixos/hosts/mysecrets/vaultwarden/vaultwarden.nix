@@ -6,6 +6,7 @@
 {
   sops.secrets = {
     vaultwarden_admin_token = {};
+    vaultwarden_smtp_password = {};
   };
 
   sops.templates."vaultwarden.env" = {
@@ -13,6 +14,12 @@
     content = ''
       DATABASE_URL="postgresql://vaultwarden:${config.sops.placeholder.vaultwarden_db_password}@localhost:5432/vaultwarden"
       ADMIN_TOKEN="${config.sops.placeholder.vaultwarden_admin_token}"
+
+      SMTP_HOST="smtp.migadu.com"
+      SMTP_FROM="cloud@ptinem.casa"
+      SMTP_PORT=465
+      SMTP_USER="cloud@ptinem.casa"
+      SMTP_PASSWORD="${config.sops.placeholder.vaultwarden_smtp_password}"
     '';
   };
 
