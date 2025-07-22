@@ -17,6 +17,11 @@
     initialScript = config.sops.templates."init_script.sql".path;
   };
 
+  services.postgresqlBackup = {
+    enable = true;
+    location = "/srv/backups/postgresql";
+  };
+
   sops.secrets = {
     vaultwarden_db_password = {};
   };
