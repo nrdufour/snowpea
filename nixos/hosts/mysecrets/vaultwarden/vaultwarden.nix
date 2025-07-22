@@ -27,7 +27,7 @@
   services.vaultwarden = {
     enable = true;
     dbBackend = "postgresql";
-    backupDir = "/srv/backups/vaultwarden";
+    # backupDir = "TBD";
     environmentFile = config.sops.templates."vaultwarden.env".path;
     config = {
       DOMAIN = "https://bitwarden.internal";
