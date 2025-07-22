@@ -18,7 +18,7 @@
       SMTP_HOST="smtp.migadu.com"
       SMTP_FROM="cloud@ptinem.casa"
       SMTP_PORT=465
-      SMTP_USER="cloud@ptinem.casa"
+      SMTP_USERNAME="cloud@ptinem.casa"
       SMTP_PASSWORD="${config.sops.placeholder.vaultwarden_smtp_password}"
     '';
   };
