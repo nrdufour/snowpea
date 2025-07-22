@@ -379,6 +379,17 @@
             ];
           };
 
+          cardinal = mkNixosConfig {
+            hostname = "cardinal";
+            system = "x86_64-linux";
+            stateVersion = "25.05"; # yep, new guy too !
+            hardwareModules = [
+            ];
+            profileModules = [
+              ./nixos/profiles/role-server.nix
+            ];
+          };
+
       };
 
       # Convenience output that aggregates the outputs for home, nixos.
