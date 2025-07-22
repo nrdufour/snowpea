@@ -209,6 +209,11 @@ in
                 ip-address = "10.1.0.99";
                 hw-address = "d8:3a:dd:17:1e:1b";
               }
+              {
+                hostname = "cardinal";
+                ip-address = "10.1.0.65";
+                hw-address = "78:55:36:00:5a:1b";
+              }
             ];
           }
           // leaseOption
