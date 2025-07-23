@@ -23,7 +23,7 @@
   mySystem = {
     system.zfs = {
       enable = true;
-      # mountPoolsAtBoot = [ "tank" ];
+      mountPoolsAtBoot = [ "data" ];
     };
   };
 
