@@ -14,10 +14,15 @@
     # Setting the hostid for zfs
     hostId = "5f0cf156";
 
-    # firewall = {
-    #   enable = true;
-    #   allowedTCPPorts = [ 80 443 3900 3902 3903 ];
-    # };
+    firewall = {
+      enable = false;
+      # allowedTCPPorts = [ 80 443 3900 3902 3903 ];
+    };
+  };
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
   };
 
   mySystem = {
@@ -27,6 +32,20 @@
     };
 
     services.nfs.enable = true;
+
+    services.samba = {
+      enable = true;
+      shares = {
+        Books = {
+          path = "/tank/Books";
+          "read only" = "no";
+        };
+        Media = {
+          path = "/tank/Media";
+          "read only" = "no";
+        };
+      };
+    };
   };
 
   system.autoUpgrade = {

@@ -7,3 +7,8 @@ sudo zfs set atime=off tank
 sudo zpool set listsnapshots=on tank
 sudo zpool set autoreplace=on tank
 sudo zpool set autoexpand=on tank
+
+---
+
+sudo zfs create tank/Books
+sudo zfs create tank/Media
