@@ -23,8 +23,10 @@
   mySystem = {
     system.zfs = {
       enable = true;
-      mountPoolsAtBoot = [ "data" ];
+      mountPoolsAtBoot = [ "tank" ];
     };
+
+    services.nfs.enable = true;
   };
 
   system.autoUpgrade = {

@@ -1,0 +1,9 @@
+
+sudo zpool create tank raidz /dev/nvme0n1 /dev/nvme1n1 /dev/nvme2n1 /dev/nvme4n1 /dev/nvme5n1
+
+sudo zfs set compression=lz4 tank
+sudo zfs set atime=off tank
+
+sudo zpool set listsnapshots=on tank
+sudo zpool set autoreplace=on tank
+sudo zpool set autoexpand=on tank
