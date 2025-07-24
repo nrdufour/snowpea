@@ -9,6 +9,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Constraining the ZFS memory usage for ARC
+  boot.extraModprobeConfig = ''
+    options zfs zfs_arc_max=4294967296
+  '';
+
   networking = {
     hostName = "cardinal";
     # Setting the hostid for zfs

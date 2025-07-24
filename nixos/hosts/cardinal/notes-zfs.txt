@@ -1,5 +1,10 @@
 
-sudo zpool create tank raidz /dev/nvme0n1 /dev/nvme1n1 /dev/nvme2n1 /dev/nvme4n1 /dev/nvme5n1
+sudo zpool create -o ashift=12 tank raidz1  \
+    /dev/disk/by-id/nvme-Samsung_SSD_990_EVO_Plus_2TB_S7U6NJ0Y319375P \
+    /dev/disk/by-id/nvme-Samsung_SSD_990_EVO_Plus_2TB_S7U6NJ0Y319358F \
+    /dev/disk/by-id/nvme-Samsung_SSD_990_EVO_Plus_2TB_S7U6NJ0Y508672R \
+    /dev/disk/by-id/nvme-Samsung_SSD_990_EVO_Plus_2TB_S7U6NJ0Y508653Z \
+    /dev/disk/by-id/nvme-Samsung_SSD_990_EVO_Plus_2TB_S7U6NJ0Y319324L
 
 sudo zfs set compression=lz4 tank
 sudo zfs set atime=off tank
