@@ -11,8 +11,8 @@ in
   sops.templates."garage-webui.env" = {
     owner = "root";
     content = ''
-      API_BASE_URL=http://possum.internal:3903
-      S3_ENDPOINT_URL=http://possum.internal:3900
+      API_BASE_URL=http://cardinal.internal:3903
+      S3_ENDPOINT_URL=http://cardinal.internal:3900
       API_ADMIN_KEY=${config.sops.placeholder.storage_garage_admin_token}
     '';
   };
