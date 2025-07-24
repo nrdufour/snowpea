@@ -6,8 +6,8 @@
   imports = [
     ./secrets.nix
     ./backups
-    ./garage
-    ./services
+    # ./garage
+    # ./services
   ];
 
   fileSystems = {

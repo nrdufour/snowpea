@@ -3,6 +3,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./secrets.nix
+      ./garage
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -30,13 +32,20 @@
     algorithm = "zstd";
   };
 
+  services.nfs.server = {
+    enable = true;
+    # Avoid using sharenfs settings in ZFS
+    exports = ''
+      /tank/Books 10.0.0.0/8(all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000)
+      /tank/Media 10.0.0.0/8(all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000)
+    '';
+  };
+
   mySystem = {
     system.zfs = {
       enable = true;
       mountPoolsAtBoot = [ "tank" ];
     };
-
-    services.nfs.enable = true;
 
     services.samba = {
       enable = true;
