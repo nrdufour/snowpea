@@ -1,0 +1,12 @@
+To setup garage the first time, you need to setup its layout.
+
+First retrieve its node id with:
+    garage status
+
+Then apply the following layout with a 2TB limit:
+    sudo garage layout assign -z homelab -c 2TB <node_id_here>
+
+Finally, apply it (commit):
+    sudo garage layout apply --version 1
+
+See https://garagehq.deuxfleurs.fr/documentation/quick-start/ for references
