@@ -18,3 +18,4 @@ sudo zpool set autoexpand=on tank
 sudo zfs create tank/Books
 sudo zfs create tank/Media
 sudo zfs create tank/Garage
+sudo zfs create tank/tmp
