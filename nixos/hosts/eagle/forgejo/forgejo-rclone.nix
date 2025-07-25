@@ -21,13 +21,13 @@
   sops.templates."rclone.conf" = {
     owner = "forgejo";
     content = ''
-      [minio]
+      [garage]
       type = s3
       provider = Minio
       access_key_id = ${config.sops.placeholder.forgejo_dump_bucket_access_key_id}
       secret_access_key = ${config.sops.placeholder.forgejo_dump_bucket_secret_access_key}
-      endpoint = https://s3.internal
-      region = us-east-1
+      endpoint = https://s3.garage.internal
+      region = garage
     '';
   };
 
@@ -38,7 +38,7 @@
 
       cd /srv/forgejo/dump
       find . -type f -ctime +30 -exec rm {} \;
-      /run/current-system/sw/bin/rclone --config ${config.sops.templates."rclone.conf".path} sync . minio:forgejo-dump-backup -v
+      /run/current-system/sw/bin/rclone --config ${config.sops.templates."rclone.conf".path} sync . garage:forgejo-dump-backup -v
     '';
     serviceConfig = {
       Type = "oneshot";
