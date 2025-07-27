@@ -28,6 +28,12 @@ in
             "systemd"
           ];
           port = exporterPort;
+
+          # Do not collect anything on nfs mounts
+          # Use a regexp
+          extraFlags = [
+            '--collector.filesystem.fs-types-exclude="^(nfs|nfs4)$"'
+          ];
         };
         smartctl = {
           enable = true;
