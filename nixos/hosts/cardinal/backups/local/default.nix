@@ -1,8 +1,19 @@
 {
+  pkgs,
   ...
 }:
 {
   # Local backups via NFS onto elephant NAS
+
+  imports =
+    [
+      ./rclone-garage-forgejo.nix
+      ./rclone-garage-backups-nicolas.nix
+    ];
+
+  environment.systemPackages = with pkgs; [
+    rclone
+  ];
 
   boot.supportedFilesystems = [ "nfs" ];
   services.rpcbind.enable = true; # needed for NFS
