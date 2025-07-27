@@ -5,6 +5,7 @@
       ./hardware-configuration.nix
       ./secrets.nix
       ./garage
+      ./backups
     ];
 
   # Use the systemd-boot EFI boot loader.
