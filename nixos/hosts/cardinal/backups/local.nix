@@ -42,4 +42,9 @@
       where = "/srv/backup/nfs";
     }
   ];
+
+  # Do not monitor the activity on /srv/backup/*
+  services.prometheus.exporters.node.extraFlags = [
+    "--collector.filesystem.mount-points-exclude=^/srv/backup/.*"
+  ];
 }
