@@ -10,7 +10,7 @@
     [
       ./rclone-garage-forgejo.nix
       ./rclone-garage-backups-nicolas.nix
-      ./rclone-garage-cloudnative-pg.
+      ./rclone-garage-cloudnative-pg.nix
       ./rclone-garage-volsync-volumes.nix
     ];
 
