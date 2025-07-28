@@ -9,6 +9,8 @@
     [
       ./rclone-garage-forgejo.nix
       ./rclone-garage-backups-nicolas.nix
+      ./rclone-garage-cloudnative-pg.
+      ./rclone-garage-volsync-volumes.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -58,4 +60,22 @@
   services.prometheus.exporters.node.extraFlags = [
     "--collector.filesystem.mount-points-exclude=^/srv/backup/.*"
   ];
+
+  sops.secrets = {
+    garage_read_all_access_key = { };
+    garage_read_all_secret_key = { };
+  };
+
+  sops.templates."rclone-garage-read-all.conf" = {
+    owner = "root";
+    content = ''
+      [garage]
+      type = s3
+      provider = Other
+      access_key_id = ${config.sops.placeholder.garage_read_all_access_key}
+      secret_access_key = ${config.sops.placeholder.garage_read_all_secret_key}
+      endpoint = http://cardinal.internal:3900/
+      region = garage
+    '';
+  };
 }
