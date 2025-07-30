@@ -6,6 +6,7 @@
       ./secrets.nix
       ./garage
       ./backups
+      ./jellyfin.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
