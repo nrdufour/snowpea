@@ -12,6 +12,8 @@
       ./rclone-garage-backups-nicolas.nix
       ./rclone-garage-cloudnative-pg.nix
       ./rclone-garage-volsync-volumes.nix
+      ./rsync-nfs-books.nix
+      ./rsync-nfs-media.nix
     ];
 
   environment.systemPackages = with pkgs; [
