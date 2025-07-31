@@ -28,7 +28,7 @@
       "backups/books/repository" = {};
 
       "backups/local-restic/password" = {
-        sopsFile = ../../../../secrets/common-local-restic/secrets.sops.yaml;
+        sopsFile = ../../../../../secrets/common-local-restic/secrets.sops.yaml;
       };
     };
   };
