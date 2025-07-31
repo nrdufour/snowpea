@@ -24,6 +24,12 @@ keys:
   - &server-cardinal age1r3k5yyln7lqxpw92qlf5rvpnwj79perdesfdjxea733sqe5qw4kq5lgdyr
 
 creation_rules:
+  - path_regex: secrets/common-local-restic/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *admin-ndufour-2022
+        - *admin-ndufour-2023
+        - *server-cardinal
   - path_regex: secrets/common-remote-restic/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
@@ -31,6 +37,7 @@ creation_rules:
         - *admin-ndufour-2023
         - *server-eagle
         - *server-possum
+        - *server-cardinal
   - path_regex: secrets/eagle/[^/]+\.(yaml|json|env|ini)$
     key_groups:
       - age:
