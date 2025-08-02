@@ -19,6 +19,11 @@
         OnCalendar = "*-*-* 9:00:00";
         Persistent = true;
       };
+
+      pruneOpts = [
+        "--keep-daily 7"
+        "--keep-weekly 4"
+      ];
     };
 
     media = {
@@ -36,6 +41,10 @@
       };
     };
 
+      pruneOpts = [
+        "--keep-daily 7"
+        "--keep-weekly 4"
+      ];
   };
 
   sops = {
