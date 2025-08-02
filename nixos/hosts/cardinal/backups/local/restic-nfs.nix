@@ -21,20 +21,20 @@
       };
     };
 
-    # media = {
-    #   paths = [
-    #     "/tank/Media"
-    #   ];
+    media = {
+      paths = [
+        "/tank/Media"
+      ];
       
-    #   initialize = true;
-    #   repositoryFile  = config.sops.secrets."backups/media/repository".path;
-    #   passwordFile    = config.sops.secrets."backups/local-restic/password".path;
+      initialize = true;
+      repositoryFile  = config.sops.secrets."backups/media/repository".path;
+      passwordFile    = config.sops.secrets."backups/local-restic/password".path;
 
-    #   timerConfig = {
-    #     OnCalendar = "*-*-* 10:00:00";
-    #     Persistent = true;
-    #   };
-    # };
+      timerConfig = {
+        OnCalendar = "*-*-* 10:00:00";
+        Persistent = true;
+      };
+    };
 
   };
 
