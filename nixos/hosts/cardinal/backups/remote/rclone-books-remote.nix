@@ -9,7 +9,7 @@
     wantedBy = [ "timers.target" ];
     timerConfig = {
       # starts in the morning
-      OnCalendar = "08:00";
+      OnCalendar = "08:30";
       Unit = "rclone-books-remote.service";
     };
   };

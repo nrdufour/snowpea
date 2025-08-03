@@ -9,6 +9,7 @@
   imports =
     [
       ./rclone-books-remote.nix
+      ./rclone-media-remote.nix
     ];
 
   environment.systemPackages = with pkgs; [
