@@ -4,7 +4,7 @@
   ...
 }:
 {
-  # Remote backups into S3 bucket
+  # Remote backups into B2
 
   imports =
     [
@@ -16,10 +16,10 @@
   ];
 
   sops.secrets = {
-    "backups/remote-s3/access-key" = {
-      sopsFile = ../../../../../secrets/common-remote-restic/secrets.sops.yaml;  
+    "backups/b2/account" = {
+      sopsFile = ../../../../../secrets/common-remote-restic/secrets.sops.yaml;
     };
-    "backups/remote-s3/secret-key" = {
+    "backups/b2/key" = {
       sopsFile = ../../../../../secrets/common-remote-restic/secrets.sops.yaml;
     };
   };
@@ -27,13 +27,11 @@
   sops.templates."rclone-remote-access.conf" = {
     owner = "root";
     content = ''
-      [scaleway]
-      type = s3
-      provider = Scaleway
-      access_key_id = ${config.sops.placeholder."backups/remote-s3/access-key"}
-      secret_access_key = ${config.sops.placeholder."backups/remote-s3/secret-key"}
-      region = fr-par
-      endpoint = s3.fr-par.scw.cloud
+      [b2]
+      type = b2
+      account = ${config.sops.placeholder."backups/b2/account"}
+      key = ${config.sops.placeholder."backups/b2/key"}
+      hard_delete = true
     '';
   };
 }

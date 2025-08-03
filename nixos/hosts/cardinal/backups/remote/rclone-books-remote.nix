@@ -20,7 +20,7 @@
       #!/usr/bin/env bash
 
       cd /srv/backup/nfs/restic/books
-      /run/current-system/sw/bin/rclone --config ${config.sops.templates."rclone-remote-access.conf".path} sync . scaleway:nemoworld-backups-nfs/books -v
+      /run/current-system/sw/bin/rclone --config ${config.sops.templates."rclone-remote-access.conf".path} sync . b2:nemoworld-backups-nfs/books -v
     '';
     serviceConfig = {
       Type = "oneshot";
