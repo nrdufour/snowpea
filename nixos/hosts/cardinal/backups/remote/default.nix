@@ -16,8 +16,12 @@
   ];
 
   sops.secrets = {
-    "backups/remote-s3/access-key" = { };
-    "backups/remote-s3/secret-key" = { };
+    "backups/remote-s3/access-key" = {
+      sopsFile = ../../../../../secrets/common-remote-restic/secrets.sops.yaml;  
+    };
+    "backups/remote-s3/secret-key" = {
+      sopsFile = ../../../../../secrets/common-remote-restic/secrets.sops.yaml;
+    };
   };
 
   sops.templates."rclone-remote-access.conf" = {
