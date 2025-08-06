@@ -7,6 +7,7 @@
       ./garage
       ./backups
       ./jellyfin.nix
+      ./cwa.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
