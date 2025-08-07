@@ -38,6 +38,14 @@ in
       "/tank/cwa/library:/calibre-library"
     ];
     ports = [ "8083:8083" ];
+    extraOptions = [
+      # Block container access to Amazon to prevent 503 errors causing container crash.
+      # Awaiting resolution to https://github.com/janeczku/calibre-web/issues/2963
+      "--add-host 'amazon.com:0.0.0.0'"
+      "--add-host 'www.amazon.com:0.0.0.0'"
+      "--add-host 'douban.com:0.0.0.0'"
+      "--add-host 'www.douban.com:0.0.0.0'"
+    ];
   };
 
   security.acme.certs = {
