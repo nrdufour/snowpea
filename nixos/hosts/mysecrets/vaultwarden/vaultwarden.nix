@@ -30,7 +30,7 @@
     # backupDir = "TBD";
     environmentFile = config.sops.templates."vaultwarden.env".path;
     config = {
-      DOMAIN = "https://bitwarden.internal";
+      DOMAIN = "https://vaultwarden.internal";
       SIGNUPS_ALLOWED = false;
 
       ROCKET_ADDRESS = "127.0.0.1";
@@ -45,7 +45,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."bitwarden.internal" = {
+    virtualHosts."vaultwarden.internal" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
