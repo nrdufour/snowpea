@@ -37,7 +37,7 @@
 
   services.gitea-actions-runner = {
     # It's forgejo, not gitea ;-)
-    package = pkgs.unstable.forgejo-runner;
+    package = pkgs.forgejo-runner;
 
     instances = {
 
