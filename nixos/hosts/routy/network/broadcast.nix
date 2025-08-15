@@ -45,16 +45,18 @@
 
   # Firewall rules for SSDP and mDNS
   networking.firewall.extraCommands = ''
-    # SSDP multicast (UDP 1900)
-    iptables -A INPUT  -i lan0 -p udp --dport 1900 -d 239.255.255.250 -j ACCEPT
-    iptables -A INPUT  -i lab0 -p udp --dport 1900 -d 239.255.255.250 -j ACCEPT
-    iptables -A FORWARD -i lan0 -o lab0 -p udp --dport 1900 -d 239.255.255.250 -j ACCEPT
-    iptables -A FORWARD -i lab0 -o lan0 -p udp --dport 1900 -d 239.255.255.250 -j ACCEPT
+    # Define multicast ports and addresses
+    nft add rule inet filter input \
+      iifname { "lan0", "lab0" } \
+      udp dport { 1900, 5353 } \
+      ip daddr { 239.255.255.250, 224.0.0.251 } \
+      accept
 
-    # mDNS multicast (UDP 5353)
-    iptables -A INPUT  -i lan0 -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
-    iptables -A INPUT  -i lab0 -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
-    iptables -A FORWARD -i lan0 -o lab0 -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
-    iptables -A FORWARD -i lab0 -o lan0 -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
+    nft add rule inet filter forward \
+      iifname { "lan0", "lab0" } \
+      oifname { "lan0", "lab0" } \
+      udp dport { 1900, 5353 } \
+      ip daddr { 239.255.255.250, 224.0.0.251 } \
+      accept
   '';
 }
