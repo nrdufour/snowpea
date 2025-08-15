@@ -1,5 +1,10 @@
 { pkgs, config, ... }: {
 
+  imports =
+    [
+      # ./broadcast.nix
+    ];
+
   # Let's make sure we can forward traffic between the host and the router.
   boot = {
     kernel = {
@@ -49,9 +54,9 @@
         "lan0"
         "lab0"
         "lan1"
-        "lan0.20"
-        "lan0.50"
-        "lan0.100"
+        # "lan0.20"
+        # "lan0.50"
+        # "lan0.100"
       ];
       externalInterface = "wan0";
     };
