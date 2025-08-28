@@ -37,11 +37,12 @@ in
       "btrfs"
     ];
 
-    ## Setting the kernel at 6.13 which is supposed to cover rockchip support
-    ## kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
+    ## Setting the kernel at 6.16 which is supposed to cover rockchip support (since 6.13)
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
 
+    ## Commenting this out for now with 6.16 enabled
     # Switching back to 6.1.75 for now to have mali drivers present
-    kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ../pkgs/kernel/vendor.nix {});
+    # kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ../pkgs/kernel/vendor.nix {});
 
     # kernelParams copy from Armbian's /boot/armbianEnv.txt & /boot/boot.cmd
     kernelParams = [
