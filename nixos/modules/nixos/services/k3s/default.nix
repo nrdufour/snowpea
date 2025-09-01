@@ -120,6 +120,11 @@ in
       enable = true;
       name = "iqn.2005-10.nixos:${config.networking.hostName}";
     };
+    ## From https://github.com/longhorn/longhorn/issues/2166#issuecomment-2994323945
+    systemd.services.iscsid.serviceConfig = {
+      PrivateMounts = "yes";
+      BindPaths = "/run/current-system/sw/bin:/bin";
+    };
 
     # Adding a service to prune the images used by containerd
     systemd.services.ctr-prune = {
