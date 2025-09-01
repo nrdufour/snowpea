@@ -44,4 +44,19 @@
     };
   };
 
+  services.nginx = {
+    enable = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+
+    virtualHosts."adguard.internal" = {
+      serverName = "adguard.internal";
+      extraConfig = ''
+        client_max_body_size 2g;
+      '';
+      locations."/".proxyPass = "http://localhost:3003";
+    };
+  };
+
 }
