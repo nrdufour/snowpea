@@ -135,6 +135,7 @@
         address = [
           "10.0.0.1/24"
           "10.0.0.53/24"
+          "10.0.0.54/24"
         ];
         linkConfig = {
           ActivationPolicy = "always-up";
@@ -150,8 +151,9 @@
       "30-lab0" = {
         matchConfig.Name = "lab0";
         address = [
-          "10.1.0.1/24"
-          "10.1.0.53/24"
+          "10.1.0.1/24"  # router
+          "10.1.0.53/24" # authoritative dns
+          "10.1.0.54/24" # adguard
         ];
         linkConfig = {
           ActivationPolicy = "always-up";
@@ -162,8 +164,9 @@
       "30-lab1" = {
         matchConfig.Name = "lab1";
         address = [
-          "10.2.0.1/24"
-          "10.2.0.53/24"
+          "10.2.0.1/24"  # router
+          "10.2.0.53/24" # authoritative dns
+          "10.2.0.54/24" # adguard
         ];
         linkConfig = {
           ActivationPolicy = "always-up";

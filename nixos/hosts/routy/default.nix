@@ -9,6 +9,7 @@
       ./knot
       # ./bind
       ./firewall.nix
+      ./adguardhome
     ];
 
   networking.domain = "internal";
