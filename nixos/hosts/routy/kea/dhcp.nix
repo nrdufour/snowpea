@@ -8,7 +8,7 @@ let
   commonDhcpOptions = [
     {
       name = "domain-name-servers";
-      data = "10.0.0.1";
+      data = "10.0.0.54";
     }
     # {
     #   name = "time-servers";
