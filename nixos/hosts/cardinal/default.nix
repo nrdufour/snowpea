@@ -8,6 +8,7 @@
       ./backups
       ./jellyfin.nix
       ./cwa.nix
+      ./navidrome.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
