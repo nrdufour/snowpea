@@ -83,6 +83,17 @@
           # 10.in-addr.arpa.    	300	NS	ns1.internal.
           # 10.in-addr.arpa.    	300	NS	ns2.internal.
         }
+        { 
+          domain = "s3.garage.internal";
+
+          ## With the following content in the file /var/lib/knot/s3.garage.internal.zone
+          # $ORIGIN s3.garage.internal.
+          # $TTL 300
+          # @   IN SOA ns0.internal. nemo.ptinem.casa. 1 14400 3600 1209600 3600
+          #     IN NS  ns0.internal.
+          #     IN NS  ns1.internal.
+          #     IN NS  ns2.internal.         
+        }
       ];
 
     };
