@@ -212,7 +212,7 @@ in
                 option-data = [
                   {
                     # Make sure that step-ca resolves dns directly
-                    name = "routers";
+                    name = "domain-name-servers";
                     data = "10.0.0.1";
                   }
                 ];
