@@ -8,8 +8,8 @@ let
   commonDhcpOptions = [
     {
       name = "domain-name-servers";
-      # data = "10.0.0.54";
-      data = "10.0.0.1";
+      data = "10.0.0.54";
+      # data = "10.0.0.1";
     }
     # {
     #   name = "time-servers";
@@ -209,6 +209,13 @@ in
                 hostname = "mysecrets";
                 ip-address = "10.1.0.99";
                 hw-address = "d8:3a:dd:17:1e:1b";
+                option-data = [
+                  {
+                    # Make sure that step-ca resolves dns directly
+                    name = "routers";
+                    data = "10.0.0.1";
+                  }
+                ];
               }
               {
                 hostname = "cardinal";
