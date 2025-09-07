@@ -6,6 +6,9 @@
   services.navidrome = {
     enable = true;
     openFirewall = true;
+    settings = {
+      MusicFolder = "/tank/Media/Music";
+    };
   };
 
   security.acme.certs = {
