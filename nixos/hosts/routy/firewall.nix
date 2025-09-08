@@ -74,7 +74,7 @@
       # ------------------------------
       # Allow echo requests (ping) but limit to 10 packets/sec
       # with a small burst to stay responsive under normal use.
-      iifname "wan0" ip protocol icmp icmp type echo-request limit rate 10/second burst 20 accept
+      iifname "wan0" ip protocol icmp icmp type echo-request limit rate 10/second burst 20 packets accept
 
       # Drop all other ICMP echo requests on WAN
       iifname "wan0" ip protocol icmp icmp type echo-request drop
