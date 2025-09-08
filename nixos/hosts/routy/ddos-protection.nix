@@ -146,7 +146,8 @@
       
       # Egress shaping with QoS classes (880 Mbps upload capacity)
       # Root HTB qdisc with 90% of upload capacity (792 Mbps) to prevent bufferbloat
-      ${pkgs.iproute2}/bin/tc qdisc add dev wan0 root handle 1: htb default 30
+      # r2q=10 reduces quantum size for high-bandwidth classes (eliminates warnings)
+      ${pkgs.iproute2}/bin/tc qdisc add dev wan0 root handle 1: htb default 30 r2q 10
       ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1: classid 1:1 htb rate 792mbit
       
       # Priority traffic (DNS, SSH, ICMP, etc.) - 40% of capacity guaranteed, can burst to 75%
