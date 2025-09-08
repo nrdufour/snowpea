@@ -140,10 +140,10 @@
         # Configure even without carrier
         networkConfig = {
           ConfigureWithoutCarrier = true;
+          KeepConfiguration = "static";
         };
         linkConfig = {
           ActivationPolicy  = "always-up";
-          KeepConfiguration = "static";
           RequiredForOnline = "no";
         };
         # vlan = [
@@ -163,10 +163,10 @@
         # Configure even without carrier
         networkConfig = {
           ConfigureWithoutCarrier = true;
+          KeepConfiguration = "static";
         };
         linkConfig = {
           ActivationPolicy  = "always-up";
-          KeepConfiguration = "static";
           RequiredForOnline = "no";
         };
       };
@@ -181,10 +181,10 @@
         # Configure even without carrier
         networkConfig = {
           ConfigureWithoutCarrier = true;
+          KeepConfiguration = "static";
         };
         linkConfig = {
           ActivationPolicy  = "always-up";
-          KeepConfiguration = "static";
           RequiredForOnline = "no";
         };
       };
