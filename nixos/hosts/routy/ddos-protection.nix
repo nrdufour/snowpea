@@ -1,9 +1,20 @@
 { config, pkgs, ... }: {
 
-  # Create log directory for DDoS monitoring
+  # Create dedicated user for DDoS monitoring service
+  users.users.ddos-monitor = {
+    description = "DDoS Monitor Service User";
+    isSystemUser = true;
+    group = "ddos-monitor";
+    home = "/var/empty";
+    shell = "/run/current-system/sw/bin/nologin";
+  };
+
+  users.groups.ddos-monitor = {};
+
+  # Create log directory for DDoS monitoring with dedicated user
   systemd.tmpfiles.rules = [
-    "d /var/log/ddos 0755 nobody nobody -"
-    "f /var/log/ddos/monitor.log 0644 nobody nobody -"
+    "d /var/log/ddos 0755 ddos-monitor ddos-monitor -"
+    "f /var/log/ddos/monitor.log 0644 ddos-monitor ddos-monitor -"
   ];
 
   # DDoS monitoring and response service
@@ -16,8 +27,8 @@
     
     serviceConfig = {
       Type = "simple";
-      User = "nobody";
-      Group = "nobody";
+      User = "ddos-monitor";
+      Group = "ddos-monitor";
       NoNewPrivileges = true;
       ProtectSystem = "strict";
       ProtectHome = true;
@@ -25,6 +36,16 @@
       PrivateTmp = true;
       Restart = "always";
       RestartSec = 30;
+      
+      # Additional security hardening
+      ProtectKernelTunables = true;
+      ProtectKernelModules = true;
+      ProtectControlGroups = true;
+      RestrictSUIDSGID = true;
+      RestrictRealtime = true;
+      LockPersonality = true;
+      MemoryDenyWriteExecute = true;
+      RemoveIPC = true;
     };
     
     script = ''
@@ -177,7 +198,7 @@
     delaycompress = true;
     missingok = true;
     notifempty = true;
-    create = "644 nobody nobody";
+    create = "644 ddos-monitor ddos-monitor";
   };
 
   # Emergency DDoS response script
