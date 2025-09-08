@@ -19,7 +19,7 @@
   # Override any automatic hostname generation with explicit mapping
   networking.hosts = {
     "10.0.0.1" = [ "routy.internal" "routy" ];
-    "127.0.0.2" = [ ];  # Remove any entries for 127.0.0.2
+    "127.0.0.2" = lib.mkForce [ ];  # Remove any entries for 127.0.0.2
   };
 
   services.openssh.openFirewall = false;
