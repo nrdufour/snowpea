@@ -1,31 +1,36 @@
 { config, pkgs, ... }: {
 
+  # Create log directory for DDoS monitoring
+  systemd.tmpfiles.rules = [
+    "d /var/log/ddos 0755 nobody nobody -"
+    "f /var/log/ddos/monitor.log 0644 nobody nobody -"
+  ];
+
   # DDoS monitoring and response service
   systemd.services.ddos-monitor = {
     enable = true;
-    description = "DDoS Attack Monitor for 800Mbps Connection";
+    description = "DDoS Attack Monitor for 940/880 Mbps Connection";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    after = [ "network.target" "systemd-tmpfiles-setup.service" ];
+    wants = [ "systemd-tmpfiles-setup.service" ];
     
     serviceConfig = {
       Type = "simple";
       User = "nobody";
+      Group = "nobody";
       NoNewPrivileges = true;
       ProtectSystem = "strict";
       ProtectHome = true;
-      ReadWritePaths = [ "/var/log" ];
+      ReadWritePaths = [ "/var/log/ddos" ];
       PrivateTmp = true;
       Restart = "always";
       RestartSec = 30;
     };
     
     script = ''
-      log_file="/var/log/ddos-monitor.log"
+      log_file="/var/log/ddos/monitor.log"
       
-      # Ensure log file exists with correct permissions
-      touch "$log_file"
-      
-      echo "$(date): Starting DDoS monitor for 800Mbps connection" >> "$log_file"
+      echo "$(date): Starting DDoS monitor for 940/880 Mbps connection" >> "$log_file"
       
       while true; do
         # Get current network statistics
@@ -165,7 +170,7 @@
 
   # Log rotation for DDoS monitoring
   services.logrotate.settings.ddos-monitor = {
-    files = [ "/var/log/ddos-monitor.log" ];
+    files = [ "/var/log/ddos/monitor.log" ];
     frequency = "daily";
     rotate = 7;
     compress = true;
@@ -207,7 +212,7 @@
         echo "Upload: ''${TX_RATE}Mbps (''${TX_PERCENT}% of 880Mbps capacity)"
         echo ""
         echo "Recent DDoS alerts:"
-        tail -10 /var/log/ddos-monitor.log 2>/dev/null || echo "No log file found"
+        tail -10 /var/log/ddos/monitor.log 2>/dev/null || echo "No log file found"
         
       else
         echo "DDoS Emergency Response Tool"
