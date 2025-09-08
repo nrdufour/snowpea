@@ -15,6 +15,11 @@
 
   networking.domain = "internal";
 
+  # Fix hostname resolution - use actual interface IP instead of 127.0.0.2
+  networking.hosts = {
+    "10.0.0.1" = [ "routy.internal" "routy" ];
+  };
+
   services.openssh.openFirewall = false;
 
   # Use the systemd-boot EFI boot loader.
