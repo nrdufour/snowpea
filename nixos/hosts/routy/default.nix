@@ -9,6 +9,7 @@
       ./knot
       # ./bind
       ./firewall.nix
+      ./ddos-protection.nix
       ./adguardhome
     ];
 
@@ -26,6 +27,11 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     dig
+    iftop      # Real-time bandwidth monitoring by connection
+    nethogs    # Per-process bandwidth usage
+    tcpdump    # Packet analysis for DDoS investigation
+    ethtool    # Network interface statistics
+    conntrack-tools # Connection tracking utilities
   ];
 
   system.autoUpgrade = {
