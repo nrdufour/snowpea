@@ -214,10 +214,16 @@
       
       if [ "$1" = "block" ]; then
         echo "EMERGENCY: Blocking all new WAN connections for 60 seconds..."
-        ${iptables}/bin/iptables -I INPUT -i wan0 -m state --state NEW -j DROP
+        
+        # Add emergency rule to nftables using nft command
+        ${pkgs.nftables}/bin/nft add rule inet nixos-fw nixos-fw-input iifname "wan0" ct state new drop comment \"ddos-emergency-block\"
+        
         echo "Emergency block activated. Will auto-remove in 60 seconds."
         sleep 60
-        ${iptables}/bin/iptables -D INPUT -i wan0 -m state --state NEW -j DROP
+        
+        # Remove emergency rule by comment
+        ${pkgs.nftables}/bin/nft delete rule inet nixos-fw nixos-fw-input handle \$\(${pkgs.nftables}/bin/nft -a list chain inet nixos-fw nixos-fw-input | ${pkgs.gawk}/bin/awk '/ddos-emergency-block/ {print \$NF}'\)
+        
         echo "Emergency block removed."
         
       elif [ "$1" = "status" ]; then
