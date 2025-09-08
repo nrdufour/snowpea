@@ -12,12 +12,12 @@
         "net.ipv4.conf.all.forwarding" = true;
         "net.ipv6.conf.all.forwarding" = true;
         # TODO: Configure IPV6
-        "net.ipv6.conf.wan.disable_ipv6" = true;
+        "net.ipv6.conf.wan0.disable_ipv6" = true;
         # "net.ipv6.conf.all.accept_ra" = 0;
         # "net.ipv6.conf.all.autoconf" = 0;
         # "net.ipv6.conf.all.use_tempaddr" = 0;
-        # "net.ipv6.conf.wan.accept_ra" = 2;
-        # "net.ipv6.conf.wan.autoconf" = 1;
+        # "net.ipv6.conf.wan0.accept_ra" = 2;
+        # "net.ipv6.conf.wan0.autoconf" = 1;
 
         # use TCP BBR has significantly increased throughput and reduced latency for connections
         "net.core.default_qdisc" = "fq";
@@ -137,8 +137,13 @@
           "10.0.0.53/24"
           "10.0.0.54/24"
         ];
+        # Configure even without carrier
+        networkConfig = {
+          ConfigureWithoutCarrier = true;
+        };
         linkConfig = {
-          ActivationPolicy = "always-up";
+          ActivationPolicy  = "always-up";
+          KeepConfiguration = "static";
           RequiredForOnline = "no";
         };
         # vlan = [
@@ -155,8 +160,13 @@
           "10.1.0.53/24" # authoritative dns
           "10.1.0.54/24" # adguard
         ];
+        # Configure even without carrier
+        networkConfig = {
+          ConfigureWithoutCarrier = true;
+        };
         linkConfig = {
-          ActivationPolicy = "always-up";
+          ActivationPolicy  = "always-up";
+          KeepConfiguration = "static";
           RequiredForOnline = "no";
         };
       };
@@ -168,8 +178,13 @@
           "10.2.0.53/24" # authoritative dns
           "10.2.0.54/24" # adguard
         ];
+        # Configure even without carrier
+        networkConfig = {
+          ConfigureWithoutCarrier = true;
+        };
         linkConfig = {
-          ActivationPolicy = "always-up";
+          ActivationPolicy  = "always-up";
+          KeepConfiguration = "static";
           RequiredForOnline = "no";
         };
       };
