@@ -45,8 +45,8 @@
       # UDP flood protection - increased for legitimate gigabit UDP traffic
       # Higher rates accommodate video streaming, gaming, DNS, and other UDP services
       # 500/sec sustained with 1000 packet burst balances protection vs. functionality
-      iifname "wan0" udp limit rate 500/second burst 1000 packets accept
-      iifname "wan0" udp drop
+      iifname "wan0" ip protocol udp limit rate 500/second burst 1000 packets accept
+      iifname "wan0" ip protocol udp drop
 
       # Invalid TCP flag combinations (port scan protection)
       # Drop packets with all TCP flags set (XMAS scan detection)
