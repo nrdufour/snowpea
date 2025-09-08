@@ -196,7 +196,7 @@
       elif [ "$1" = "status" ]; then
         echo "=== DDoS Protection Status ==="
         echo "Current connections:"
-        ${procps}/bin/ss -s
+        ${pkgs.iproute2}/bin/ss -s
         echo ""
         echo "Current bandwidth utilization (last 5 seconds):"
         RX_BYTES=$(cat /sys/class/net/wan0/statistics/rx_bytes 2>/dev/null || echo 0)
