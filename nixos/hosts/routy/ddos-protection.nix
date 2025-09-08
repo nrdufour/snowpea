@@ -152,15 +152,18 @@
       
       # Priority traffic (DNS, SSH, ICMP, etc.) - 40% of capacity guaranteed, can burst to 75%
       # High priority ensures critical services remain responsive during attacks
-      ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1:1 classid 1:10 htb rate 317mbit ceil 594mbit
+      # quantum 10000 prevents "quantum is big" warning for high-bandwidth class
+      ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1:1 classid 1:10 htb rate 317mbit ceil 594mbit quantum 10000
       
       # Normal traffic (HTTP/HTTPS, regular applications) - 45% guaranteed, can use up to 70%
       # Adequate bandwidth for typical internet usage while preventing starvation
-      ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1:1 classid 1:20 htb rate 357mbit ceil 554mbit
+      # quantum 12000 prevents "quantum is big" warning for high-bandwidth class
+      ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1:1 classid 1:20 htb rate 357mbit ceil 554mbit quantum 12000
       
       # Bulk/default traffic (file transfers, P2P, unknown) - 15% guaranteed, max 50%
       # Ensures bulk traffic doesn't interfere with interactive services during attacks
-      ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1:1 classid 1:30 htb rate 119mbit ceil 396mbit
+      # quantum 5000 appropriate for lower bandwidth class
+      ${pkgs.iproute2}/bin/tc class add dev wan0 parent 1:1 classid 1:30 htb rate 119mbit ceil 396mbit quantum 5000
       
       # Add fair queuing to each class
       ${pkgs.iproute2}/bin/tc qdisc add dev wan0 parent 1:10 handle 10: sfq perturb 10
