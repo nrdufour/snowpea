@@ -16,8 +16,10 @@
   networking.domain = "internal";
 
   # Fix hostname resolution - use actual interface IP instead of 127.0.0.2
+  # Override any automatic hostname generation with explicit mapping
   networking.hosts = {
     "10.0.0.1" = [ "routy.internal" "routy" ];
+    "127.0.0.2" = [ ];  # Remove any entries for 127.0.0.2
   };
 
   services.openssh.openFirewall = false;
