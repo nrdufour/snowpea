@@ -41,6 +41,10 @@ in
       "29811:29811" # EAP Discovery
       "29812:29812" # Manager V1
       "29813:29813" # Manager V2
+      "29814:29814" # Inform
+      "29815:29815" # Device management
+      "29816:29816" # Device management
+      "19810:19810/udp" # Device management UDP
     ];
     environment = {
       MANAGE_HTTP_PORT = "8088";
@@ -66,24 +70,28 @@ in
       29811 # EAP Discovery
       29812 # Manager V1
       29813 # Manager V2
+      29814 # Inform
+      29815 # Device management
+      29816 # Device management
     ];
     lan0.allowedUDPPorts = [
       27001 # Discovery
       29810 # Discovery
+      19810 # Device management
     ];
     
     lab0.allowedTCPPorts = [
-      8088 8043 8843 27002 29811 29812 29813
+      8088 8043 8843 27002 29811 29812 29813 29814 29815 29816
     ];
     lab0.allowedUDPPorts = [
-      27001 29810
+      27001 29810 19810
     ];
     
     lab1.allowedTCPPorts = [
-      8088 8043 8843 27002 29811 29812 29813
+      8088 8043 8843 27002 29811 29812 29813 29814 29815 29816
     ];
     lab1.allowedUDPPorts = [
-      27001 29810
+      27001 29810 19810
     ];
   };
 
