@@ -24,6 +24,28 @@
 
   services.openssh.openFirewall = false;
 
+  # Configure rsyslog to capture blocked connection attempts
+  services.rsyslog = {
+    enable = true;
+    extraConfig = ''
+      # Capture all blocked connection messages to separate log file
+      :msg,contains,"BLOCKED-CONN:" /var/log/blocked-connections.log
+      & stop
+    '';
+  };
+
+  # Log rotation for blocked connections
+  services.logrotate.settings.blocked-connections = {
+    files = [ "/var/log/blocked-connections.log" ];
+    frequency = "daily";
+    rotate = 30;
+    compress = true;
+    delaycompress = true;
+    missingok = true;
+    notifempty = true;
+    create = "644 root root";
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
