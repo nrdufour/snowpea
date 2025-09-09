@@ -10,6 +10,7 @@
       # ./bind
       ./firewall.nix
       ./ddos-protection.nix
+      ./omada-controller.nix
       ./adguardhome
     ];
 
