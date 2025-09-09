@@ -52,7 +52,7 @@ in
       TZ = "America/New_York";
     };
     extraOptions = [
-      "--restart=unless-stopped"
+      # NixOS systemd handles restart policy, not the container
     ];
   };
 
