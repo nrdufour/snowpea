@@ -24,13 +24,22 @@
 
   services.openssh.openFirewall = false;
 
-  # Configure rsyslog to capture blocked connection attempts
-  services.rsyslog = {
-    enable = true;
-    extraConfig = ''
-      # Capture all blocked connection messages to separate log file
-      :msg,contains,"BLOCKED-CONN:" /var/log/blocked-connections.log
-      & stop
+  # Simple service to extract blocked connection logs from journal
+  systemd.services.blocked-connections-logger = {
+    description = "Extract blocked connections from journal to separate log";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "systemd-journald.service" ];
+    
+    serviceConfig = {
+      Type = "simple";
+      Restart = "always";
+      RestartSec = 10;
+    };
+    
+    script = ''
+      # Follow journal for BLOCKED-CONN messages and write to log file
+      ${pkgs.systemd}/bin/journalctl -f -k -g "BLOCKED-CONN:" --no-pager | \
+        ${pkgs.coreutils}/bin/tee -a /var/log/blocked-connections.log
     '';
   };
 
