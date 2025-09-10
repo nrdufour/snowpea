@@ -142,9 +142,6 @@
       # ------------------------------
       # Log suspicious activity (rate limited to avoid log spam)
       iifname "wan0" limit rate 10/minute burst 5 packets log prefix "WAN-SUSPICIOUS: " level warn
-      
-      # Log all blocked connection attempts to separate file (no rate limit)
-      iifname "wan0" log prefix "BLOCKED-CONN: " level info
     '';
   };
 

@@ -9,7 +9,7 @@
       ./knot
       # ./bind
       ./firewall.nix
-      ./ddos-protection.nix
+      # ./ddos-protection.nix
       ./omada-controller.nix
       ./adguardhome
     ];
@@ -24,37 +24,6 @@
   };
 
   services.openssh.openFirewall = false;
-
-  # Simple service to extract blocked connection logs from journal
-  systemd.services.blocked-connections-logger = {
-    description = "Extract blocked connections from journal to separate log";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "systemd-journald.service" ];
-    
-    serviceConfig = {
-      Type = "simple";
-      Restart = "always";
-      RestartSec = 10;
-    };
-    
-    script = ''
-      # Follow journal for BLOCKED-CONN messages and write to log file
-      ${pkgs.systemd}/bin/journalctl -f -k -g "BLOCKED-CONN:" --no-pager | \
-        ${pkgs.coreutils}/bin/tee -a /var/log/blocked-connections.log
-    '';
-  };
-
-  # Log rotation for blocked connections
-  services.logrotate.settings.blocked-connections = {
-    files = [ "/var/log/blocked-connections.log" ];
-    frequency = "daily";
-    rotate = 30;
-    compress = true;
-    delaycompress = true;
-    missingok = true;
-    notifempty = true;
-    create = "644 root root";
-  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
