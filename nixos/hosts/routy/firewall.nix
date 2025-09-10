@@ -21,43 +21,36 @@
     };
 
     extraInputRules = ''
+
+      #### BLOCK commented out for now as it has its own issues
+      #### Looks like it maybe having bad effects and no logging at all regarding blocked conns
+      ####
       # # ------------------------------
-      # # DDoS Protection (940/880 Mbps optimized)
+      # # DDoS Protection (940/880 Mbps optimized) - Fixed for proper logging
       # # ------------------------------
-      # 
-      # # SYN flood protection - limit new TCP connections for gigabit capacity
-      # # Rate increased from 50 to 100/sec to handle legitimate high-bandwidth applications
-      # # Burst allows temporary spikes for bursty applications (web servers, etc.)
+      
+      # # SYN flood protection - restructured to log properly
+      # # Log all SYN packets that exceed rate limit (these are potential attacks)
       # iifname "wan0" tcp flags & (fin|syn|rst|ack) == syn limit rate 100/second burst 200 packets accept
       # iifname "wan0" tcp flags & (fin|syn|rst|ack) == syn log prefix "BLOCKED-CONN-SYN: " level info drop
-      #
-      # # Connection limit per source IP - increased for gigabit legitimate usage
-      # # Higher limit accommodates CDNs, cloud services, and high-throughput applications
-      # # 400 connections per IP allows for modern web browsing with many parallel requests
+
+      # # Connection limit per source IP - log violations  
       # iifname "wan0" ct count over 400 log prefix "BLOCKED-CONN-LIMIT: " level info drop
-      # 
-      # # Rate limit new connections globally - scaled for gigabit capacity (940/880 Mbps)
-      # # 1000/sec allows for high-throughput applications while blocking flood attacks
-      # # Burst of 2000 handles temporary spikes from legitimate traffic
+      
+      # # Rate limit new connections globally - restructured for logging
+      # # Allow legitimate traffic under rate limits, log and drop excess
       # iifname "wan0" ct state new limit rate 1000/second burst 2000 packets accept
       # iifname "wan0" ct state new log prefix "BLOCKED-CONN-RATE: " level info drop
-      #
-      # # UDP flood protection - increased for legitimate gigabit UDP traffic
-      # # Higher rates accommodate video streaming, gaming, DNS, and other UDP services
-      # # 500/sec sustained with 1000 packet burst balances protection vs. functionality
+
+      # # UDP flood protection - restructured for logging
       # iifname "wan0" ip protocol udp limit rate 500/second burst 1000 packets accept
-      # iifname "wan0" ip protocol udp drop
-      #
-      # # Invalid TCP flag combinations (port scan protection)
-      # # Drop packets with all TCP flags set (XMAS scan detection)
-      # iifname "wan0" tcp flags & (fin|syn|rst|psh|ack|urg) == fin|syn|rst|psh|ack|urg drop
-      # 
-      # # Drop packets with no TCP flags set (NULL scan detection)
-      # iifname "wan0" tcp flags & (fin|syn|rst|ack) == 0 drop
-      #
-      # # Rate limit established connections - increased for gigabit throughput
-      # # 2000/sec sustained allows full utilization of 940/880 Mbps connection
-      # # Higher burst accommodates traffic spikes from legitimate high-bandwidth apps
+      # iifname "wan0" ip protocol udp log prefix "BLOCKED-CONN-UDP: " level info drop
+
+      # # Invalid TCP flag combinations (port scan protection) - add logging
+      # iifname "wan0" tcp flags & (fin|syn|rst|psh|ack|urg) == fin|syn|rst|psh|ack|urg log prefix "BLOCKED-CONN-XMAS: " level info drop
+      # iifname "wan0" tcp flags & (fin|syn|rst|ack) == 0 log prefix "BLOCKED-CONN-NULL: " level info drop
+
+      # # Rate limit established connections - allow legitimate traffic
       # ct state established,related limit rate 2000/second burst 4000 packets accept
       
       # ------------------------------
