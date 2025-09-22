@@ -13,6 +13,12 @@
           owner = "kea";
           group = "kea";
         };
+
+        "tailscale_auth_key" = {
+          mode = "0440";
+          owner = "root";
+          group = "root";
+        };
       };
     };
   };
