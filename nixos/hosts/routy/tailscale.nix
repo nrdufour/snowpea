@@ -6,7 +6,7 @@
     enable = true;
     useRoutingFeatures = "both";  # Enable both client and server routing features
     extraUpFlags = [
-      "--advertise-routes=10.0.0.0/8"  # Advertise local network routes
+      "--advertise-routes=10.1.0.0/24"  # Advertise only the 10.1.0.0/24 subnet
       "--accept-routes"  # Accept routes from other nodes
     ];
     authKeyFile = "${config.sops.secrets."tailscale_auth_key".path}";
