@@ -143,7 +143,7 @@
     # Enabling it after all, as long as we understand the fields `RequiredForOnline`
     # and `ActivationPolicy` used in the linkConfig below
     ## Ref: https://www.man7.org/linux/man-pages/man5/systemd.network.5.html
-    wait-online.enable = false;
+    wait-online.enable = true;
 
     links = {
       # rename all interface names to be easier to identify

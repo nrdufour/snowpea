@@ -12,7 +12,6 @@
       # ./ddos-protection.nix
       ./omada-controller.nix
       ./adguardhome
-      ./tailscale.nix
     ];
 
   networking.domain = "internal";
