@@ -7,7 +7,7 @@ let
   ## k3s: 1.32
   ## k3s_1_29: 1.29
   ## and so on
-  k3sPackage = pkgs.k3s;
+  k3sPackage = pkgs.k3s_1_33;
 in
 {
   options.mySystem.services.k3s = {
