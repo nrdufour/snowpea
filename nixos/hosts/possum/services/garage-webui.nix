@@ -4,7 +4,7 @@
   ...
 }:
 let 
-  image = "khairul169/garage-webui:1.0.9@sha256:c931455c25bfbededa450cd7ec6f389ce52ad1bc861f8d0b93d00ced78e438dd";
+  image = "khairul169/garage-webui:1.1.0@sha256:17c793551873155065bf9a022dabcde874de808a1f26e648d4b82e168806439c";
 in 
  {
 
