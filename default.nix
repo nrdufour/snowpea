@@ -6,5 +6,6 @@ pkgs.mkShell {
     jq
     statix
     nixpkgs-fmt
+    nixos-rebuild
   ];
 }

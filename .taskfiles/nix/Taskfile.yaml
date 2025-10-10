@@ -29,7 +29,14 @@ tasks:
       Args:
         host: machine hostname to deploy (required)
     cmds:
-      - nixos-rebuild switch -j auto --use-remote-sudo --build-host {{.host}}.internal --target-host {{.host}}.internal --flake ".#{{.host}}" --fast
+      - |
+        # Ensure TMPDIR exists or use /tmp
+        if [ -n "$TMPDIR" ]; then
+          mkdir -p "$TMPDIR" 2>/dev/null || export TMPDIR=/tmp
+        else
+          export TMPDIR=/tmp
+        fi
+        nixos-rebuild switch -j auto --use-remote-sudo --build-host {{.host}}.internal --target-host {{.host}}.internal --flake ".#{{.host}}" --fast
     requires:
       vars: ["host"]
 
@@ -38,6 +45,13 @@ tasks:
     cmds:
       - echo "This will deploy the local flake to all whitelisted hosts."
       - task: .prompt_to_continue
+      - |
+        # Ensure TMPDIR exists or use /tmp
+        if [ -n "$TMPDIR" ]; then
+          mkdir -p "$TMPDIR" 2>/dev/null || export TMPDIR=/tmp
+        else
+          export TMPDIR=/tmp
+        fi
       - for: { var: NIX_HOSTS, as: HOST }
         cmd: nixos-rebuild switch -j auto --use-remote-sudo --build-host {{.HOST}}.internal --target-host {{.HOST}}.internal --flake ".#{{.HOST}}" --fast
     preconditions:
