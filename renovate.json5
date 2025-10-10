@@ -41,4 +41,15 @@
       "automerge": false
     },
   ],
+  regexManagers: [
+    {
+      description: 'Update Docker images in Nix files with let bindings',
+      fileMatch: ['\\.nix$'],
+      matchStrings: [
+        '\\s+image\\s*=\\s*"(?<depName>[^:]+):(?<currentValue>[^@]+)@(?<currentDigest>sha256:[a-f0-9]+)"'
+      ],
+      datasourceTemplate: 'docker',
+      versioningTemplate: 'docker',
+    },
+  ],
 }
