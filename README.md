@@ -89,6 +89,14 @@ just sops-update
 - **just** for automation (because it's better than make)
 - **SD card images** for all the Pis (flash and forget)
 
+## Related Projects
+
+This project works in tandem with [home-ops](https://github.com/nrdufour/home-ops), which contains all the Kubernetes manifests and applications that run on the k3s cluster. SnowPea provides the NixOS infrastructure layer, while home-ops manages the workloads running on top of it.
+
+**The division of labor:**
+- **SnowPea** (this repo): NixOS configurations, k3s setup, hardware management, system-level services
+- **home-ops**: Kubernetes manifests, Helm charts, ArgoCD applications, cluster workloads
+
 ## Goals
 
 - [x] Produce SD card images for Raspberry Pi machines
