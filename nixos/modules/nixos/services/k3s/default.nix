@@ -71,6 +71,7 @@ in
           "--tls-san opi01.internal"
           "--tls-san opi02.internal"
           "--tls-san opi03.internal"
+          "--tls-san 10.1.0.5"
           # Components extra args
           "--kube-apiserver-arg default-not-ready-toleration-seconds=20"
           "--kube-apiserver-arg default-unreachable-toleration-seconds=20"
