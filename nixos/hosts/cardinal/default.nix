@@ -40,8 +40,8 @@
     enable = true;
     # Avoid using sharenfs settings in ZFS
     exports = ''
-      /tank/Books 10.0.0.0/8(all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000)
-      /tank/Media 10.0.0.0/8(all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000)
+      /tank/Books 10.0.0.0/8(all_squash,rw,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000)
+      /tank/Media 10.0.0.0/8(all_squash,rw,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000)
     '';
   };
 
