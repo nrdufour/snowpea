@@ -35,6 +35,11 @@
       repositoryFile  = config.sops.secrets."backups/media/repository".path;
       passwordFile    = config.sops.secrets."backups/local-restic/password".path;
 
+      exclude = [
+        # No point backing this up
+        "/tank/Media/torrents"
+      ];
+
       timerConfig = {
         OnCalendar = "*-*-* 10:00:00";
         Persistent = true;
