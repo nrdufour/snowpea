@@ -66,6 +66,17 @@
     };
   };
 
+  # To fix asymetric network issues
+  networking.localCommands = ''
+    # Route replies from 10.1.0.65 back through the 10.1.0.0/24 gateway
+    ip rule add from 10.1.0.65 table 100
+    ip route add default via 10.1.0.1 dev enp1s0 table 100
+    
+    # Route replies from 10.0.0.30 back through the 10.0.0.0/24 gateway  
+    ip rule add from 10.0.0.30 table 101
+    ip route add default via 10.0.0.1 dev enp2s0 table 101
+  '';
+
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
