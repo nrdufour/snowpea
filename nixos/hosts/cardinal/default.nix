@@ -79,11 +79,19 @@
     };
     
     script = ''
-      ${pkgs.iproute2}/bin/ip rule add from 10.1.0.65 table 100 || true
-      ${pkgs.iproute2}/bin/ip route add default via 10.1.0.1 dev enp1s0 table 100 || true
+      # Clean up first
+      ${pkgs.iproute2}/bin/ip rule del from 10.1.0.65 table 100 2>/dev/null || true
+      ${pkgs.iproute2}/bin/ip route flush table 100 2>/dev/null || true
       
-      ${pkgs.iproute2}/bin/ip rule add from 10.0.0.30 table 101 || true
-      ${pkgs.iproute2}/bin/ip route add default via 10.0.0.1 dev enp2s0 table 101 || true
+      ${pkgs.iproute2}/bin/ip rule del from 10.0.0.30 table 101 2>/dev/null || true
+      ${pkgs.iproute2}/bin/ip route flush table 101 2>/dev/null || true
+      
+      # Add the rules
+      ${pkgs.iproute2}/bin/ip rule add from 10.1.0.65 table 100
+      ${pkgs.iproute2}/bin/ip route add default via 10.1.0.1 dev enp1s0 table 100
+      
+      ${pkgs.iproute2}/bin/ip rule add from 10.0.0.30 table 101
+      ${pkgs.iproute2}/bin/ip route add default via 10.0.0.1 dev enp2s0 table 101
     '';
     
     preStop = ''
