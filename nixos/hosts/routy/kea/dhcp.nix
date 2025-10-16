@@ -69,6 +69,11 @@ in
                 hw-address = "2c:6f:c9:0d:d1:7d";
               }
               {
+                hostname = "cardinal-tv";
+                ip-address = "10.0.0.30";
+                hw-address = "78:55:36:00:5a:1a";
+              }
+              {
                 # In the basement
                 hostname = "eap01";
                 ip-address = "10.0.0.201";
