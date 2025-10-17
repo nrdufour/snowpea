@@ -8,8 +8,8 @@
   systemd.timers."rclone-books-remote" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      # starts in the morning
-      OnCalendar = "08:30";
+      # starts after restic books backup completes (restic starts at 9:00)
+      OnCalendar = "11:00";
       Unit = "rclone-books-remote.service";
     };
   };
@@ -26,6 +26,8 @@
       Type = "oneshot";
       User = "root";
     };
+    after = [ "restic-backups-books.service" ];
+    requires = [ "restic-backups-books.service" ];
   };
 
 }

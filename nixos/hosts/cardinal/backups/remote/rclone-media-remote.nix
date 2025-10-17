@@ -8,8 +8,8 @@
   systemd.timers."rclone-media-remote" = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      # starts in the morning
-      OnCalendar = "09:30";
+      # starts after restic media backup completes (restic starts at 10:00)
+      OnCalendar = "12:00";
       Unit = "rclone-media-remote.service";
     };
   };
@@ -26,6 +26,8 @@
       Type = "oneshot";
       User = "root";
     };
+    after = [ "restic-backups-media.service" ];
+    requires = [ "restic-backups-media.service" ];
   };
 
 }
