@@ -52,5 +52,15 @@
       '';
       locations."/".proxyPass = "http://localhost:8096";
     };
+
+    virtualHosts."jellyfin-tv.internal" = {
+      # HTTP-only for Samsung TV compatibility
+      forceSSL = false;
+      enableACME = false;
+      extraConfig = ''
+        client_max_body_size 2g;
+      '';
+      locations."/".proxyPass = "http://localhost:8096";
+    };
   };
 }
