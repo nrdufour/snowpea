@@ -9,22 +9,22 @@ SnowPea is a NixOS Flake for managing home infrastructure consisting primarily o
 ## Commands
 
 ### Core Development
-- `task lint` - Run statix lint to check Nix code quality
-- `task format` - Format project files using nixpkgs-fmt
-- `nix flake check` or `task nix:check` - Validate the flake configuration
-- `nix flake update` or `task nix:update` - Update flake inputs (flake.lock)
+- `just lint` - Run statix lint to check Nix code quality
+- `just format` - Format project files using nixpkgs-fmt
+- `nix flake check` or `just nix-check` - Validate the flake configuration
+- `nix flake update` or `just nix-update` - Update flake inputs (flake.lock)
 
 ### Host Management
-- `task nix:list-hosts` - List all configured NixOS hosts
-- `task nix:deploy host=<hostname>` - Deploy configuration to a specific host
-- `task nix:deploy-all` - Deploy configuration to all hosts (with confirmation prompt)
+- `just nix-list-hosts` - List all configured NixOS hosts
+- `just nix-deploy host=<hostname>` - Deploy configuration to a specific host
+- `just nix-deploy-all` - Deploy configuration to all hosts (with confirmation prompt)
 
 ### SD Card Image Building
-- `task sd:build host=<hostname>` - Build SD card image for a host
-- `task sd:flash host=<hostname>` - Build and flash SD card image using rpi-imager
+- `just sd-build host=<hostname>` - Build SD card image for a host
+- `just sd-flash host=<hostname>` - Build and flash SD card image using rpi-imager
 
 ### Secrets Management
-- `task sops:update` - Update all SOPS encrypted secrets
+- `just sops-update` - Update all SOPS encrypted secrets
 
 ## Architecture
 
@@ -41,7 +41,7 @@ The flake.nix defines a `mkNixosConfig` function that standardizes machine confi
   - `global.nix` - Base configuration applied to all machines
 - `nixos/hosts/` - Host-specific configurations for each machine
 - `nixos/modules/nixos/` - Custom NixOS modules for services and system configuration
-- `.taskfiles/` - Task definitions organized by domain (nix, sops, sd)
+- `.justfiles/` - Just recipes organized by domain (nix, sops, sd)
 
 ### Machine Categories
 - **Standalone Servers**: eagle, mysecrets, possum, beacon, routy, cardinal
@@ -52,16 +52,16 @@ The flake.nix defines a `mkNixosConfig` function that standardizes machine confi
 - NixOS 25.05 with flakes
 - SOPS for secrets management
 - k3s for Kubernetes orchestration
-- Task runner for automation
+- Just command runner for automation
 - ARM64 and x86_64 architectures
 
 ## Development Workflow
 
 When modifying configurations:
 1. Make changes to the appropriate profile, host config, or module
-2. Run `task lint` and `task format` to ensure code quality
-3. Test with `task nix:check` to validate the flake
-4. Deploy to specific host with `task nix:deploy host=<hostname>`
-5. For new SD card images, use `task sd:build host=<hostname>`
+2. Run `just lint` and `just format` to ensure code quality
+3. Test with `just nix-check` to validate the flake
+4. Deploy to specific host with `just nix-deploy host=<hostname>`
+5. For new SD card images, use `just sd-build host=<hostname>`
 
 Host configurations automatically inherit the global profile and appropriate hardware/role modules based on their flake.nix definition.

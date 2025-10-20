@@ -4,15 +4,10 @@
   ...
 }:
 {
-  # Enable timer
-  systemd.timers."rclone-books-remote" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      # starts after restic books backup completes (restic starts at 9:00)
-      OnCalendar = "11:00";
-      Unit = "rclone-books-remote.service";
-    };
-  };
+  ## Manual-only service (no timer)
+  ## Run with: systemctl start rclone-books-remote
+
+  # No timer - manual execution only
 
   # Below script will use rclone to save the books to the remote S3 bucket
   systemd.services."rclone-books-remote" = {
@@ -26,8 +21,6 @@
       Type = "oneshot";
       User = "root";
     };
-    after = [ "restic-backups-books.service" ];
-    requires = [ "restic-backups-books.service" ];
   };
 
 }

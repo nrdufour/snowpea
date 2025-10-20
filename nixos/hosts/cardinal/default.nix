@@ -69,7 +69,7 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
-    dates = "03:00";
+    dates = "01:00";
     flake = "git+https://forge.internal/nemo/snowpea.git";
   };
 }

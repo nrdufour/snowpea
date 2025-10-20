@@ -4,15 +4,10 @@
   ...
 }:
 {
-  # Enable timer
-  systemd.timers."rclone-media-remote" = {
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      # starts after restic media backup completes (restic starts at 10:00)
-      OnCalendar = "12:00";
-      Unit = "rclone-media-remote.service";
-    };
-  };
+  ## Manual-only service (no timer)
+  ## Run with: systemctl start rclone-media-remote
+
+  # No timer - manual execution only
 
   # Below script will use rclone to save the media to the remote S3 bucket
   systemd.services."rclone-media-remote" = {
@@ -26,8 +21,6 @@
       Type = "oneshot";
       User = "root";
     };
-    after = [ "restic-backups-media.service" ];
-    requires = [ "restic-backups-media.service" ];
   };
 
 }
