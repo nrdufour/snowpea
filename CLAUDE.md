@@ -16,12 +16,12 @@ SnowPea is a NixOS Flake for managing home infrastructure consisting primarily o
 
 ### Host Management
 - `just nix-list-hosts` - List all configured NixOS hosts
-- `just nix-deploy host=<hostname>` - Deploy configuration to a specific host
+- `just nix-deploy <hostname>` - Deploy configuration to a specific host
 - `just nix-deploy-all` - Deploy configuration to all hosts (with confirmation prompt)
 
 ### SD Card Image Building
-- `just sd-build host=<hostname>` - Build SD card image for a host
-- `just sd-flash host=<hostname>` - Build and flash SD card image using rpi-imager
+- `just sd-build <hostname>` - Build SD card image for a host
+- `just sd-flash <hostname>` - Build and flash SD card image using rpi-imager
 
 ### Secrets Management
 - `just sops-update` - Update all SOPS encrypted secrets
@@ -61,7 +61,7 @@ When modifying configurations:
 1. Make changes to the appropriate profile, host config, or module
 2. Run `just lint` and `just format` to ensure code quality
 3. Test with `just nix-check` to validate the flake
-4. Deploy to specific host with `just nix-deploy host=<hostname>`
-5. For new SD card images, use `just sd-build host=<hostname>`
+4. Deploy to specific host with `just nix-deploy <hostname>`
+5. For new SD card images, use `just sd-build <hostname>`
 
 Host configurations automatically inherit the global profile and appropriate hardware/role modules based on their flake.nix definition.
