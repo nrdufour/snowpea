@@ -4,6 +4,9 @@
   ...
 }:
 {
+  ## This module isn't in use anymore
+  ## but kept as a reference
+  
   # Enable timer
   systemd.timers."rsync-nfs-media" = {
     wantedBy = [ "timers.target" ];

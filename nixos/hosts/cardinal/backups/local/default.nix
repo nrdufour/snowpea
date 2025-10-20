@@ -14,7 +14,7 @@
       ./rclone-garage-volsync-volumes.nix
       # ./rsync-nfs-books.nix
       # ./rsync-nfs-media.nix
-      ./restic-nfs.nix
+      ./restic-local.nix
     ];
 
   environment.systemPackages = with pkgs; [
