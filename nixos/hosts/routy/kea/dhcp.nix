@@ -236,4 +236,25 @@ in
     };
   };
 
+  # Fix kea-dhcp4-server startup dependency on network interfaces
+  # Ensure the DHCP server waits for interfaces to be configured before starting
+  systemd.services.kea-dhcp4-server = {
+    after = [
+      "systemd-networkd.service"
+      "sys-subsystem-net-devices-lan0.device"
+      "sys-subsystem-net-devices-lab0.device"
+      "sys-subsystem-net-devices-lab1.device"
+    ];
+    requires = [
+      "sys-subsystem-net-devices-lan0.device"
+      "sys-subsystem-net-devices-lab0.device"
+      "sys-subsystem-net-devices-lab1.device"
+    ];
+    # Allow the service to restart if interfaces become available later
+    serviceConfig = {
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+  };
+
 }
