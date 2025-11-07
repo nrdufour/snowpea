@@ -1,5 +1,11 @@
 # SnowPea 🫛
 
+> **⚠️ ARCHIVED REPOSITORY**
+>
+> This repository is now archived. All active development has moved to **avalanche**:
+> - GitHub: https://github.com/nrdufour/avalanche
+> - Internal Forgejo: https://forge.internal/nemo/avalanche
+
 > Because managing a homelab with NixOS flakes is easier than remembering which Pi is which.
 
 A NixOS Flake for wrangling my entire homelab fleet of ARM-based single-board computers (and a couple x86 friends who crashed the party). Everything from Kubernetes clusters to standalone services, all declared in Nix because YOLO.
